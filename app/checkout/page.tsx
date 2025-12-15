@@ -18,6 +18,9 @@ import { useToast } from "@/components/ui/toast";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice } from "@/lib/utils";
 
+// Prevent static prerendering - checkout requires client context
+export const dynamic = "force-dynamic";
+
 const steps = [
   { id: 1, name: "Information", icon: User },
   { id: 2, name: "Livraison", icon: Truck },
