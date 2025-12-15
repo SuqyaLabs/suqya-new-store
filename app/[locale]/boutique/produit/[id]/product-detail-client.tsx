@@ -45,20 +45,14 @@ const defaultVariants: Variant[] = [
   { id: "1kg", name: "1kg", price_mod: 4000 },
 ];
 
-const benefits = [
-  "Renforce l'immunité",
-  "Propriétés antibactériennes",
-  "Aide à la cicatrisation",
-  "Énergie naturelle",
-  "Améliore la digestion",
-];
-
 export function ProductDetailClient({
   product,
   relatedProducts,
 }: ProductDetailClientProps) {
   const t = useTranslations("shop");
+  const tp = useTranslations("product");
   const locale = useLocale();
+  const benefits = tp.raw("benefitsList");
   const [variants, setVariants] = useState<Variant[]>(defaultVariants);
   const [selectedVariant, setSelectedVariant] = useState<Variant>(defaultVariants[1]);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -164,7 +158,7 @@ export function ProductDetailClient({
                       key={`${src}-${idx}`}
                       type="button"
                       onClick={() => setSelectedImageIndex(idx)}
-                      aria-label={`Voir l'image ${idx + 1} de ${product.name}`}
+                      aria-label={tp("viewImage", { index: idx + 1, name: product.name })}
                       className={`relative aspect-square overflow-hidden rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-honey-500 focus-visible:ring-offset-2 ${
                         isSelected
                           ? "border-honey-500"
@@ -232,8 +226,8 @@ export function ProductDetailClient({
                   />
                 ))}
               </div>
-              <span className="text-sm font-medium text-warm-700">4.9</span>
-              <span className="text-sm text-warm-500">(127 avis)</span>
+              <span className="text-sm font-medium text-warm-700">{tp("rating")}</span>
+              <span className="text-sm text-warm-500">({tp("reviewCount")})</span>
             </div>
 
             {/* Price */}
@@ -353,17 +347,17 @@ export function ProductDetailClient({
             {/* Description */}
             <div>
               <h2 className="text-2xl font-bold text-warm-900 mb-4">
-                Description
+                {tp("description")}
               </h2>
               <p className="text-warm-600 leading-relaxed mb-6">
                 {product.long_description || product.short_description}
               </p>
 
               <h3 className="text-lg font-semibold text-warm-900 mb-3">
-                Bienfaits
+                {tp("benefits")}
               </h3>
               <ul className="space-y-2">
-                {benefits.map((benefit) => (
+                {benefits.map((benefit: string) => (
                   <li key={benefit} className="flex items-center gap-2">
                     <Leaf size={16} className="text-forest-600" />
                     <span className="text-warm-700">{benefit}</span>
@@ -375,34 +369,34 @@ export function ProductDetailClient({
             {/* Origin & Traceability */}
             <div>
               <h2 className="text-2xl font-bold text-warm-900 mb-4">
-                Origine & Traçabilité
+                {tp("origin")}
               </h2>
               <div className="bg-white rounded-xl p-6 space-y-4">
                 <div className="flex items-start gap-3">
                   <MapPin size={20} className="text-honey-600 mt-1" />
                   <div>
-                    <p className="font-medium text-warm-900">Région</p>
+                    <p className="font-medium text-warm-900">{tp("region")}</p>
                     <p className="text-warm-600">Kabylie, Tizi Ouzou</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-xl">📅</span>
                   <div>
-                    <p className="font-medium text-warm-900">Récolte</p>
+                    <p className="font-medium text-warm-900">{tp("harvest")}</p>
                     <p className="text-warm-600">Été 2024</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-xl">🔢</span>
                   <div>
-                    <p className="font-medium text-warm-900">Lot</p>
+                    <p className="font-medium text-warm-900">{tp("batch")}</p>
                     <p className="text-warm-600">SQ-{product.id.slice(0, 8).toUpperCase()}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-xl">🌡️</span>
                   <div>
-                    <p className="font-medium text-warm-900">Conservation</p>
+                    <p className="font-medium text-warm-900">{tp("storage")}</p>
                     <p className="text-warm-600">18-25°C, à l&apos;abri de la lumière</p>
                   </div>
                 </div>

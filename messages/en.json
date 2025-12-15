@@ -171,6 +171,13 @@
   "product": {
     "description": "Description",
     "benefits": "Benefits",
+    "benefitsList": [
+      "Boosts immunity",
+      "Antibacterial properties",
+      "Aids healing",
+      "Natural energy",
+      "Improves digestion"
+    ],
     "origin": "Origin & Traceability",
     "region": "Region",
     "harvest": "Harvest",
@@ -184,21 +191,32 @@
     "reviews": "{count} reviews",
     "inStock": "In stock",
     "lowStock": "Low stock",
-    "outOfStock": "Out of stock"
+    "outOfStock": "Out of stock",
+    "viewImage": "View image {index} of {name}",
+    "rating": "4.9",
+    "reviewCount": "127 reviews"
   },
   "cart": {
     "title": "Your Cart",
+    "itemCount": "{count} item(s)",
     "empty": "Your cart is empty",
-    "emptyMessage": "Discover our products and add your favorites",
+    "emptyMessage": "Add products to start shopping. Our organic honeys are waiting for you!",
     "continueShopping": "Continue shopping",
     "subtotal": "Subtotal",
     "shipping": "Shipping",
+    "shippingEstimate": "Estimated shipping",
+    "shippingNote": "Shipping calculated at checkout",
     "total": "Total",
     "checkout": "Checkout",
     "remove": "Remove",
     "update": "Update",
     "freeShipping": "Free shipping",
-    "freeShippingFrom": "Free shipping from {amount}"
+    "freeShippingFrom": "Free shipping from {amount}",
+    "perUnit": "/ unit",
+    "size": "Size",
+    "deliveryInfo": "Delivery 3-5 days across Algeria",
+    "securePayment": "🔒 Secure payment • COD accepted",
+    "discoverHoneys": "Discover our honeys"
   },
   "checkout": {
     "title": "Checkout",
@@ -209,30 +227,33 @@
       "confirm": "Confirmation"
     },
     "customer": {
-      "title": "Your information",
+      "title": "Contact information",
       "email": "Email",
       "phone": "Phone",
       "name": "Full name"
     },
     "shipping": {
       "title": "Shipping address",
-      "address": "Address",
+      "address": "Full address",
       "wilaya": "Wilaya",
       "commune": "Commune",
       "method": "Shipping method",
       "methods": {
-        "yalidine": "Yalidine Express (3-5 days)",
+        "yalidine": "Yalidine Express",
+        "yalidineDesc": "Home delivery in 3-5 days",
         "pickup": "Pickup Point",
-        "ems": "EMS Post"
+        "pickupDesc": "Pickup point delivery in 5-7 days"
       }
     },
     "payment": {
       "title": "Payment method",
       "methods": {
-        "cod": "Cash on delivery",
-        "cib": "CIB Card",
-        "edahabia": "Edahabia",
-        "transfer": "Bank transfer"
+        "cod": "Cash on delivery (COD)",
+        "codDesc": "Pay in cash upon receipt",
+        "cib": "CIB / Edahabia Card",
+        "cibDesc": "Secure card payment",
+        "transfer": "Bank transfer",
+        "transferDesc": "Transfer to our account"
       }
     },
     "summary": {
@@ -243,11 +264,24 @@
     },
     "placeOrder": "Place order",
     "processing": "Processing...",
+    "backToShop": "Back to shop",
+    "emptyCart": "Your cart is empty",
+    "addProductsFirst": "Add products before checkout.",
     "success": {
       "title": "Order confirmed!",
-      "message": "Thank you for your order. You will receive a confirmation email.",
-      "orderNumber": "Order number"
-    }
+      "message": "Thank you for your order. You will receive an SMS confirmation with delivery details.",
+      "orderNumber": "Order number",
+      "continueShopping": "Continue shopping"
+    },
+    "fields": {
+      "emailPlaceholder": "your@email.com",
+      "phonePlaceholder": "0555 123 456",
+      "namePlaceholder": "First and Last name",
+      "addressPlaceholder": "Number, street, neighborhood...",
+      "selectWilaya": "Select...",
+      "communePlaceholder": "Commune"
+    },
+    "securePayment": "🔒 Secure payment - Your data is protected"
   },
   "about": {
     "title": "Our Story",

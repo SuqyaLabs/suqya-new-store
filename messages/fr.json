@@ -171,6 +171,13 @@
   "product": {
     "description": "Description",
     "benefits": "Bienfaits",
+    "benefitsList": [
+      "Renforce l'immunité",
+      "Propriétés antibactériennes",
+      "Aide à la cicatrisation",
+      "Énergie naturelle",
+      "Améliore la digestion"
+    ],
     "origin": "Origine & Traçabilité",
     "region": "Région",
     "harvest": "Récolte",
@@ -184,21 +191,32 @@
     "reviews": "{count} avis",
     "inStock": "En stock",
     "lowStock": "Stock limité",
-    "outOfStock": "Rupture de stock"
+    "outOfStock": "Rupture de stock",
+    "viewImage": "Voir l'image {index} de {name}",
+    "rating": "4.9",
+    "reviewCount": "127 avis"
   },
   "cart": {
     "title": "Votre Panier",
+    "itemCount": "{count} article(s)",
     "empty": "Votre panier est vide",
-    "emptyMessage": "Découvrez nos miels et ajoutez vos favoris",
+    "emptyMessage": "Ajoutez des produits pour commencer vos achats. Nos miels bio n'attendent que vous !",
     "continueShopping": "Continuer mes achats",
     "subtotal": "Sous-total",
     "shipping": "Livraison",
+    "shippingEstimate": "Livraison estimée",
+    "shippingNote": "Livraison calculée à l'étape suivante",
     "total": "Total",
-    "checkout": "Passer commande",
+    "checkout": "Passer la commande",
     "remove": "Retirer",
     "update": "Mettre à jour",
     "freeShipping": "Livraison gratuite",
-    "freeShippingFrom": "Livraison gratuite dès {amount}"
+    "freeShippingFrom": "Livraison gratuite dès {amount}",
+    "perUnit": "/ unité",
+    "size": "Taille",
+    "deliveryInfo": "Livraison 3-5 jours partout en Algérie",
+    "securePayment": "🔒 Paiement sécurisé • COD accepté",
+    "discoverHoneys": "Découvrir nos miels"
   },
   "checkout": {
     "title": "Finaliser la commande",
@@ -209,45 +227,61 @@
       "confirm": "Confirmation"
     },
     "customer": {
-      "title": "Vos informations",
+      "title": "Informations de contact",
       "email": "Email",
       "phone": "Téléphone",
       "name": "Nom complet"
     },
     "shipping": {
       "title": "Adresse de livraison",
-      "address": "Adresse",
+      "address": "Adresse complète",
       "wilaya": "Wilaya",
       "commune": "Commune",
       "method": "Mode de livraison",
       "methods": {
-        "yalidine": "Yalidine Express (3-5 jours)",
+        "yalidine": "Yalidine Express",
+        "yalidineDesc": "Livraison à domicile en 3-5 jours",
         "pickup": "Point Relais",
-        "ems": "EMS Poste"
+        "pickupDesc": "Retrait en point relais en 5-7 jours"
       }
     },
     "payment": {
       "title": "Mode de paiement",
       "methods": {
-        "cod": "Paiement à la livraison",
-        "cib": "Carte CIB",
-        "edahabia": "Edahabia",
-        "transfer": "Virement bancaire"
+        "cod": "Paiement à la livraison (COD)",
+        "codDesc": "Payez en espèces à la réception",
+        "cib": "Carte CIB / Edahabia",
+        "cibDesc": "Paiement sécurisé par carte",
+        "transfer": "Virement bancaire",
+        "transferDesc": "Transfert vers notre compte"
       }
     },
     "summary": {
-      "title": "Récapitulatif",
+      "title": "Résumé de la commande",
       "subtotal": "Sous-total",
       "shipping": "Livraison",
-      "total": "Total à payer"
+      "total": "Total"
     },
     "placeOrder": "Confirmer la commande",
-    "processing": "Traitement en cours...",
+    "processing": "Traitement...",
+    "backToShop": "Retour à la boutique",
+    "emptyCart": "Votre panier est vide",
+    "addProductsFirst": "Ajoutez des produits avant de passer commande.",
     "success": {
-      "title": "Commande confirmée!",
-      "message": "Merci pour votre commande. Vous recevrez un email de confirmation.",
-      "orderNumber": "Numéro de commande"
-    }
+      "title": "Commande confirmée !",
+      "message": "Merci pour votre commande. Vous recevrez un SMS de confirmation avec les détails de livraison.",
+      "orderNumber": "Numéro de commande",
+      "continueShopping": "Continuer mes achats"
+    },
+    "fields": {
+      "emailPlaceholder": "votre@email.com",
+      "phonePlaceholder": "0555 123 456",
+      "namePlaceholder": "Prénom et Nom",
+      "addressPlaceholder": "Numéro, rue, quartier...",
+      "selectWilaya": "Sélectionner...",
+      "communePlaceholder": "Commune"
+    },
+    "securePayment": "🔒 Paiement sécurisé - Vos données sont protégées"
   },
   "about": {
     "title": "Notre Histoire",

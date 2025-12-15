@@ -2,13 +2,15 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useCartStore } from "@/store/cart-store";
 import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
 
 export function CartDrawer() {
+  const t = useTranslations("cart");
   const { items, isOpen, closeCart, updateQuantity, removeItem, getTotalPrice } =
     useCartStore();
 
@@ -38,7 +40,7 @@ export function CartDrawer() {
             {/* Header */}
             <div className="flex items-center justify-between border-b border-warm-200 px-4 py-4">
               <h2 className="text-lg font-semibold text-warm-900">
-                Votre Panier ({items.length} article{items.length !== 1 ? "s" : ""})
+                {t("title")} ({items.length} {t("itemCount", { count: items.length })})
               </h2>
               <button
                 onClick={closeCart}
@@ -54,13 +56,13 @@ export function CartDrawer() {
                 <div className="flex flex-col items-center justify-center h-full text-center">
                   <ShoppingBag size={64} className="text-warm-300 mb-4" />
                   <h3 className="text-lg font-medium text-warm-700 mb-2">
-                    Votre panier est vide
+                    {t("empty")}
                   </h3>
                   <p className="text-warm-500 text-sm mb-6">
-                    Découvrez nos miels bio et produits de la ruche
+                    {t("emptyMessage")}
                   </p>
                   <Button onClick={closeCart} asChild>
-                    <Link href="/boutique">Voir la boutique</Link>
+                    <Link href="/boutique">{t("discoverHoneys")}</Link>
                   </Button>
                 </div>
               ) : (
@@ -156,17 +158,17 @@ export function CartDrawer() {
             {items.length > 0 && (
               <div className="border-t border-warm-200 p-4 space-y-4">
                 <div className="flex justify-between text-warm-600">
-                  <span>Sous-total</span>
+                  <span>{t("subtotal")}</span>
                   <span className="font-semibold text-warm-900">
                     {formatPrice(totalPrice)}
                   </span>
                 </div>
                 <p className="text-xs text-warm-500">
-                  Frais de livraison calculés au checkout
+                  {t("shippingNote")}
                 </p>
                 <Button className="w-full" size="lg" asChild>
                   <Link href="/checkout" onClick={closeCart}>
-                    Passer la commande
+                    {t("checkout")}
                   </Link>
                 </Button>
                 <Button
@@ -174,7 +176,7 @@ export function CartDrawer() {
                   className="w-full"
                   onClick={closeCart}
                 >
-                  Continuer mes achats
+                  {t("continueShopping")}
                 </Button>
               </div>
             )}
