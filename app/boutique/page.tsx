@@ -10,7 +10,8 @@ export const metadata: Metadata = {
     "Découvrez notre sélection de miels bio d'Algérie. Miel de Jujubier, Eucalyptus, Montagne et produits de la ruche.",
 };
 
-export const revalidate = 60;
+// Prevent static prerendering - requires i18n context
+export const dynamic = "force-dynamic";
 
 const categoryMap: Record<string, { name: string; nameAr: string }> = {
   "miels-purs": { name: "Miels Purs", nameAr: "عسل صافي" },
