@@ -7,29 +7,6 @@ import {
   TranslatedVariant,
 } from "./types";
 
-const SUPABASE_PUBLIC_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-
-// Helper to encode storage paths
-function encodeStoragePath(path: string) {
-  return path
-    .split("/")
-    .map((part) => encodeURIComponent(part))
-    .join("/");
-}
-
-function buildPublicStorageUrl(bucket: string, path: string) {
-  if (!SUPABASE_PUBLIC_URL) return null;
-  return `${SUPABASE_PUBLIC_URL}/storage/v1/object/public/${bucket}/${encodeStoragePath(path)}`;
-}
-
-interface ProductMediaData {
-  storage_bucket: string;
-  storage_path: string;
-  position: number;
-  is_primary: boolean;
-  created_at: string;
-}
-
 interface ProductRow {
   id: string;
   name: string;
@@ -42,7 +19,6 @@ interface ProductRow {
   is_available: boolean;
   visibility: string;
   category_id: string | null;
-  product_media?: ProductMediaData[] | null;
   product_translations?: {
     name: string;
     short_description: string | null;
@@ -85,25 +61,12 @@ interface VariantRow {
   }[];
 }
 
-// Process product media to get image URLs
-function processProductImages(row: ProductRow): string[] | null {
-  const media = (row.product_media || [])
-    .slice()
-    .sort((a, b) => {
-      if (a.is_primary !== b.is_primary) return a.is_primary ? -1 : 1;
-      if (a.position !== b.position) return a.position - b.position;
-      return a.created_at.localeCompare(b.created_at);
-    });
-
-  const mediaUrls = media
-    .map((m) => buildPublicStorageUrl(m.storage_bucket, m.storage_path))
-    .filter((u): u is string => typeof u === "string" && u.length > 0);
-
-  const fallbackUrls = (row.images || []).filter(
-    (u): u is string => typeof u === "string"
+// Get image URLs from product
+function getProductImages(row: ProductRow): string[] | null {
+  const images = (row.images || []).filter(
+    (u): u is string => typeof u === "string" && u.length > 0
   );
-  const merged = [...mediaUrls, ...fallbackUrls];
-  return merged.length > 0 ? Array.from(new Set(merged)) : null;
+  return images.length > 0 ? images : null;
 }
 
 // Normalize product row with translations
@@ -115,7 +78,7 @@ function normalizeTranslatedProduct(row: ProductRow): TranslatedProduct {
     id: row.id,
     slug: row.slug,
     price: Number(row.price),
-    images: processProductImages(row),
+    images: getProductImages(row),
     is_online: row.is_online,
     is_available: row.is_available,
     visibility: row.visibility,
@@ -183,13 +146,6 @@ export async function getTranslatedProducts(
       is_available,
       visibility,
       category_id,
-      product_media (
-        storage_bucket,
-        storage_path,
-        position,
-        is_primary,
-        created_at
-      ),
       product_translations!left (
         name,
         short_description,
@@ -213,8 +169,6 @@ export async function getTranslatedProducts(
     .or("short_description.not.is.null,long_description.not.is.null")
     .eq("is_available", true)
     .eq("is_online", true)
-    .order("is_primary", { referencedTable: "product_media", ascending: false })
-    .order("position", { referencedTable: "product_media", ascending: true })
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -285,14 +239,7 @@ export async function getTranslatedProductsByCategory(
       is_available,
       visibility,
       category_id,
-      product_media (
-        storage_bucket,
-        storage_path,
-        position,
-        is_primary,
-        created_at
-      ),
-      product_translations!left (
+x
         name,
         short_description,
         long_description,
@@ -314,8 +261,6 @@ export async function getTranslatedProductsByCategory(
     .eq("categories.category_translations.language_code", locale)
     .eq("is_available", true)
     .eq("is_online", true)
-    .order("is_primary", { referencedTable: "product_media", ascending: false })
-    .order("position", { referencedTable: "product_media", ascending: true })
     .order("price", { ascending: true });
 
   if (error) {
@@ -359,13 +304,6 @@ export async function getTranslatedProductById(
       is_available,
       visibility,
       category_id,
-      product_media (
-        storage_bucket,
-        storage_path,
-        position,
-        is_primary,
-        created_at
-      ),
       product_translations!left (
         name,
         short_description,
@@ -387,8 +325,6 @@ export async function getTranslatedProductById(
     .eq("product_translations.language_code", locale)
     .eq("categories.category_translations.language_code", locale)
     .eq("id", id)
-    .order("is_primary", { referencedTable: "product_media", ascending: false })
-    .order("position", { referencedTable: "product_media", ascending: true })
     .single();
 
   if (error) {
@@ -410,13 +346,6 @@ export async function getTranslatedProductById(
         is_available,
         visibility,
         category_id,
-        product_media (
-          storage_bucket,
-          storage_path,
-          position,
-          is_primary,
-          created_at
-        ),
         categories!products_category_id_fkey (
           id,
           name,
@@ -459,13 +388,6 @@ export async function getTranslatedProductBySlug(
       is_available,
       visibility,
       category_id,
-      product_media (
-        storage_bucket,
-        storage_path,
-        position,
-        is_primary,
-        created_at
-      ),
       product_translations!left (
         name,
         short_description,
@@ -487,8 +409,6 @@ export async function getTranslatedProductBySlug(
     .eq("product_translations.language_code", locale)
     .eq("categories.category_translations.language_code", locale)
     .eq("slug", slug)
-    .order("is_primary", { referencedTable: "product_media", ascending: false })
-    .order("position", { referencedTable: "product_media", ascending: true })
     .single();
 
   if (error) {
@@ -508,13 +428,6 @@ export async function getTranslatedProductBySlug(
         is_available,
         visibility,
         category_id,
-        product_media (
-          storage_bucket,
-          storage_path,
-          position,
-          is_primary,
-          created_at
-        ),
         categories!products_category_id_fkey (
           id,
           name,
@@ -664,13 +577,6 @@ export async function searchTranslatedProducts(
       is_available,
       visibility,
       category_id,
-      product_media (
-        storage_bucket,
-        storage_path,
-        position,
-        is_primary,
-        created_at
-      ),
       product_translations!left (
         name,
         short_description,

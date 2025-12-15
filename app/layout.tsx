@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Noto_Sans_Arabic } from "next/font/google";
+import { Inter, Playfair_Display, Almarai } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -12,10 +12,10 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-const notoArabic = Noto_Sans_Arabic({
+const almarai = Almarai({
   variable: "--font-arabic",
   subsets: ["arabic"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -49,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${playfair.variable} ${notoArabic.variable} antialiased`}
+        className={`${inter.variable} ${playfair.variable} ${almarai.variable} antialiased`}
       >
         {children}
       </body>
