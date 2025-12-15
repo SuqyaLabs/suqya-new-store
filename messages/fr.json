@@ -1,0 +1,316 @@
+{
+  "common": {
+    "brand": "Suqya",
+    "tagline": "Du rucher à votre table",
+    "currency": "DA",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "retry": "Réessayer",
+    "close": "Fermer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "search": "Rechercher",
+    "noResults": "Aucun résultat",
+    "viewAll": "Voir tout",
+    "viewAllProducts": "Voir tous les produits"
+  },
+  "categories": {
+    "pureHoneys": "Miels Purs",
+    "pureHoneysDesc": "Jujubier, Eucalyptus, Montagne",
+    "infusedHoneys": "Miels Infusés",
+    "infusedHoneysDesc": "Gingembre, Nigelle",
+    "beeProducts": "Produits de la Ruche",
+    "beeProductsDesc": "Pollen, Propolis, Cire",
+    "giftSets": "Coffrets Cadeaux",
+    "giftSetsDesc": "Pour offrir avec élégance"
+  },
+  "nav": {
+    "home": "Accueil",
+    "shop": "Boutique",
+    "about": "Notre Histoire",
+    "contact": "Contact",
+    "cart": "Panier",
+    "account": "Mon Compte",
+    "login": "Connexion",
+    "logout": "Déconnexion"
+  },
+  "home": {
+    "hero": {
+      "title": "Miel Bio",
+      "titleHighlight": "d'Algérie",
+      "tagline": "Du rucher à votre table",
+      "description": "Découvrez notre sélection de miels purs, récoltés dans les montagnes de Kabylie. 100% naturel, 100% authentique.",
+      "cta": "Découvrir nos miels",
+      "ctaSecondary": "Notre histoire",
+      "badge": "100% Naturel",
+      "trustBadges": {
+        "bio": "100% Bio",
+        "origin": "Origine Kabylie",
+        "delivery": "Livraison 58 Wilayas",
+        "payment": "Paiement à la livraison"
+      }
+    },
+    "features": {
+      "title": "Pourquoi Suqya ?",
+      "subtitle": "Nous nous engageons à vous offrir le meilleur miel algérien avec un service irréprochable.",
+      "bio": {
+        "title": "100% Bio",
+        "description": "Miel pur sans additifs, récolté naturellement"
+      },
+      "origin": {
+        "title": "Origine Kabylie",
+        "description": "Des montagnes algériennes à votre table"
+      },
+      "delivery": {
+        "title": "Livraison Rapide",
+        "description": "Partout en Algérie en 3-5 jours"
+      },
+      "payment": {
+        "title": "Paiement Sécurisé",
+        "description": "COD, CIB, Edahabia acceptés"
+      },
+      "quality": {
+        "title": "Qualité Garantie",
+        "description": "Traçabilité complète de chaque pot"
+      },
+      "support": {
+        "title": "Service Client",
+        "description": "WhatsApp disponible 7j/7"
+      }
+    },
+    "categories": {
+      "title": "Nos Catégories",
+      "subtitle": "Explorez notre sélection de produits de la ruche",
+      "viewMore": "Voir plus"
+    },
+    "bestsellers": {
+      "title": "Nos Best-sellers",
+      "subtitle": "Les favoris de nos clients"
+    },
+    "newsletter": {
+      "title": "Rejoignez la ruche !",
+      "subtitle": "Recevez nos offres exclusives, conseils santé et nouveautés directement dans votre boîte mail.",
+      "placeholder": "Votre adresse email",
+      "button": "S'inscrire",
+      "subscribing": "Inscription...",
+      "success": "Merci pour votre inscription !",
+      "privacy": "En vous inscrivant, vous acceptez de recevoir nos emails. Désabonnement possible à tout moment."
+    },
+    "testimonials": {
+      "title": "Ce que disent nos clients",
+      "subtitle": "Plus de 500 clients satisfaits partout en Algérie",
+      "reviews": [
+        {
+          "name": "Fatima B.",
+          "location": "Alger",
+          "text": "Le meilleur miel que j'ai goûté ! Mes enfants l'adorent. Qualité exceptionnelle et livraison rapide.",
+          "product": "Miel de Jujubier"
+        },
+        {
+          "name": "Karim M.",
+          "location": "France (Diaspora)",
+          "text": "J'ai envoyé un coffret à ma famille en Algérie. Ils étaient ravis ! Le packaging est magnifique.",
+          "product": "Coffret Découverte"
+        },
+        {
+          "name": "Youcef A.",
+          "location": "Oran",
+          "text": "Enfin un miel authentique ! On sent vraiment la différence avec le miel industriel. Je recommande à 100%.",
+          "product": "Miel de Montagne"
+        },
+        {
+          "name": "Amina S.",
+          "location": "Constantine",
+          "text": "Le miel au gingembre est parfait pour l'hiver. Je l'utilise tous les matins. Service client au top !",
+          "product": "Miel au Gingembre"
+        }
+      ]
+    }
+  },
+  "shop": {
+    "title": "Notre Boutique",
+    "subtitle": "Découvrez notre sélection de miels et produits de la ruche",
+    "filters": {
+      "all": "Tous",
+      "category": "Catégorie",
+      "price": "Prix",
+      "sort": "Trier par",
+      "sortOptions": {
+        "newest": "Plus récents",
+        "priceAsc": "Prix croissant",
+        "priceDesc": "Prix décroissant",
+        "popular": "Populaires"
+      }
+    },
+    "products": "{count} produit(s)",
+    "addToCart": "Ajouter au panier",
+    "addedToCart": "Ajouté au panier",
+    "outOfStock": "Rupture de stock",
+    "viewProduct": "Voir le produit",
+    "backToShop": "Retour à la boutique",
+    "chooseSize": "Choisir la taille",
+    "quantity": "Quantité",
+    "fastDelivery": "Livraison rapide",
+    "deliveryTime": "3-5 jours ouvrés",
+    "qualityGuarantee": "Qualité garantie",
+    "satisfaction": "100% satisfait",
+    "relatedProducts": "Produits similaires",
+    "badges": {
+      "bio": "Bio",
+      "nouveau": "Nouveau",
+      "promo": "Promo",
+      "bestseller": "Best-seller",
+      "local": "Local",
+      "artisanal": "Artisanal"
+    }
+  },
+  "product": {
+    "description": "Description",
+    "benefits": "Bienfaits",
+    "origin": "Origine & Traçabilité",
+    "region": "Région",
+    "harvest": "Récolte",
+    "batch": "Lot",
+    "storage": "Conservation",
+    "selectSize": "Choisir la taille",
+    "quantity": "Quantité",
+    "addToCart": "Ajouter au panier",
+    "addedToCart": "Ajouté au panier",
+    "related": "Produits similaires",
+    "reviews": "{count} avis",
+    "inStock": "En stock",
+    "lowStock": "Stock limité",
+    "outOfStock": "Rupture de stock"
+  },
+  "cart": {
+    "title": "Votre Panier",
+    "empty": "Votre panier est vide",
+    "emptyMessage": "Découvrez nos miels et ajoutez vos favoris",
+    "continueShopping": "Continuer mes achats",
+    "subtotal": "Sous-total",
+    "shipping": "Livraison",
+    "total": "Total",
+    "checkout": "Passer commande",
+    "remove": "Retirer",
+    "update": "Mettre à jour",
+    "freeShipping": "Livraison gratuite",
+    "freeShippingFrom": "Livraison gratuite dès {amount}"
+  },
+  "checkout": {
+    "title": "Finaliser la commande",
+    "steps": {
+      "info": "Informations",
+      "shipping": "Livraison",
+      "payment": "Paiement",
+      "confirm": "Confirmation"
+    },
+    "customer": {
+      "title": "Vos informations",
+      "email": "Email",
+      "phone": "Téléphone",
+      "name": "Nom complet"
+    },
+    "shipping": {
+      "title": "Adresse de livraison",
+      "address": "Adresse",
+      "wilaya": "Wilaya",
+      "commune": "Commune",
+      "method": "Mode de livraison",
+      "methods": {
+        "yalidine": "Yalidine Express (3-5 jours)",
+        "pickup": "Point Relais",
+        "ems": "EMS Poste"
+      }
+    },
+    "payment": {
+      "title": "Mode de paiement",
+      "methods": {
+        "cod": "Paiement à la livraison",
+        "cib": "Carte CIB",
+        "edahabia": "Edahabia",
+        "transfer": "Virement bancaire"
+      }
+    },
+    "summary": {
+      "title": "Récapitulatif",
+      "subtotal": "Sous-total",
+      "shipping": "Livraison",
+      "total": "Total à payer"
+    },
+    "placeOrder": "Confirmer la commande",
+    "processing": "Traitement en cours...",
+    "success": {
+      "title": "Commande confirmée!",
+      "message": "Merci pour votre commande. Vous recevrez un email de confirmation.",
+      "orderNumber": "Numéro de commande"
+    }
+  },
+  "about": {
+    "title": "Notre Histoire",
+    "subtitle": "سُقيا - Nourrir votre santé avec les dons de la nature",
+    "story": {
+      "title": "Une passion familiale",
+      "content": "Depuis trois générations, notre famille perpétue l'art de l'apiculture dans les montagnes de Kabylie."
+    },
+    "values": {
+      "title": "Nos Valeurs",
+      "quality": {
+        "title": "Qualité",
+        "description": "Chaque pot est le fruit d'un travail minutieux"
+      },
+      "authenticity": {
+        "title": "Authenticité",
+        "description": "Méthodes traditionnelles, goût authentique"
+      },
+      "sustainability": {
+        "title": "Durabilité",
+        "description": "Respectueux des abeilles et de l'environnement"
+      }
+    }
+  },
+  "footer": {
+    "description": "Miel bio et naturel, directement des apiculteurs de Kabylie à votre table.",
+    "shop": {
+      "title": "Boutique",
+      "allProducts": "Tous les produits",
+      "pureHoneys": "Miels Purs",
+      "infusedHoneys": "Miels Infusés",
+      "beeProducts": "Produits de la Ruche"
+    },
+    "info": {
+      "title": "Informations",
+      "about": "Notre Histoire",
+      "faq": "FAQ",
+      "shipping": "Livraison",
+      "returns": "Retours"
+    },
+    "contact": {
+      "title": "Contact",
+      "phone": "+213 555 123 456",
+      "email": "contact@suqya.dz",
+      "address": "Tizi Ouzou, Algérie"
+    },
+    "legal": {
+      "terms": "Conditions générales",
+      "privacy": "Politique de confidentialité",
+      "cookies": "Cookies"
+    },
+    "copyright": "© {year} Suqya. Tous droits réservés."
+  },
+  "errors": {
+    "404": {
+      "title": "Page non trouvée",
+      "message": "La page que vous recherchez n'existe pas.",
+      "cta": "Retour à l'accueil"
+    },
+    "500": {
+      "title": "Erreur serveur",
+      "message": "Une erreur est survenue. Veuillez réessayer.",
+      "cta": "Réessayer"
+    }
+  }
+}

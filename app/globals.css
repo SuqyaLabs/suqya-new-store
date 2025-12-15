@@ -1,26 +1,237 @@
 @import "tailwindcss";
 
+/* ===== SUQYA DESIGN SYSTEM ===== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary - Honey Gold */
+  --honey-50: #FFF8E1;
+  --honey-100: #FFECB3;
+  --honey-200: #FFE082;
+  --honey-300: #FFD54F;
+  --honey-400: #FFCA28;
+  --honey-500: #FFC107;
+  --honey-600: #FFB300;
+  --honey-700: #FFA000;
+  --honey-800: #FF8F00;
+  --honey-900: #FF6F00;
+  
+  /* Secondary - Forest Green */
+  --forest-50: #E8F5E9;
+  --forest-100: #C8E6C9;
+  --forest-500: #4CAF50;
+  --forest-700: #388E3C;
+  --forest-900: #1B5E20;
+  
+  /* Neutral - Warm Gray */
+  --warm-50: #FAFAF9;
+  --warm-100: #F5F5F4;
+  --warm-200: #E7E5E4;
+  --warm-300: #D6D3D1;
+  --warm-400: #A8A29E;
+  --warm-500: #78716C;
+  --warm-600: #57534E;
+  --warm-700: #44403C;
+  --warm-800: #292524;
+  --warm-900: #1C1917;
+  
+  /* Semantic */
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --info: #3B82F6;
+
+  /* Theme Colors */
+  --background: var(--warm-50);
+  --foreground: var(--warm-900);
+  --card: #ffffff;
+  --card-foreground: var(--warm-900);
+  --primary: var(--honey-600);
+  --primary-foreground: var(--warm-900);
+  --secondary: var(--forest-900);
+  --secondary-foreground: #ffffff;
+  --muted: var(--warm-100);
+  --muted-foreground: var(--warm-500);
+  --accent: var(--honey-100);
+  --accent-foreground: var(--warm-900);
+  --border: var(--warm-200);
+  --input: var(--warm-200);
+  --ring: var(--honey-500);
+  --radius: 0.75rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  /* Honey palette */
+  --color-honey-50: var(--honey-50);
+  --color-honey-100: var(--honey-100);
+  --color-honey-200: var(--honey-200);
+  --color-honey-300: var(--honey-300);
+  --color-honey-400: var(--honey-400);
+  --color-honey-500: var(--honey-500);
+  --color-honey-600: var(--honey-600);
+  --color-honey-700: var(--honey-700);
+  --color-honey-800: var(--honey-800);
+  --color-honey-900: var(--honey-900);
+  
+  /* Forest palette */
+  --color-forest-50: var(--forest-50);
+  --color-forest-100: var(--forest-100);
+  --color-forest-500: var(--forest-500);
+  --color-forest-700: var(--forest-700);
+  --color-forest-900: var(--forest-900);
+  
+  /* Warm palette */
+  --color-warm-50: var(--warm-50);
+  --color-warm-100: var(--warm-100);
+  --color-warm-200: var(--warm-200);
+  --color-warm-300: var(--warm-300);
+  --color-warm-400: var(--warm-400);
+  --color-warm-500: var(--warm-500);
+  --color-warm-600: var(--warm-600);
+  --color-warm-700: var(--warm-700);
+  --color-warm-800: var(--warm-800);
+  --color-warm-900: var(--warm-900);
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-playfair);
+  --font-arabic: var(--font-arabic);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Dark Mode */
+.dark {
+  --background: var(--warm-900);
+  --foreground: var(--warm-50);
+  --card: var(--warm-800);
+  --card-foreground: var(--warm-50);
+  --muted: var(--warm-800);
+  --muted-foreground: var(--warm-400);
+  --accent: var(--warm-700);
+  --accent-foreground: var(--warm-50);
+  --border: var(--warm-700);
+  --input: var(--warm-700);
+}
+
+/* Base Styles */
+* {
+  border-color: var(--border);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--warm-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--warm-400);
+}
+
+/* Hide scrollbar for horizontal scroll containers */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Animation utilities */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+/* ===== RTL SUPPORT ===== */
+[dir="rtl"] {
+  --font-sans: var(--font-arabic);
+}
+
+/* Arabic font class */
+.font-arabic {
+  font-family: var(--font-arabic), system-ui, sans-serif;
+}
+
+/* RTL specific styles */
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  margin-right: 1rem;
+  margin-left: 0;
+}
+
+[dir="rtl"] .ml-auto {
+  margin-left: unset;
+  margin-right: auto;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-right: unset;
+  margin-left: auto;
+}
+
+/* Flip icons that should be mirrored in RTL */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Animation direction for RTL */
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+[dir="rtl"] .animate-slide-in-right {
+  animation: slide-in-left 0.3s ease-out;
 }

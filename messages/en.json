@@ -1,0 +1,316 @@
+{
+  "common": {
+    "brand": "Suqya",
+    "tagline": "From the hive to your table",
+    "currency": "DZD",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "noResults": "No results found",
+    "viewAll": "View all",
+    "viewAllProducts": "View all products"
+  },
+  "categories": {
+    "pureHoneys": "Pure Honeys",
+    "pureHoneysDesc": "Jujube, Eucalyptus, Mountain",
+    "infusedHoneys": "Infused Honeys",
+    "infusedHoneysDesc": "Ginger, Black Seed",
+    "beeProducts": "Bee Products",
+    "beeProductsDesc": "Pollen, Propolis, Beeswax",
+    "giftSets": "Gift Sets",
+    "giftSetsDesc": "Give with elegance"
+  },
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "about": "Our Story",
+    "contact": "Contact",
+    "cart": "Cart",
+    "account": "My Account",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "home": {
+    "hero": {
+      "title": "Organic Honey",
+      "titleHighlight": "from Algeria",
+      "tagline": "From the hive to your table",
+      "description": "Discover our selection of pure honeys, harvested from the Kabylie mountains. 100% natural, 100% authentic.",
+      "cta": "Discover our honeys",
+      "ctaSecondary": "Our story",
+      "badge": "100% Natural",
+      "trustBadges": {
+        "bio": "100% Organic",
+        "origin": "Kabylie Origin",
+        "delivery": "Delivery to 58 Wilayas",
+        "payment": "Cash on delivery"
+      }
+    },
+    "features": {
+      "title": "Why Suqya?",
+      "subtitle": "We are committed to providing the best Algerian honey with impeccable service.",
+      "bio": {
+        "title": "100% Organic",
+        "description": "Pure honey without additives, naturally harvested"
+      },
+      "origin": {
+        "title": "Kabylie Origin",
+        "description": "From Algerian mountains to your table"
+      },
+      "delivery": {
+        "title": "Fast Delivery",
+        "description": "Across Algeria in 3-5 days"
+      },
+      "payment": {
+        "title": "Secure Payment",
+        "description": "COD, CIB, Edahabia accepted"
+      },
+      "quality": {
+        "title": "Quality Guaranteed",
+        "description": "Complete traceability for each jar"
+      },
+      "support": {
+        "title": "Customer Service",
+        "description": "WhatsApp available 7 days/week"
+      }
+    },
+    "categories": {
+      "title": "Our Categories",
+      "subtitle": "Explore our selection of hive products",
+      "viewMore": "View more"
+    },
+    "bestsellers": {
+      "title": "Bestsellers",
+      "subtitle": "Customer favorites"
+    },
+    "newsletter": {
+      "title": "Join the hive!",
+      "subtitle": "Receive our exclusive offers, health tips and news directly in your inbox.",
+      "placeholder": "Your email address",
+      "button": "Subscribe",
+      "subscribing": "Subscribing...",
+      "success": "Thank you for subscribing!",
+      "privacy": "By subscribing, you agree to receive our emails. You can unsubscribe at any time."
+    },
+    "testimonials": {
+      "title": "What our customers say",
+      "subtitle": "Over 500 satisfied customers across Algeria",
+      "reviews": [
+        {
+          "name": "Fatima B.",
+          "location": "Algiers",
+          "text": "The best honey I've ever tasted! My kids love it. Exceptional quality and fast delivery.",
+          "product": "Jujube Honey"
+        },
+        {
+          "name": "Karim M.",
+          "location": "France (Diaspora)",
+          "text": "I sent a gift box to my family in Algeria. They were delighted! The packaging is beautiful.",
+          "product": "Discovery Box"
+        },
+        {
+          "name": "Youcef A.",
+          "location": "Oran",
+          "text": "Finally authentic honey! You can really taste the difference from industrial honey. I recommend 100%.",
+          "product": "Mountain Honey"
+        },
+        {
+          "name": "Amina S.",
+          "location": "Constantine",
+          "text": "The ginger honey is perfect for winter. I use it every morning. Customer service is excellent!",
+          "product": "Ginger Honey"
+        }
+      ]
+    }
+  },
+  "shop": {
+    "title": "Our Shop",
+    "subtitle": "Discover our selection of honeys and hive products",
+    "filters": {
+      "all": "All",
+      "category": "Category",
+      "price": "Price",
+      "sort": "Sort by",
+      "sortOptions": {
+        "newest": "Newest",
+        "priceAsc": "Price: Low to High",
+        "priceDesc": "Price: High to Low",
+        "popular": "Popular"
+      }
+    },
+    "products": "{count} product(s)",
+    "addToCart": "Add to cart",
+    "addedToCart": "Added to cart",
+    "outOfStock": "Out of stock",
+    "viewProduct": "View product",
+    "backToShop": "Back to shop",
+    "chooseSize": "Choose size",
+    "quantity": "Quantity",
+    "fastDelivery": "Fast delivery",
+    "deliveryTime": "3-5 business days",
+    "qualityGuarantee": "Quality guaranteed",
+    "satisfaction": "100% satisfied",
+    "relatedProducts": "Related products",
+    "badges": {
+      "bio": "Organic",
+      "nouveau": "New",
+      "promo": "Sale",
+      "bestseller": "Bestseller",
+      "local": "Local",
+      "artisanal": "Artisanal"
+    }
+  },
+  "product": {
+    "description": "Description",
+    "benefits": "Benefits",
+    "origin": "Origin & Traceability",
+    "region": "Region",
+    "harvest": "Harvest",
+    "batch": "Batch",
+    "storage": "Storage",
+    "selectSize": "Select size",
+    "quantity": "Quantity",
+    "addToCart": "Add to cart",
+    "addedToCart": "Added to cart",
+    "related": "Related products",
+    "reviews": "{count} reviews",
+    "inStock": "In stock",
+    "lowStock": "Low stock",
+    "outOfStock": "Out of stock"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "emptyMessage": "Discover our products and add your favorites",
+    "continueShopping": "Continue shopping",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "total": "Total",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "update": "Update",
+    "freeShipping": "Free shipping",
+    "freeShippingFrom": "Free shipping from {amount}"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "steps": {
+      "info": "Information",
+      "shipping": "Shipping",
+      "payment": "Payment",
+      "confirm": "Confirmation"
+    },
+    "customer": {
+      "title": "Your information",
+      "email": "Email",
+      "phone": "Phone",
+      "name": "Full name"
+    },
+    "shipping": {
+      "title": "Shipping address",
+      "address": "Address",
+      "wilaya": "Wilaya",
+      "commune": "Commune",
+      "method": "Shipping method",
+      "methods": {
+        "yalidine": "Yalidine Express (3-5 days)",
+        "pickup": "Pickup Point",
+        "ems": "EMS Post"
+      }
+    },
+    "payment": {
+      "title": "Payment method",
+      "methods": {
+        "cod": "Cash on delivery",
+        "cib": "CIB Card",
+        "edahabia": "Edahabia",
+        "transfer": "Bank transfer"
+      }
+    },
+    "summary": {
+      "title": "Order summary",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "total": "Total"
+    },
+    "placeOrder": "Place order",
+    "processing": "Processing...",
+    "success": {
+      "title": "Order confirmed!",
+      "message": "Thank you for your order. You will receive a confirmation email.",
+      "orderNumber": "Order number"
+    }
+  },
+  "about": {
+    "title": "Our Story",
+    "subtitle": "Suqya - Nourishing your health with nature's gifts",
+    "story": {
+      "title": "A family passion",
+      "content": "For three generations, our family has been preserving the art of beekeeping in the Kabylie mountains."
+    },
+    "values": {
+      "title": "Our Values",
+      "quality": {
+        "title": "Quality",
+        "description": "Each jar is the result of meticulous work"
+      },
+      "authenticity": {
+        "title": "Authenticity",
+        "description": "Traditional methods, authentic taste"
+      },
+      "sustainability": {
+        "title": "Sustainability",
+        "description": "Respectful of bees and the environment"
+      }
+    }
+  },
+  "footer": {
+    "description": "Organic and natural honey, directly from Kabylie beekeepers to your table.",
+    "shop": {
+      "title": "Shop",
+      "allProducts": "All products",
+      "pureHoneys": "Pure Honeys",
+      "infusedHoneys": "Infused Honeys",
+      "beeProducts": "Bee Products"
+    },
+    "info": {
+      "title": "Information",
+      "about": "Our Story",
+      "faq": "FAQ",
+      "shipping": "Shipping",
+      "returns": "Returns"
+    },
+    "contact": {
+      "title": "Contact",
+      "phone": "+213 555 123 456",
+      "email": "contact@suqya.dz",
+      "address": "Tizi Ouzou, Algeria"
+    },
+    "legal": {
+      "terms": "Terms & Conditions",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookies"
+    },
+    "copyright": "© {year} Suqya. All rights reserved."
+  },
+  "errors": {
+    "404": {
+      "title": "Page not found",
+      "message": "The page you're looking for doesn't exist.",
+      "cta": "Back to home"
+    },
+    "500": {
+      "title": "Server error",
+      "message": "An error occurred. Please try again.",
+      "cta": "Retry"
+    }
+  }
+}
