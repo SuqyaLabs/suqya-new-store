@@ -140,6 +140,9 @@
       "category": "الفئة",
       "price": "السعر",
       "sort": "ترتيب حسب",
+      "noProducts": "لا يوجد منتجات",
+      "allCategories": "جميع الفئات",
+      "loading": "جاري التحميل...",
       "sortOptions": {
         "newest": "الأحدث",
         "priceAsc": "السعر تصاعدي",

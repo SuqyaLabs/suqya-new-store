@@ -737,7 +737,10 @@
       "allProducts": "All products",
       "pureHoneys": "Pure Honeys",
       "infusedHoneys": "Infused Honeys",
-      "beeProducts": "Bee Products"
+      "beeProducts": "Bee Products",
+      "noProducts": "No products found",
+      "allCategories": "All Categories",
+      "loading": "Loading..."
     },
     "info": {
       "title": "Information",

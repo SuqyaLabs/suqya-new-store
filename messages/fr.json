@@ -140,6 +140,9 @@
       "category": "Catégorie",
       "price": "Prix",
       "sort": "Trier par",
+      "noProducts": "Aucun produit trouvé",
+      "allCategories": "Toutes les catégories",
+      "loading": "Chargement...",
       "sortOptions": {
         "newest": "Plus récents",
         "priceAsc": "Prix croissant",
