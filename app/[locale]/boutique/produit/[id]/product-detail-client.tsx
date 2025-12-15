@@ -64,6 +64,7 @@ export function ProductDetailClient({
   const images = product.images ?? [];
   const selectedImage = images[selectedImageIndex];
 
+
   // Fetch real variants from API
   useEffect(() => {
     async function fetchVariants() {
