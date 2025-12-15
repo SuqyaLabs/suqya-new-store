@@ -86,18 +86,7 @@ export function CheckoutClient() {
     { id: 3, name: t("steps.payment"), icon: CreditCard },
   ];
 
-  const wilayas = [
-    "Alger",
-    "Oran",
-    "Constantine",
-    "Annaba",
-    "Blida",
-    "Batna",
-    "Sétif",
-    "Tizi Ouzou",
-    "Béjaïa",
-    "Tlemcen",
-  ];
+  const wilayas = t.raw("wilayas");
 
   const updateField = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -156,7 +145,7 @@ export function CheckoutClient() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || "Failed to create order");
+        throw new Error(result.error || t("errors.orderFailed"));
       }
 
       setOrderNumber(result.order.orderNumber);
@@ -166,8 +155,8 @@ export function CheckoutClient() {
     } catch (error) {
       console.error("Order error:", error);
       toast.error(
-        "Erreur de commande",
-        error instanceof Error ? error.message : "Une erreur est survenue"
+        t("errors.orderFailed"),
+        error instanceof Error ? error.message : t("errors.genericError")
       );
     } finally {
       setIsSubmitting(false);
@@ -384,7 +373,7 @@ export function CheckoutClient() {
                             className="w-full px-4 py-3 rounded-xl border border-warm-200 focus:border-honey-500 focus:ring-2 focus:ring-honey-500/20 outline-none"
                           >
                             <option value="">{t("fields.selectWilaya")}</option>
-                            {wilayas.map((w) => (
+                            {wilayas.map((w: string) => (
                               <option key={w} value={w}>
                                 {w}
                               </option>

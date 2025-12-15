@@ -265,6 +265,8 @@
     "placeOrder": "Confirmer la commande",
     "processing": "Traitement...",
     "backToShop": "Retour à la boutique",
+    "back": "Retour",
+    "next": "Suivant",
     "emptyCart": "Votre panier est vide",
     "addProductsFirst": "Ajoutez des produits avant de passer commande.",
     "success": {
@@ -281,7 +283,23 @@
       "selectWilaya": "Sélectionner...",
       "communePlaceholder": "Commune"
     },
-    "securePayment": "🔒 Paiement sécurisé - Vos données sont protégées"
+    "securePayment": "🔒 Paiement sécurisé - Vos données sont protégées",
+    "errors": {
+      "orderFailed": "Erreur de commande",
+      "genericError": "Une erreur est survenue"
+    },
+    "wilayas": [
+      "Alger",
+      "Oran",
+      "Constantine",
+      "Annaba",
+      "Blida",
+      "Batna",
+      "Sétif",
+      "Tizi Ouzou",
+      "Béjaïa",
+      "Tlemcen"
+    ]
   },
   "about": {
     "title": "Notre Histoire",

@@ -5,7 +5,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { locales, isRtlLocale, type Locale } from "@/i18n/config";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { MobileNav } from "@/components/layout/mobile-nav";
+import { BottomNavBar } from "@/components/layout/bottom-nav-bar";
 import { CartDrawer } from "@/components/cart/cart-drawer";
 import { ToastProvider } from "@/components/ui/toast";
 
@@ -65,7 +65,7 @@ export default async function LocaleLayout({
           <Header />
           <main className="min-h-screen pb-20 lg:pb-0">{children}</main>
           <Footer />
-          <MobileNav />
+          <BottomNavBar />
           <CartDrawer />
         </ToastProvider>
       </NextIntlClientProvider>

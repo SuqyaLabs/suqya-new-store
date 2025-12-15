@@ -265,6 +265,8 @@
     "placeOrder": "Place order",
     "processing": "Processing...",
     "backToShop": "Back to shop",
+    "back": "Back",
+    "next": "Next",
     "emptyCart": "Your cart is empty",
     "addProductsFirst": "Add products before checkout.",
     "success": {
@@ -281,7 +283,23 @@
       "selectWilaya": "Select...",
       "communePlaceholder": "Commune"
     },
-    "securePayment": "🔒 Secure payment - Your data is protected"
+    "securePayment": "🔒 Secure payment - Your data is protected",
+    "errors": {
+      "orderFailed": "Order error",
+      "genericError": "An error occurred"
+    },
+    "wilayas": [
+      "Alger",
+      "Oran",
+      "Constantine",
+      "Annaba",
+      "Blida",
+      "Batna",
+      "Sétif",
+      "Tizi Ouzou",
+      "Béjaïa",
+      "Tlemcen"
+    ]
   },
   "about": {
     "title": "Our Story",
