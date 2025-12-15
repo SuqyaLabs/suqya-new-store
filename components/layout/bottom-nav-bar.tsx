@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Home, Store, ShoppingCart, User, BookOpen, Globe } from "lucide-react";
+import { Home, Store, ShoppingCart, User, BookOpen, Globe, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/store/cart-store";
 import { LanguageSwitcherCompact } from "@/components/ui/language-switcher";
@@ -13,7 +13,7 @@ const navItems = [
   { key: "shop", icon: Store, href: "/boutique" },
   { key: "cart", icon: ShoppingCart, href: "/panier" },
   { key: "about", icon: BookOpen, href: "/notre-histoire" },
-  { key: "account", icon: User, href: "/compte" },
+  { key: "search", icon: Search, href: "/recherche" },
 ];
 
 export function BottomNavBar() {
@@ -65,11 +65,6 @@ export function BottomNavBar() {
             </Link>
           );
         })}
-        
-        {/* Language Switcher */}
-        <div className="flex items-center justify-center w-full h-full">
-          <LanguageSwitcherCompact />
-        </div>
       </div>
     </nav>
   );

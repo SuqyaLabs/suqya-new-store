@@ -13,8 +13,9 @@
     "back": "Retour",
     "next": "Suivant",
     "previous": "Précédent",
-    "search": "Rechercher",
-    "noResults": "Aucun résultat",
+    "search": "Rechercher...",
+    "noResults": "Aucun résultat trouvé",
+    "tryAgain": "Essayez avec d'autres mots-clés",
     "viewAll": "Voir tout",
     "viewAllProducts": "Voir tous les produits"
   },
@@ -215,7 +216,7 @@
     "perUnit": "/ unité",
     "size": "Taille",
     "deliveryInfo": "Livraison 3-5 jours partout en Algérie",
-    "securePayment": "🔒 Paiement sécurisé • COD accepté",
+    "securePayment": " Paiement sécurisé • COD accepté",
     "discoverHoneys": "Découvrir nos miels"
   },
   "checkout": {
@@ -283,7 +284,7 @@
       "selectWilaya": "Sélectionner...",
       "communePlaceholder": "Commune"
     },
-    "securePayment": "🔒 Paiement sécurisé - Vos données sont protégées",
+    "securePayment": " Paiement sécurisé - Vos données sont protégées",
     "errors": {
       "orderFailed": "Erreur de commande",
       "genericError": "Une erreur est survenue"
@@ -393,7 +394,7 @@
         },
         "q8": {
           "question": "Quels modes de paiement acceptez-vous ?",
-          "answer": "Nous acceptons les paiements par carte bancaire, CIB, et paiement à la livraison. Tous les paiements sont sécurisés."
+          "answer": "Nous acceptons les paiements par carte bancaire, CIB ou à la livraison. Tous les paiements sont sécurisés."
         }
       },
       "still_have_questions": "Vous avez encore des questions ?",
@@ -726,7 +727,9 @@
         "produits_ruche": "Tous les trésors de la ruche : pollen, propolis, gelée royale et cire d'abeille."
       },
       "product_count": "{count} produit(s) dans la catégorie {category}",
-      "no_products": "Aucun produit disponible dans la catégorie {category} pour le moment."
+      "noProducts": "Aucun produit trouvé",
+      "allCategories": "Toutes les catégories",
+      "loading": "Chargement..."
     }
   },
   "footer": {

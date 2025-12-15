@@ -3,11 +3,12 @@
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { ShoppingCart, Search, User, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCartStore } from "@/store/cart-store";
 import { Button } from "@/components/ui/button";
-import { LanguageSwitcher } from "@/components/ui/language-switcher";
+import { LanguageSwitcher, LanguageSwitcherCompact } from "@/components/ui/language-switcher";
+import { ProductSearch, SearchModal } from "@/components/search/product-search";
 
 interface NavLink {
   href: string;
@@ -23,8 +24,27 @@ const navLinks: NavLink[] = [
 export function Header() {
   const t = useTranslations("nav");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
   const { openCart, getTotalItems } = useCartStore();
   const itemCount = getTotalItems();
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Cmd+K or Ctrl+K to open search
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setSearchModalOpen(true);
+      }
+      // Escape to close search
+      if (e.key === 'Escape' && searchModalOpen) {
+        setSearchModalOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [searchModalOpen]);
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-warm-200">
@@ -66,19 +86,25 @@ export function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
+            {/* Language Switcher - Compact on mobile, full on desktop */}
+            <div className="sm:hidden">
+              <LanguageSwitcherCompact />
+            </div>
             <div className="hidden sm:block">
               <LanguageSwitcher />
             </div>
-            <Button variant="ghost" size="icon" className="hidden sm:flex">
-              <Search size={20} />
-            </Button>
+            {/* Search - Desktop */}
+            <div className="hidden sm:block max-w-xs flex-1 mx-4">
+              <ProductSearch />
+            </div>
             <Button variant="ghost" size="icon" className="hidden sm:flex">
               <User size={20} />
             </Button>
+            {/* Cart - Hide on mobile, show on desktop */}
             <Button
               variant="ghost"
               size="icon"
-              className="relative"
+              className="relative hidden sm:flex"
               onClick={openCart}
             >
               <ShoppingCart size={20} />
@@ -119,6 +145,12 @@ export function Header() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Search Modal */}
+      <SearchModal 
+        isOpen={searchModalOpen} 
+        onClose={() => setSearchModalOpen(false)} 
+      />
     </header>
   );
 }

@@ -6,20 +6,25 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SlidersHorizontal, ChevronDown, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
+import { CategoryFilter } from "./category-filter";
 
 interface ShopFiltersProps {
   onSortChange: (sort: string) => void;
   onPriceRangeChange: (min: number, max: number) => void;
+  onCategoryChange: (categoryId: string | null) => void;
   currentSort: string;
   priceRange: [number, number];
+  selectedCategory: string | null;
   maxPrice?: number;
 }
 
 export function ShopFilters({
   onSortChange,
   onPriceRangeChange,
+  onCategoryChange,
   currentSort,
   priceRange,
+  selectedCategory,
   maxPrice = 20000,
 }: ShopFiltersProps) {
   const t = useTranslations("shop.filters");
@@ -46,7 +51,13 @@ export function ShopFilters({
   };
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 flex-wrap">
+      {/* Category Filter */}
+      <CategoryFilter
+        selectedCategory={selectedCategory}
+        onCategoryChange={onCategoryChange}
+      />
+      
       {/* Sort Dropdown */}
       <div className="relative">
         <button
