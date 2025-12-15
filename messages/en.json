@@ -272,6 +272,411 @@
       }
     }
   },
+  "pages": {
+    "contact": {
+      "title": "Contact Us",
+      "description": "Contact Suqya for any questions about our organic honey from Algeria",
+      "subtitle": "Have a question? Our team is here to help",
+      "get_in_touch": "Get in Touch",
+      "phone": "Phone",
+      "phone_hours": "Monday to Saturday, 9am-6pm",
+      "email": "Email",
+      "email_response": "Response within 24 hours",
+      "address": "Address",
+      "address_details": "Algiers, Algeria",
+      "hours": "Business Hours",
+      "hours_details": "Monday - Saturday: 9:00 AM - 6:00 PM",
+      "send_message": "Send us a message",
+      "form": {
+        "name": "Name",
+        "name_placeholder": "Your name",
+        "email": "Email",
+        "email_placeholder": "your@email.com",
+        "subject": "Subject",
+        "subject_placeholder": "Subject of your message",
+        "message": "Message",
+        "message_placeholder": "Your message...",
+        "submit": "Send Message",
+        "privacy_note": "Your data is protected and will never be shared."
+      }
+    },
+    "faq": {
+      "title": "FAQ",
+      "description": "Frequently asked questions about our organic honey and hive products",
+      "subtitle": "Everything you need to know about our products",
+      "categories": {
+        "general": "General Questions",
+        "products": "Products",
+        "orders": "Orders & Delivery",
+        "payment": "Payment"
+      },
+      "questions": {
+        "q1": {
+          "question": "Where does your honey come from?",
+          "answer": "Our honey comes directly from hives located in the Kabylie mountains, Algeria. We work with local beekeepers who share our values of quality and tradition."
+        },
+        "q2": {
+          "question": "Is your honey really organic?",
+          "answer": "Yes, all our honeys are certified organic. No pesticides or chemical additives are used in our hives. We guarantee a 100% natural and pure product."
+        },
+        "q3": {
+          "question": "What's the difference between jujube and eucalyptus honey?",
+          "answer": "Jujube (sidr) honey is sweeter with fruity notes, while eucalyptus has a stronger taste and soothing properties for the throat. Each honey has its own benefits."
+        },
+        "q4": {
+          "question": "How should I store honey?",
+          "answer": "Store your honey in a cool, dry place, away from direct sunlight. Honey never expires but may crystallize over time, which is a sign of natural quality."
+        },
+        "q5": {
+          "question": "Is crystallized honey still good?",
+          "answer": "Yes, crystallization is a natural phenomenon for pure honey. To liquefy it, place the jar in warm (not hot) water until it returns to its liquid consistency."
+        },
+        "q6": {
+          "question": "What are the delivery times?",
+          "answer": "Deliveries usually take 2-4 business days for Algiers and 3-5 days for other cities. You will receive a tracking number to follow your order."
+        },
+        "q7": {
+          "question": "Can I return a product?",
+          "answer": "Yes, you can return a product within 14 days of receipt, if it's unopened and in perfect condition. Contact our customer service to initiate a return."
+        },
+        "q8": {
+          "question": "What payment methods do you accept?",
+          "answer": "We accept payments by credit card, CIB, and cash on delivery. All payments are secure."
+        }
+      },
+      "still_have_questions": "Still have questions?",
+      "contact_us_description": "Our customer service is available to answer all your questions.",
+      "contact_us_button": "Contact Us"
+    },
+    "livraison": {
+      "title": "Delivery",
+      "description": "Information about delivery of our organic honey throughout Algeria",
+      "subtitle": "We deliver your favorite honey throughout Algeria",
+      "delivery_options": "Delivery Options",
+      "standard_delivery": "Standard Delivery",
+      "standard_delivery_desc": "Home delivery throughout Algeria",
+      "standard_price": "500 DZD",
+      "standard_time": "3-5 business days",
+      "express_delivery": "Express Delivery",
+      "express_delivery_desc": "Priority delivery in major cities",
+      "express_price": "800 DZD",
+      "express_time": "1-2 business days",
+      "popular": "Popular",
+      "pickup": "Store Pickup",
+      "pickup_desc": "Come collect your order from our pickup point",
+      "pickup_price": "Free",
+      "pickup_time": "Available immediately",
+      "coverage_areas": "Coverage Areas",
+      "cities_delivered": "Cities we serve",
+      "coverage_description": "We deliver to over 30 cities across Algeria. Here are the main cities we serve:",
+      "other_cities_note": "We also deliver to other cities. Contact us to check availability in your area.",
+      "delivery_process": "Delivery Process",
+      "process": {
+        "step1": {
+          "title": "Preparation",
+          "description": "Your order is carefully prepared"
+        },
+        "step2": {
+          "title": "Shipping",
+          "description": "Sent within 24 hours of confirmation"
+        },
+        "step3": {
+          "title": "Transport",
+          "description": "Delivery by our trusted partner"
+        },
+        "step4": {
+          "title": "Reception",
+          "description": "You receive your fresh honey"
+        }
+      },
+      "important_info": "Important Information",
+      "info": {
+        "packaging": {
+          "title": "Secure Packaging",
+          "description": "All our products are carefully packaged to ensure delivery in perfect condition. We use appropriate protective materials."
+        },
+        "timing": {
+          "title": "Delivery Hours",
+          "description": "Deliveries are made Monday to Saturday, between 9 AM and 6 PM. A time slot can be arranged upon request."
+        },
+        "tracking": {
+          "title": "Order Tracking",
+          "description": "You will receive a tracking number by email as soon as your order is shipped to track your package in real time."
+        }
+      }
+    },
+    "retours": {
+      "title": "Returns & Refunds",
+      "description": "Suqya's return and refund policy",
+      "subtitle": "Your satisfaction is our priority",
+      "policy_intro": "At Suqya, we are committed to offering you products of the highest quality. If you are not satisfied with your purchase, here is our return policy.",
+      "return_conditions": "Return Conditions",
+      "condition1": "The product must be returned in its original packaging, unopened and in perfect condition.",
+      "condition2": "The return request must be made within 14 days of receiving the product.",
+      "condition3": "The product must be accompanied by proof of purchase (invoice or receipt).",
+      "condition4": "Return shipping costs are the customer's responsibility, unless the product is defective or an error was made on our part.",
+      "return_deadline": "Return Deadline",
+      "deadline_description": "You have 14 calendar days from the date of receipt to inform us of your intention to return a product.",
+      "how_to_return": "How to Return a Product?",
+      "step1_title": "Contact Us",
+      "step1_description": "Send us an email at contact@suqya.dz with your order number and reason for return.",
+      "step2_title": "Wait for Confirmation",
+      "step2_description": "Our customer service will send you a confirmation email with return instructions.",
+      "step3_title": "Prepare the Package",
+      "step3_description": "Carefully package the product in its original packaging and include a copy of the invoice.",
+      "step4_title": "Ship the Product",
+      "step4_description": "Send the package to the address indicated in the confirmation email. Keep the delivery receipt.",
+      "refund_options": "Refund Options",
+      "refund_method1": "Full Refund",
+      "refund_method1_desc": "Refund to your original payment method within 5-7 business days of receiving the return.",
+      "refund_method2": "Exchange or Credit",
+      "refund_method2_desc": "Exchange for another product or store credit for future purchases.",
+      "exceptions": "Products Not Eligible for Return",
+      "exceptions_description": "Opened products, damaged by the customer, or perishable products cannot be returned for hygiene and safety reasons.",
+      "contact_support": "Need Help?",
+      "contact_description": "Our customer service is available to help you with any questions regarding returns and refunds.",
+      "need_help": "Need help with your return?",
+      "help_description": "Don't hesitate to contact us if you have questions or need assistance.",
+      "contact_us": "Contact Us",
+      "view_faq": "View FAQ"
+    },
+    "cgv": {
+      "title": "Terms and Conditions",
+      "description": "Suqya's terms and conditions of sale",
+      "subtitle": "Sales conditions applicable to all our products",
+      "intro": "These terms and conditions of sale (T&Cs) govern the contractual relationship between Suqya company and any customer purchasing products through our website.",
+      "company_name": "Company: Suqya SARL - Algiers, Algeria",
+      "article1": {
+        "title": "Article 1: Purpose",
+        "content": "These T&Cs aim to define the conditions under which Suqya sells and delivers its honey and derivative products to customers."
+      },
+      "article2": {
+        "title": "Article 2: Products",
+        "content": "All our products are organic honeys and hive products, harvested and packaged in Algeria. The main characteristics of the products are presented on the site.",
+        "point1": "100% natural and organic honey",
+        "point2": "Harvested in the Kabylie mountains",
+        "point3": "No additives or preservatives",
+        "point4": "Certified by competent Algerian authorities"
+      },
+      "article3": {
+        "title": "Article 3: Prices",
+        "content": "Product prices are indicated in Algerian dinars (DZD) and include all taxes. Delivery fees are calculated separately and displayed before order validation.",
+        "vat": "VAT included according to applicable Algerian legislation"
+      },
+      "article4": {
+        "title": "Article 4: Orders",
+        "content": "Any order placed on our site constitutes a firm and definitive purchase offer. Order validation entails acceptance of these T&Cs.",
+        "confirmation": "An order confirmation will be sent by email immediately after validation."
+      },
+      "article5": {
+        "title": "Article 5: Payment",
+        "content": "Payment can be made by credit card, CIB or on delivery. Transactions are secured through our approved payment partner.",
+        "security": "All banking information is encrypted and not stored on our servers."
+      },
+      "article6": {
+        "title": "Article 6: Delivery",
+        "content": "Delivery is made to the address indicated by the customer when ordering. Delivery times are 2-5 business days depending on the region.",
+        "timeline": "The customer will be informed of order shipment by email with a tracking number."
+      },
+      "article7": {
+        "title": "Article 7: Right of Withdrawal",
+        "content": "In accordance with Algerian legislation, the customer has a period of 14 days to return an unsatisfactory product, provided the product is in a resalable condition.",
+        "conditions": "The product must be unopened, in its original packaging and accompanied by proof of purchase."
+      },
+      "article8": {
+        "title": "Article 8: Warranty",
+        "content": "Our products are guaranteed against any manufacturing defect. In case of a defective product, we commit to replacing or refunding it.",
+        "limitations": "The warranty does not cover damage resulting from improper use or storage."
+      },
+      "article9": {
+        "title": "Article 9: Intellectual Property",
+        "content": "All elements of the site (texts, images, logos) are the exclusive property of Suqya and are protected by intellectual property rights.",
+        "restrictions": "Any reproduction or unauthorized use is strictly prohibited and may result in legal action."
+      },
+      "article10": {
+        "title": "Article 10: Liability",
+        "content": "Suqya's liability is limited to direct damage resulting from a product defect. Suqya cannot be held liable for indirect or unforeseen damage.",
+        "force_majeure": "Suqya will not be liable in case of force majeure or events beyond its control."
+      },
+      "article11": {
+        "title": "Article 11: Disputes",
+        "content": "In case of dispute, the parties will endeavor to find an amicable solution. Failing that, the dispute will be submitted to the competent courts of Algiers.",
+        "jurisdiction": "This contract is governed by Algerian law."
+      },
+      "article12": {
+        "title": "Article 12: Modification",
+        "content": "Suqya reserves the right to modify these T&Cs at any time. Modifications will take effect upon publication on the site."
+      },
+      "questions_title": "Questions about our T&Cs?",
+      "questions_description": "Don't hesitate to contact us if you have questions about our terms of sale.",
+      "contact_button": "Contact Us"
+    },
+    "confidentialite": {
+      "title": "Privacy Policy",
+      "description": "How we protect and use your personal data",
+      "subtitle": "Your privacy is our priority",
+      "intro": "This privacy policy describes how Suqya collects, uses and protects your personal data when you use our website and purchase our products.",
+      "company_name": "Data controller company: Suqya SARL, Algiers, Algeria",
+      "data_collection": {
+        "title": "Data Collection",
+        "content": "We collect personal data that you voluntarily provide when registering, placing orders or communicating with us.",
+        "types": {
+          "title": "Types of data collected:",
+          "personal": "Identification data (name, first name, email, phone)",
+          "contact": "Contact and delivery information",
+          "order": "Order history and preferences",
+          "payment": "Payment information (processed by our secure partner)",
+          "technical": "Technical data (IP address, browser type, etc.)"
+        }
+      },
+      "data_usage": {
+        "title": "Data Usage",
+        "content": "Your data is used for:",
+        "purposes": {
+          "commercial": "Processing your orders",
+          "commercial_desc": "Prepare and ship your orders",
+          "legal": "Legal obligations",
+          "legal_desc": "Comply with our legal and tax obligations",
+          "marketing": "Marketing (with consent)",
+          "marketing_desc": "Inform you about our news and special offers",
+          "improvement": "Service improvement",
+          "improvement_desc": "Improve our site and products"
+        }
+      },
+      "data_protection": {
+        "title": "Data Protection",
+        "content": "We implement appropriate technical and organizational security measures to protect your data against unauthorized access, modification, disclosure or destruction.",
+        "measures": "Your data is encrypted during transmission and stored on secure servers."
+      },
+      "cookies": {
+        "title": "Cookies and Similar Technologies",
+        "content": "We use cookies to improve your experience on our site. You can manage your cookie preferences in your browser settings.",
+        "types": {
+          "title": "Types of cookies used:",
+          "essential": "Essential cookies for site operation",
+          "analytics": "Analytics cookies to understand site usage",
+          "marketing": "Marketing cookies to personalize advertisements"
+        }
+      },
+      "third_parties": {
+        "title": "Sharing with Third Parties",
+        "content": "We do not sell or rent your data to third parties. We only share your data in the following cases:",
+        "providers": {
+          "payment": "Payment providers",
+          "shipping": "Carriers",
+          "email": "Email service"
+        },
+        "purpose": {
+          "payment": "To process your payments",
+          "shipping": "To deliver your orders",
+          "email": "To send our communications"
+        }
+      },
+      "rights": {
+        "title": "Your Rights",
+        "content": "In accordance with Algerian law, you have the following rights regarding your personal data:",
+        "access": "Right to access your data",
+        "rectification": "Right to rectification of inaccurate data",
+        "deletion": "Right to be forgotten (data deletion)",
+        "portability": "Right to data portability",
+        "objection": "Right to object to processing"
+      },
+      "retention": {
+        "title": "Data Retention",
+        "content": "We keep your data only as long as necessary to fulfill the purposes for which it was collected, in accordance with applicable legislation."
+      },
+      "international": {
+        "title": "International Transfers",
+        "content": "Your data is stored and processed in Algeria. We only transfer your data outside Algeria with your explicit consent."
+      },
+      "updates": {
+        "title": "Updates",
+        "content": "This privacy policy may be updated periodically. We will inform you of any important changes by email or through our site."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "For any question about this privacy policy or exercising your rights, contact us:",
+        "email": "Email",
+        "address": "Address"
+      },
+      "last_updated": "Last updated"
+    },
+    "about": {
+      "title": "Our Story",
+      "description": "Discover the story of Suqya, your source of authentic organic honey from Algeria",
+      "hero": {
+        "title": "Our Story",
+        "subtitle": "Suqya is the story of a passion for authentic honey and a commitment to quality and tradition."
+      },
+      "story": {
+        "title": "From the hive to your table",
+        "paragraph1": "Everything began in the Kabylie mountains, where our family has practiced beekeeping for three generations. Honey was part of our daily life, a treasure we shared with our loved ones.",
+        "paragraph2": "Faced with the difficulty of finding authentic honey on the market, we decided to create Suqya (سُقيا) - an Arabic word meaning 'to nourish' or 'to water'. Our mission: to bring the best of Algerian honey directly to you.",
+        "paragraph3": "Today, we work with over 10 partner beekeepers in different regions of Algeria, each bringing their unique expertise and exceptional honey varieties."
+      },
+      "journey": {
+        "title": "Our Journey"
+      },
+      "milestones": {
+        "2020": {
+          "title": "The Beginnings",
+          "description": "First harvest in the Kabylie mountains. A family passion becomes a project."
+        },
+        "2022": {
+          "title": "Expansion",
+          "description": "Partnership with 10 local beekeepers. Organic certification obtained."
+        },
+        "2024": {
+          "title": "Suqya is Born",
+          "description": "Launch of the online store to share our honey with all of Algeria."
+        },
+        "2025": {
+          "title": "Today",
+          "description": "Over 500 satisfied customers and a growing community of honey lovers."
+        }
+      },
+      "values": {
+        "title": "Our Values",
+        "origin": {
+          "title": "Origin",
+          "description": "All our honey comes from the Algerian mountains, far from any pollution."
+        },
+        "passion": {
+          "title": "Passion",
+          "description": "Each jar is the fruit of the passionate work of our partner beekeepers."
+        },
+        "community": {
+          "title": "Community",
+          "description": "We support local beekeepers and their families."
+        },
+        "quality": {
+          "title": "Quality",
+          "description": "No compromise on quality. 100% pure, 100% natural."
+        }
+      },
+      "cta": {
+        "title": "Ready to taste the difference?",
+        "subtitle": "Discover our selection of organic honeys and let yourself be surprised by the quality of authentic Algerian honey.",
+        "button": "Discover Our Honeys"
+      }
+    },
+    "category": {
+      "title": "Category",
+      "description": "Discover our selection of {category}",
+      "categories": {
+        "miels_purs": "Pure Honeys",
+        "miels_infuses": "Infused Honeys",
+        "produits_ruche": "Hive Products"
+      },
+      "descriptions": {
+        "miels_purs": "Our pure honeys, harvested from the Kabylie mountains, 100% natural and organic.",
+        "miels_infuses": "Honeys delicately infused with natural spices and plants for unique flavors.",
+        "produits_ruche": "All the treasures of the hive: pollen, propolis, royal jelly and beeswax."
+      },
+      "product_count": "{count} product(s) in the {category} category",
+      "no_products": "No products available in the {category} category at the moment."
+    }
+  },
   "footer": {
     "description": "Organic and natural honey, directly from Kabylie beekeepers to your table.",
     "shop": {

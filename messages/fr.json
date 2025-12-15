@@ -272,6 +272,411 @@
       }
     }
   },
+  "pages": {
+    "contact": {
+      "title": "Contactez-nous",
+      "description": "Contactez Suqya pour toute question sur nos miels bio d'Algérie",
+      "subtitle": "Une question ? Notre équipe est là pour vous aider",
+      "get_in_touch": "Entrons en contact",
+      "phone": "Téléphone",
+      "phone_hours": "Du lundi au samedi, 9h-18h",
+      "email": "Email",
+      "email_response": "Réponse sous 24h",
+      "address": "Adresse",
+      "address_details": "Alger, Algérie",
+      "hours": "Horaires",
+      "hours_details": "Lundi - Samedi: 9h00 - 18h00",
+      "send_message": "Envoyez-nous un message",
+      "form": {
+        "name": "Nom",
+        "name_placeholder": "Votre nom",
+        "email": "Email",
+        "email_placeholder": "votre@email.com",
+        "subject": "Sujet",
+        "subject_placeholder": "Sujet de votre message",
+        "message": "Message",
+        "message_placeholder": "Votre message...",
+        "submit": "Envoyer le message",
+        "privacy_note": "Vos données sont protégées et ne seront jamais partagées."
+      }
+    },
+    "faq": {
+      "title": "FAQ",
+      "description": "Questions fréquentes sur nos miels bio et produits de la ruche",
+      "subtitle": "Tout ce que vous devez savoir sur nos produits",
+      "categories": {
+        "general": "Questions Générales",
+        "products": "Produits",
+        "orders": "Commandes & Livraison",
+        "payment": "Paiement"
+      },
+      "questions": {
+        "q1": {
+          "question": "D'où vient votre miel ?",
+          "answer": "Notre miel provient directement des ruchers situés dans les montagnes de Kabylie, en Algérie. Nous travaillons avec des apiculteurs locaux qui partagent nos valeurs de qualité et de tradition."
+        },
+        "q2": {
+          "question": "Votre miel est-il vraiment bio ?",
+          "answer": "Oui, tous nos miels sont certifiés biologiques. Aucun pesticide, ni additif chimique n'est utilisé dans nos ruchers. Nous garantissons un produit 100% naturel et pur."
+        },
+        "q3": {
+          "question": "Quelle est la différence entre le miel de jujubier et l'eucalyptus ?",
+          "answer": "Le miel de jujubier (sidr) est plus doux avec des notes fruitées, tandis que l'eucalyptus a un goût plus prononcé et des vertus apaisantes pour la gorge. Chaque miel a ses propres bienfaits."
+        },
+        "q4": {
+          "question": "Comment conserver le miel ?",
+          "answer": "Conservez votre miel dans un endroit frais et sec, à l'abri de la lumière directe. Le miel ne se périmé jamais mais peut cristalliser avec le temps, ce qui est un signe de qualité naturelle."
+        },
+        "q5": {
+          "question": "Le miel cristallisé est-il encore bon ?",
+          "answer": "Oui, la cristallisation est un phénomène naturel pour le miel pur. Pour le liquéfier, placez le pot dans de l'eau tiède (jamais chaude) jusqu'à ce qu'il retrouve sa consistance liquide."
+        },
+        "q6": {
+          "question": "Quels sont les délais de livraison ?",
+          "answer": "Les livraisons prennent généralement 2-4 jours ouvrables pour Alger et 3-5 jours pour les autres villes. Vous recevrez un numéro de suivi pour suivre votre commande."
+        },
+        "q7": {
+          "question": "Puis-je retourner un produit ?",
+          "answer": "Oui, vous pouvez retourner un produit dans les 14 jours suivant la réception, s'il n'est pas ouvert et en parfait état. Contactez notre service client pour initier un retour."
+        },
+        "q8": {
+          "question": "Quels modes de paiement acceptez-vous ?",
+          "answer": "Nous acceptons les paiements par carte bancaire, CIB, et paiement à la livraison. Tous les paiements sont sécurisés."
+        }
+      },
+      "still_have_questions": "Vous avez encore des questions ?",
+      "contact_us_description": "Notre service client est disponible pour répondre à toutes vos questions.",
+      "contact_us_button": "Nous contacter"
+    },
+    "livraison": {
+      "title": "Livraison",
+      "description": "Informations sur la livraison de nos miels bio dans toute l'Algérie",
+      "subtitle": "Nous livrons votre miel préféré partout en Algérie",
+      "delivery_options": "Options de Livraison",
+      "standard_delivery": "Livraison Standard",
+      "standard_delivery_desc": "Livraison à domicile dans toute l'Algérie",
+      "standard_price": "500 DA",
+      "standard_time": "3-5 jours ouvrables",
+      "express_delivery": "Livraison Express",
+      "express_delivery_desc": "Livraison prioritaire dans les grandes villes",
+      "express_price": "800 DA",
+      "express_time": "1-2 jours ouvrables",
+      "popular": "Populaire",
+      "pickup": "Retrait Magasin",
+      "pickup_desc": "Venez récupérer votre commande à notre point de retrait",
+      "pickup_price": "Gratuit",
+      "pickup_time": "Disponible immédiatement",
+      "coverage_areas": "Zones de Couverture",
+      "cities_delivered": "Villes desservies",
+      "coverage_description": "Nous livrons dans plus de 30 villes à travers l'Algérie. Voici les principales villes que nous desservons :",
+      "other_cities_note": "Nous livrons également dans d'autres villes. Contactez-nous pour vérifier la disponibilité dans votre région.",
+      "delivery_process": "Processus de Livraison",
+      "process": {
+        "step1": {
+          "title": "Préparation",
+          "description": "Votre commande est préparée avec soin"
+        },
+        "step2": {
+          "title": "Expédition",
+          "description": "Envoi dans les 24h suivant la confirmation"
+        },
+        "step3": {
+          "title": "Transport",
+          "description": "Livraison par notre partenaire de confiance"
+        },
+        "step4": {
+          "title": "Réception",
+          "description": "Vous recevez votre miel frais"
+        }
+      },
+      "important_info": "Informations Importantes",
+      "info": {
+        "packaging": {
+          "title": "Emballage Sécurisé",
+          "description": "Tous nos produits sont emballés avec soin pour garantir une livraison en parfait état. Nous utilisons des matériaux de protection adaptés."
+        },
+        "timing": {
+          "title": "Horaires de Livraison",
+          "description": "Les livraisons s'effectuent du lundi au samedi, entre 9h et 18h. Un créneau horaire peut être convenu sur demande."
+        },
+        "tracking": {
+          "title": "Suivi de Commande",
+          "description": "Vous recevrez un numéro de suivi par email dès l'expédition de votre commande pour suivre votre colis en temps réel."
+        }
+      }
+    },
+    "retours": {
+      "title": "Retours et Remboursements",
+      "description": "Politique de retour et de remboursement Suqya",
+      "subtitle": "Votre satisfaction est notre priorité",
+      "policy_intro": "Chez Suqya, nous nous engageons à vous offrir des produits de la plus haute qualité. Si vous n'êtes pas satisfait de votre achat, voici notre politique de retour.",
+      "return_conditions": "Conditions de Retour",
+      "condition1": "Le produit doit être retourné dans son emballage d'origine, non ouvert et en parfait état.",
+      "condition2": "La demande de retour doit être faite dans les 14 jours suivant la réception du produit.",
+      "condition3": "Le produit doit être accompagné de la preuve d'achat (facture ou ticket de caisse).",
+      "condition4": "Les frais de retour sont à la charge du client, sauf si le produit est défectueux ou si une erreur a été commise de notre côté.",
+      "return_deadline": "Délai de Retour",
+      "deadline_description": "Vous disposez de 14 jours calendaires à compter de la date de réception pour nous faire part de votre intention de retourner un produit.",
+      "how_to_return": "Comment Retourner un Produit ?",
+      "step1_title": "Contactez-nous",
+      "step1_description": "Envoyez-nous un email à contact@suqya.dz avec votre numéro de commande et la raison du retour.",
+      "step2_title": "Attendez la Confirmation",
+      "step2_description": "Notre service client vous enverra un email de confirmation avec les instructions de retour.",
+      "step3_title": "Préparez le Colis",
+      "step3_description": "Emballez soigneusement le produit dans son emballage d'origine et incluez une copie de la facture.",
+      "step4_title": "Expédiez le Produit",
+      "step4_description": "Envoyez le colis à l'adresse indiquée dans l'email de confirmation. Gardez le reçu de livraison.",
+      "refund_options": "Options de Remboursement",
+      "refund_method1": "Remboursement Complet",
+      "refund_method1_desc": "Remboursement sur votre moyen de paiement initial dans un délai de 5-7 jours ouvrables après réception du retour.",
+      "refund_method2": "Échange ou Crédit",
+      "refund_method2_desc": "Échange contre un autre produit ou avoir pour un futur achat.",
+      "exceptions": "Produits Non Éligibles au Retour",
+      "exceptions_description": "Les produits ouverts, endommagés par le client, ou les produits périssables ne peuvent être retournés pour des raisons d'hygiène et de sécurité.",
+      "contact_support": "Besoin d'Aide ?",
+      "contact_description": "Notre service client est disponible pour vous aider avec toute question concernant les retours et remboursements.",
+      "need_help": "Besoin d'aide pour votre retour ?",
+      "help_description": "N'hésitez pas à nous contacter si vous avez des questions ou besoin d'assistance.",
+      "contact_us": "Nous contacter",
+      "view_faq": "Voir la FAQ"
+    },
+    "cgv": {
+      "title": "Conditions Générales de Vente",
+      "description": "Conditions générales de vente de Suqya",
+      "subtitle": "Conditions de vente applicables à tous nos produits",
+      "intro": "Les présentes conditions générales de vente (CGV) régissent les relations contractuelles entre la société Suqya et tout client achetant des produits via notre site web.",
+      "company_name": "Société : Suqya SARL - Alger, Algérie",
+      "article1": {
+        "title": "Article 1: Objet",
+        "content": "Les présentes CGV ont pour objet de définir les conditions dans lesquelles Suqya vend et livre ses produits de miel et dérivés aux clients."
+      },
+      "article2": {
+        "title": "Article 2: Produits",
+        "content": "Tous nos produits sont des miels biologiques et produits de la ruche, récoltés et conditionnés en Algérie. Les caractéristiques principales des produits sont présentées sur le site.",
+        "point1": "Miel 100% naturel et biologique",
+        "point2": "Récolté dans les montagnes de Kabylie",
+        "point3": "Sans additifs ni conservateurs",
+        "point4": "Certifié par les autorités algériennes compétentes"
+      },
+      "article3": {
+        "title": "Article 3: Prix",
+        "content": "Les prix des produits sont indiqués en dinars algériens (DA) et incluent toutes les taxes. Les frais de livraison sont calculés séparément et affichés avant la validation de la commande.",
+        "vat": "TVA incluse selon la législation algérienne en vigueur"
+      },
+      "article4": {
+        "title": "Article 4: Commandes",
+        "content": "Toute commande passée sur notre site constitue une offre d'achat ferme et définitive. La validation de la commande entraîne l'acceptation des présentes CGV.",
+        "confirmation": "Une confirmation de commande sera envoyée par email immédiatement après validation."
+      },
+      "article5": {
+        "title": "Article 5: Paiement",
+        "content": "Le paiement peut être effectué par carte bancaire, CIB ou à la livraison. Les transactions sont sécurisées via notre partenaire de paiement agréé.",
+        "security": "Toutes les informations bancaires sont cryptées et ne sont pas stockées sur nos serveurs."
+      },
+      "article6": {
+        "title": "Article 6: Livraison",
+        "content": "La livraison est effectuée à l'adresse indiquée par le client lors de la commande. Les délais de livraison sont de 2-5 jours ouvrables selon la région.",
+        "timeline": "Le client sera informé de l'expédition de sa commande par email avec un numéro de suivi."
+      },
+      "article7": {
+        "title": "Article 7: Droit de Rétractation",
+        "content": "Conformément à la législation algérienne, le client dispose d'un délai de 14 jours pour retourner un produit non satisfait, à condition que le produit soit en état de être revendu.",
+        "conditions": "Le produit doit être non ouvert, dans son emballage d'origine et accompagné de la preuve d'achat."
+      },
+      "article8": {
+        "title": "Article 8: Garantie",
+        "content": "Nos produits sont garantis contre tout défaut de fabrication. En cas de produit défectueux, nous nous engageons à le remplacer ou à le rembourser.",
+        "limitations": "La garantie ne couvre pas les dommages résultant d'une mauvaise utilisation ou d'un stockage inapproprié."
+      },
+      "article9": {
+        "title": "Article 9: Propriété Intellectuelle",
+        "content": "Tous les éléments du site (textes, images, logos) sont la propriété exclusive de Suqya et sont protégés par le droit de la propriété intellectuelle.",
+        "restrictions": "Toute reproduction ou utilisation non autorisée est strictement interdite et pourra faire l'objet de poursuites judiciaires."
+      },
+      "article10": {
+        "title": "Article 10: Responsabilité",
+        "content": "La responsabilité de Suqya est limitée aux dommages directs résultant d'un défaut du produit. Suqya ne pourra être tenue responsable des dommages indirects ou imprévus.",
+        "force_majeure": "Suqya ne sera pas responsable en cas de force majeure ou d'événements hors de son contrôle."
+      },
+      "article11": {
+        "title": "Article 11: Litiges",
+        "content": "En cas de litige, les parties s'efforceront de trouver une solution amiable. À défaut, le litige sera soumis aux tribunaux compétents d'Alger.",
+        "jurisdiction": "Le présent contrat est régi par le droit algérien."
+      },
+      "article12": {
+        "title": "Article 12: Modification",
+        "content": "Suqya se réserve le droit de modifier les présentes CGV à tout moment. Les modifications entreront en vigueur dès leur publication sur le site."
+      },
+      "questions_title": "Des questions sur nos CGV ?",
+      "questions_description": "N'hésitez pas à nous contacter si vous avez des questions sur nos conditions de vente.",
+      "contact_button": "Nous contacter"
+    },
+    "confidentialite": {
+      "title": "Politique de Confidentialité",
+      "description": "Comment nous protégeons et utilisons vos données personnelles",
+      "subtitle": "Votre confidentialité est notre priorité",
+      "intro": "Cette politique de confidentialité décrit comment Suqya collecte, utilise et protège vos données personnelles lorsque vous utilisez notre site web et achetez nos produits.",
+      "company_name": "Société responsable des données : Suqya SARL, Alger, Algérie",
+      "data_collection": {
+        "title": "Collecte des Données",
+        "content": "Nous collectons les données personnelles que vous nous fournissez volontairement lors de votre inscription, de vos commandes ou de vos communications avec nous.",
+        "types": {
+          "title": "Types de données collectées :",
+          "personal": "Données d'identification (nom, prénom, email, téléphone)",
+          "contact": "Informations de contact et de livraison",
+          "order": "Historique des commandes et préférences",
+          "payment": "Informations de paiement (traitées par notre partenaire sécurisé)",
+          "technical": "Données techniques (adresse IP, type de navigateur, etc.)"
+        }
+      },
+      "data_usage": {
+        "title": "Utilisation des Données",
+        "content": "Vos données sont utilisées pour :",
+        "purposes": {
+          "commercial": "Traitement de vos commandes",
+          "commercial_desc": "Préparer et expédier vos commandes",
+          "legal": "Obligations légales",
+          "legal_desc": "Respecter nos obligations légales et fiscales",
+          "marketing": "Marketing (avec consentement)",
+          "marketing_desc": "Vous informer de nos nouveautés et offres spéciales",
+          "improvement": "Amélioration du service",
+          "improvement_desc": "Améliorer notre site et nos produits"
+        }
+      },
+      "data_protection": {
+        "title": "Protection des Données",
+        "content": "Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, modification, divulgation ou destruction.",
+        "measures": "Vos données sont cryptées lors de la transmission et stockées sur des serveurs sécurisés."
+      },
+      "cookies": {
+        "title": "Cookies et Technologies Similaires",
+        "content": "Nous utilisons des cookies pour améliorer votre expérience sur notre site. Vous pouvez gérer vos préférences de cookies dans les paramètres de votre navigateur.",
+        "types": {
+          "title": "Types de cookies utilisés :",
+          "essential": "Cookies essentiels pour le fonctionnement du site",
+          "analytics": "Cookies d'analyse pour comprendre l'utilisation du site",
+          "marketing": "Cookies de marketing pour personnaliser les publicités"
+        }
+      },
+      "third_parties": {
+        "title": "Partage avec des Tiers",
+        "content": "Nous ne vendons ni ne louons vos données à des tiers. Nous ne partageons vos données que dans les cas suivants :",
+        "providers": {
+          "payment": "Prestataires de paiement",
+          "shipping": "Transporteurs",
+          "email": "Service d'emailing"
+        },
+        "purpose": {
+          "payment": "Pour traiter vos paiements",
+          "shipping": "Pour livrer vos commandes",
+          "email": "Pour envoyer nos communications"
+        }
+      },
+      "rights": {
+        "title": "Vos Droits",
+        "content": "Conformément à la loi algérienne, vous disposez des droits suivants sur vos données personnelles :",
+        "access": "Droit d'accès à vos données",
+        "rectification": "Droit de rectification des données inexactes",
+        "deletion": "Droit à l'oubli (suppression des données)",
+        "portability": "Droit à la portabilité des données",
+        "objection": "Droit d'opposition au traitement"
+      },
+      "retention": {
+        "title": "Conservation des Données",
+        "content": "Nous conservons vos données uniquement le temps nécessaire pour remplir les finalités pour lesquelles elles ont été collectées, conformément à la législation en vigueur."
+      },
+      "international": {
+        "title": "Transferts Internationaux",
+        "content": "Vos données sont stockées et traitées en Algérie. Nous ne transférons vos données en dehors de l'Algérie qu'avec votre consentement explicite."
+      },
+      "updates": {
+        "title": "Mises à Jour",
+        "content": "Cette politique de confidentialité peut être mise à jour périodiquement. Nous vous informerons de tout changement important par email ou via notre site."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "Pour toute question concernant cette politique de confidentialité ou l'exercice de vos droits, contactez-nous :",
+        "email": "Email",
+        "address": "Adresse"
+      },
+      "last_updated": "Dernière mise à jour"
+    },
+    "about": {
+      "title": "Notre Histoire",
+      "description": "Découvrez l'histoire de Suqya, votre source de miel bio authentique d'Algérie",
+      "hero": {
+        "title": "Notre Histoire",
+        "subtitle": "Suqya, c'est l'histoire d'une passion pour le miel authentique et d'un engagement envers la qualité et la tradition."
+      },
+      "story": {
+        "title": "Du rucher à votre table",
+        "paragraph1": "Tout a commencé dans les montagnes de Kabylie, où notre famille pratique l'apiculture depuis trois générations. Le miel faisait partie de notre quotidien, un trésor que nous partagions avec nos proches.",
+        "paragraph2": "Face à la difficulté de trouver du miel authentique sur le marché, nous avons décidé de créer Suqya (سُقيا) - un mot arabe qui signifie 'nourrir' ou 'abreuver'. Notre mission : apporter le meilleur du miel algérien directement chez vous.",
+        "paragraph3": "Aujourd'hui, nous travaillons avec plus de 10 apiculteurs partenaires dans différentes régions d'Algérie, chacun apportant son savoir-faire unique et ses variétés de miel exceptionnelles."
+      },
+      "journey": {
+        "title": "Notre parcours"
+      },
+      "milestones": {
+        "2020": {
+          "title": "Les débuts",
+          "description": "Première récolte dans les montagnes de Kabylie. Une passion familiale devient un projet."
+        },
+        "2022": {
+          "title": "Expansion",
+          "description": "Partenariat avec 10 apiculteurs locaux. Certification bio obtenue."
+        },
+        "2024": {
+          "title": "Suqya est né",
+          "description": "Lancement de la boutique en ligne pour partager notre miel avec toute l'Algérie."
+        },
+        "2025": {
+          "title": "Aujourd'hui",
+          "description": "Plus de 500 clients satisfaits et une communauté grandissante d'amateurs de miel."
+        }
+      },
+      "values": {
+        "title": "Nos valeurs",
+        "origin": {
+          "title": "Origine",
+          "description": "Tout notre miel provient des montagnes algériennes, loin de toute pollution."
+        },
+        "passion": {
+          "title": "Passion",
+          "description": "Chaque pot est le fruit du travail passionné de nos apiculteurs partenaires."
+        },
+        "community": {
+          "title": "Communauté",
+          "description": "Nous soutenons les apiculteurs locaux et leurs familles."
+        },
+        "quality": {
+          "title": "Qualité",
+          "description": "Aucun compromis sur la qualité. 100% pur, 100% naturel."
+        }
+      },
+      "cta": {
+        "title": "Prêt à goûter la différence ?",
+        "subtitle": "Découvrez notre sélection de miels bio et laissez-vous surprendre par la qualité du miel algérien authentique.",
+        "button": "Découvrir nos miels"
+      }
+    },
+    "category": {
+      "title": "Catégorie",
+      "description": "Découvrez notre sélection de {category}",
+      "categories": {
+        "miels_purs": "Miels Purs",
+        "miels_infuses": "Miels Infusés",
+        "produits_ruche": "Produits de la Ruche"
+      },
+      "descriptions": {
+        "miels_purs": "Nos miels purs, récoltés dans les montagnes de Kabylie, 100% naturels et biologiques.",
+        "miels_infuses": "Des miels délicatement infusés avec des épices et plantes naturelles pour des saveurs uniques.",
+        "produits_ruche": "Tous les trésors de la ruche : pollen, propolis, gelée royale et cire d'abeille."
+      },
+      "product_count": "{count} produit(s) dans la catégorie {category}",
+      "no_products": "Aucun produit disponible dans la catégorie {category} pour le moment."
+    }
+  },
   "footer": {
     "description": "Miel bio et naturel, directement des apiculteurs de Kabylie à votre table.",
     "shop": {
