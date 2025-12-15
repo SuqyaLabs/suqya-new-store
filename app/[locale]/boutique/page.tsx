@@ -94,7 +94,7 @@ export default async function BoutiquePage({ params }: BoutiquePageProps) {
                 category={product.category_name ?? undefined}
                 badges={["bio"]}
                 rating={4.8}
-                reviewCount={Math.floor(Math.random() * 100) + 20}
+                reviewCount={0}
               />
             ))}
           </div>
