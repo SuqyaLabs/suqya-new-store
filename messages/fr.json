@@ -733,11 +733,6 @@
         "produits_ruche": "Tous les trésors de la ruche : pollen, propolis, gelée royale et cire d'abeille."
       },
       "product_count": "{count} produit(s) dans la catégorie {category}",
-<<<<<<< HEAD
-      "noProducts": "Aucun produit trouvé",
-      "allCategories": "Toutes les catégories",
-      "loading": "Chargement..."
-=======
       "no_products": "Aucun produit disponible dans la catégorie {category} pour le moment."
     },
     "compte": {
