@@ -37,7 +37,8 @@
     "cart": "Panier",
     "account": "Mon Compte",
     "login": "Connexion",
-    "logout": "Déconnexion"
+    "logout": "Déconnexion",
+    "search": "Recherche"
   },
   "home": {
     "hero": {
@@ -733,7 +734,8 @@
         "produits_ruche": "Tous les trésors de la ruche : pollen, propolis, gelée royale et cire d'abeille."
       },
       "product_count": "{count} produit(s) dans la catégorie {category}",
-      "no_products": "Aucun produit disponible dans la catégorie {category} pour le moment."
+      "no_products": "Aucun produit disponible dans la catégorie {category} pour le moment.",
+      "allCategories": "Toutes les catégories"
     },
     "compte": {
       "title": "Mon Compte",

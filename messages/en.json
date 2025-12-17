@@ -40,7 +40,8 @@
     "cart": "Cart",
     "account": "My Account",
     "login": "Login",
-    "logout": "Logout"
+    "logout": "Logout",
+    "search": "Search"
   },
   "home": {
     "hero": {
@@ -729,8 +730,10 @@
         "miels_infuses": "Honeys delicately infused with natural spices and plants for unique flavors.",
         "produits_ruche": "All the treasures of the hive: pollen, propolis, royal jelly and beeswax."
       },
-      "product_count": "{count} product(s) in the {category} category",
-      "no_products": "No products available in the {category} category at the moment."
+      "product_count": "{count} product(s) in category {category}",
+      "no_products": "No products available in category {category} at the moment.",
+      "allCategories": "All Categories",
+      "search": "Search"
     },
     "compte": {
       "title": "My Account",
