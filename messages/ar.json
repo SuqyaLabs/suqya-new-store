@@ -735,7 +735,7 @@
       "product_count": "{count} منتج(ات) في فئة {category}",
       "no_products": "لا توجد منتجات متاحة في فئة {category} في الوقت الحالي.",
       "allCategories": "جميع الفئات"
-    },
+    }
   },
   "footer": {
     "description": "عسل طبيعي وعضوي، مباشرة من مربي النحل في الجزائر إلى مائدتك.",
