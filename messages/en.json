@@ -144,6 +144,7 @@
       "category": "Category",
       "price": "Price",
       "sort": "Sort by",
+      "allCategories":"All Categories",
       "sortOptions": {
         "newest": "Newest",
         "priceAsc": "Price: Low to High",

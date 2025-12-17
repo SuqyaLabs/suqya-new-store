@@ -13,7 +13,6 @@ const navItems = [
   { key: "cart", icon: ShoppingCart, href: "/panier" },
   { key: "account", icon: User, href: "/compte" },
   { key: "about", icon: BookOpen, href: "/notre-histoire" },
-  { key: "search", icon: Search, href: "/recherche" },
 ];
 
 export function BottomNavBar() {

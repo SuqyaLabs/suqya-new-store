@@ -18,7 +18,7 @@ interface CategoryFilterProps {
 }
 
 export function CategoryFilter({ selectedCategory, onCategoryChange }: CategoryFilterProps) {
-  const t = useTranslations("shop");
+  const t = useTranslations("shop.filters");
   const locale = useLocale();
   const [isOpen, setIsOpen] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
