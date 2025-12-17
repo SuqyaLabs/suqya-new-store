@@ -14,6 +14,9 @@
     "next": "Next",
     "previous": "Previous",
     "search": "Search",
+    "noProducts": "No products found",
+    "tryDifferentFilters": "Try adjusting your filters",
+    "allCategories": "All Categories",
     "noResults": "No results found",
     "tryAgain": "Try different keywords",
     "viewAll": "View all",
@@ -44,13 +47,13 @@
       "title": "Organic Honey",
       "titleHighlight": "from Algeria",
       "tagline": "From the hive to your table",
-      "description": "Discover our selection of pure honeys, harvested from the Kabylie mountains. 100% natural, 100% authentic.",
+      "description": "Discover our selection of pure honeys, harvested from the Algeria mountains. 100% natural, 100% authentic.",
       "cta": "Discover our honeys",
       "ctaSecondary": "Our story",
       "badge": "100% Natural",
       "trustBadges": {
         "bio": "100% Organic",
-        "origin": "Kabylie Origin",
+        "origin": "Algeria Origin",
         "delivery": "Delivery to 58 Wilayas",
         "payment": "Cash on delivery"
       }
@@ -63,7 +66,7 @@
         "description": "Pure honey without additives, naturally harvested"
       },
       "origin": {
-        "title": "Kabylie Origin",
+        "title": "Algeria Origin",
         "description": "From Algerian mountains to your table"
       },
       "delivery": {
@@ -307,7 +310,7 @@
     "subtitle": "Suqya - Nourishing your health with nature's gifts",
     "story": {
       "title": "A family passion",
-      "content": "For three generations, our family has been preserving the art of beekeeping in the Kabylie mountains."
+      "content": "For three generations, our family has been preserving the art of beekeeping in the Algeria mountains."
     },
     "values": {
       "title": "Our Values",
@@ -366,7 +369,7 @@
       "questions": {
         "q1": {
           "question": "Where does your honey come from?",
-          "answer": "Our honey comes directly from hives located in the Kabylie mountains, Algeria. We work with local beekeepers who share our values of quality and tradition."
+          "answer": "Our honey comes directly from hives located in the Algeria mountains. We work with local beekeepers who share our values of quality and tradition."
         },
         "q2": {
           "question": "Is your honey really organic?",
@@ -507,7 +510,7 @@
         "title": "Article 2: Products",
         "content": "All our products are organic honeys and hive products, harvested and packaged in Algeria. The main characteristics of the products are presented on the site.",
         "point1": "100% natural and organic honey",
-        "point2": "Harvested in the Kabylie mountains",
+        "point2": "Harvested in the Algeria mountains",
         "point3": "No additives or preservatives",
         "point4": "Certified by competent Algerian authorities"
       },
@@ -663,7 +666,7 @@
       },
       "story": {
         "title": "From the hive to your table",
-        "paragraph1": "Everything began in the Kabylie mountains, where our family has practiced beekeeping for three generations. Honey was part of our daily life, a treasure we shared with our loved ones.",
+        "paragraph1": "Everything began in the Algeria mountains, where our family has practiced beekeeping for three generations. Honey was part of our daily life, a treasure we shared with our loved ones.",
         "paragraph2": "Faced with the difficulty of finding authentic honey on the market, we decided to create Suqya (سُقيا) - an Arabic word meaning 'to nourish' or 'to water'. Our mission: to bring the best of Algerian honey directly to you.",
         "paragraph3": "Today, we work with over 10 partner beekeepers in different regions of Algeria, each bringing their unique expertise and exceptional honey varieties."
       },
@@ -673,7 +676,7 @@
       "milestones": {
         "2020": {
           "title": "The Beginnings",
-          "description": "First harvest in the Kabylie mountains. A family passion becomes a project."
+          "description": "First harvest in the Algeria mountains. A family passion becomes a project."
         },
         "2022": {
           "title": "Expansion",
@@ -722,16 +725,103 @@
         "produits_ruche": "Hive Products"
       },
       "descriptions": {
-        "miels_purs": "Our pure honeys, harvested from the Kabylie mountains, 100% natural and organic.",
+        "miels_purs": "Our pure honeys, harvested from the Algeria mountains, 100% natural and organic.",
         "miels_infuses": "Honeys delicately infused with natural spices and plants for unique flavors.",
         "produits_ruche": "All the treasures of the hive: pollen, propolis, royal jelly and beeswax."
       },
       "product_count": "{count} product(s) in the {category} category",
       "no_products": "No products available in the {category} category at the moment."
+    },
+    "compte": {
+      "title": "My Account",
+      "description": "Track your orders and view your purchase history",
+      "subtitle": "Find your orders by entering your phone number or email",
+      "welcome": {
+        "title": "Your Orders",
+        "subtitle": "Here's your recent order history",
+        "notYou": "Not you? Switch account"
+      },
+      "search": {
+        "title": "Find my orders",
+        "byPhone": "By phone",
+        "byEmail": "By email",
+        "phoneLabel": "Phone number",
+        "emailLabel": "Email address",
+        "phonePlaceholder": "0555 123 456",
+        "emailPlaceholder": "your@email.com",
+        "button": "Search",
+        "searching": "Searching..."
+      },
+      "noOrders": {
+        "title": "No orders found",
+        "message": "We couldn't find any orders associated with this information.",
+        "tryAgain": "Try again"
+      },
+      "ordersList": {
+        "title": "{count} order(s) found"
+      },
+      "status": {
+        "pending": "Pending",
+        "processing": "Processing",
+        "shipped": "Shipped",
+        "in_transit": "In Transit",
+        "delivered": "Delivered",
+        "returned": "Returned"
+      },
+      "details": {
+        "back": "Back to orders",
+        "orderNumber": "Order #{number}",
+        "trackingNumber": "Tracking number",
+        "statusTimeline": "Order tracking",
+        "items": "Ordered items",
+        "quantity": "Quantity",
+        "subtotal": "Subtotal",
+        "shipping": "Shipping",
+        "total": "Total",
+        "shippingInfo": "Shipping address",
+        "paymentInfo": "Payment information",
+        "paymentMethod": "Payment method",
+        "paymentStatus": "Payment status",
+        "shippingMethod": "Shipping method"
+      },
+      "paymentMethods": {
+        "cod": "Cash on delivery",
+        "cib": "CIB Card",
+        "edahabia": "Edahabia Card",
+        "transfer": "Bank transfer"
+      },
+      "paymentStatus": {
+        "pending": "Pending",
+        "paid": "Paid",
+        "failed": "Failed",
+        "refunded": "Refunded"
+      },
+      "shippingMethods": {
+        "yalidine": "Yalidine Express",
+        "pickup": "Pickup Point",
+        "ems": "EMS Algeria"
+      },
+      "errors": {
+        "fetchFailed": "Unable to fetch your orders. Please try again."
+      },
+      "loyalty": {
+        "title": "Join the Loyalty Program 🍯",
+        "description": "Sign in to earn points on every purchase and enjoy exclusive benefits!",
+        "benefits": {
+          "points": "1 DZD = 1 Point",
+          "exclusive": "Exclusive Offers",
+          "rewards": "Rewards"
+        },
+        "signInWithGoogle": "Continue with Google",
+        "comingSoon": "Loyalty program coming soon",
+        "loggedInMessage": "You're signed in! Your points will be available soon.",
+        "signOut": "Sign out",
+        "signInError": "Sign in failed. Please try again."
+      }
     }
   },
   "footer": {
-    "description": "Organic and natural honey, directly from Kabylie beekeepers to your table.",
+    "description": "Organic and natural honey, directly from Algeria beekeepers to your table.",
     "shop": {
       "title": "Shop",
       "allProducts": "All products",

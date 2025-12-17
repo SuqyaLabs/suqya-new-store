@@ -3,10 +3,9 @@
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Home, Store, ShoppingCart, User, BookOpen, Globe, Search } from "lucide-react";
+import { Home, Store, ShoppingCart, User, BookOpen, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/store/cart-store";
-import { LanguageSwitcherCompact } from "@/components/ui/language-switcher";
 
 const navItems = [
   { key: "home", icon: Home, href: "/" },
@@ -50,7 +49,7 @@ export function BottomNavBar() {
               <item.icon 
                 size={20} 
                 className={cn(
-                  item.key === "cart" && "rtl:rotate-180"
+                  
                 )}
               />
               <span className="text-xs font-medium">

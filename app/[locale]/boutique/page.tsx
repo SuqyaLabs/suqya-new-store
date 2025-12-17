@@ -3,7 +3,6 @@ import type { LanguageCode } from "@/lib/i18n/types";
 import { BoutiqueClient } from "./boutique-client";
 import { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: "Boutique - Suqya Miel Bio | سُقيا",

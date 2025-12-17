@@ -182,7 +182,7 @@ export function ProductDetailClient({
             {/* Badges */}
             <div className="absolute top-4 left-4 flex gap-2">
               <Badge variant="secondary">Bio</Badge>
-              <Badge>Kabylie</Badge>
+              <Badge>Algérie</Badge>
             </div>
 
             {/* Actions */}
@@ -377,7 +377,7 @@ export function ProductDetailClient({
                   <MapPin size={20} className="text-honey-600 mt-1" />
                   <div>
                     <p className="font-medium text-warm-900">{tp("region")}</p>
-                    <p className="text-warm-600">Kabylie, Tizi Ouzou</p>
+                    <p className="text-warm-600">Algérie, Tizi Ouzou</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
