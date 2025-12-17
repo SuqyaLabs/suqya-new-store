@@ -167,65 +167,42 @@ const [products, setProducts] = useState<TranslatedProduct[]>(initialProducts);
             <ShopFilters
               onSortChange={setCurrentSort}
               onPriceRangeChange={handlePriceRangeChange}
+              onCategoryChange={handleCategorySelect}
               currentSort={currentSort}
               priceRange={priceRange}
               maxPrice={maxPrice}
+              selectedCategory={selectedCategory}
             />
             <p className="text-warm-500 text-sm whitespace-nowrap">
               {t("products", { count: filteredProducts.length })}
             </p>
           </div>
->>>>>>> feature/ux-improvements
         </div>
       </section>
 
       {/* Products Grid */}
-<<<<<<< HEAD
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          {isLoading ? (
-            <div className="flex items-center justify-center py-20">
-              <Loader2 size={32} className="animate-spin text-honey-600" />
-=======
       <section className="py-8 md:py-12">
         <div className="container mx-auto px-4">
           {isLoading ? (
             <div className="flex items-center justify-center py-20">
               <Loader2 className="animate-spin h-8 w-8 text-honey-600" />
->>>>>>> feature/ux-improvements
             </div>
           ) : filteredProducts.length > 0 ? (
             <motion.div
               layout
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
             >
-<<<<<<< HEAD
-              {filteredProducts.map((product, index) => (
-=======
               {filteredProducts.map((product) => (
->>>>>>> feature/ux-improvements
                 <motion.div
                   key={product.id}
                   layout
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-<<<<<<< HEAD
-                  transition={{ delay: index * 0.05 }}
-=======
                   transition={{ duration: 0.3 }}
->>>>>>> feature/ux-improvements
                 >
                   <ProductCard
                     id={product.id}
                     name={product.name}
-<<<<<<< HEAD
-                    slug={product.slug}
-                    price={product.price}
-                    image={product.image}
-                    short_description={product.short_description}
-                    category={product.category_name}
-                    isAvailable={product.is_available}
-=======
                     slug={product.slug ?? undefined}
                     price={Number(product.price)}
                     image={product.images?.[0] ?? undefined}
@@ -234,16 +211,11 @@ const [products, setProducts] = useState<TranslatedProduct[]>(initialProducts);
                     badges={["bio"]}
                     rating={4.8}
                     reviewCount={0}
->>>>>>> feature/ux-improvements
                   />
                 </motion.div>
               ))}
             </motion.div>
           ) : (
-<<<<<<< HEAD
-            <div className="text-center py-20">
-              <p className="text-warm-500 text-lg">{t("noProducts")}</p>
-=======
             <div className="text-center py-16">
               <span className="text-6xl mb-4 block">🍯</span>
               <h3 className="text-xl font-semibold text-warm-700 mb-2">
@@ -252,7 +224,6 @@ const [products, setProducts] = useState<TranslatedProduct[]>(initialProducts);
               <p className="text-warm-500">
                 {t("tryDifferentFilters")}
               </p>
->>>>>>> feature/ux-improvements
             </div>
           )}
         </div>

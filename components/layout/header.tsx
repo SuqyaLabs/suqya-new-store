@@ -86,27 +86,6 @@ export function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
-<<<<<<< HEAD
-            {/* Language Switcher - Compact on mobile, full on desktop */}
-            <div className="sm:hidden">
-              <LanguageSwitcherCompact />
-            </div>
-            <div className="hidden sm:block">
-              <LanguageSwitcher />
-            </div>
-            {/* Search - Desktop */}
-            <div className="hidden sm:block max-w-xs flex-1 mx-4">
-              <ProductSearch />
-            </div>
-            <Button variant="ghost" size="icon" className="hidden sm:flex">
-              <User size={20} />
-            </Button>
-            {/* Cart - Hide on mobile, show on desktop */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="relative hidden sm:flex"
-=======
             {/* Mobile: Language switcher only */}
             <div className="lg:hidden">
               <LanguageSwitcherCompact />
@@ -126,7 +105,6 @@ export function Header() {
               variant="ghost"
               size="icon"
               className="relative hidden lg:flex"
->>>>>>> feature/ux-improvements
               onClick={openCart}
             >
               <ShoppingCart size={20} />
