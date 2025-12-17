@@ -151,6 +151,13 @@ export function CheckoutClient() {
       setOrderNumber(result.order.orderNumber);
       setIsComplete(true);
       clearCart();
+      
+      // Save customer info to localStorage for order tracking
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('suqya_customer_email', formData.email);
+        localStorage.setItem('suqya_customer_phone', formData.phone);
+      }
+      
       toast.success(t("success.title"), `${t("success.orderNumber")}: ${result.order.orderNumber}`);
     } catch (error) {
       console.error("Order error:", error);

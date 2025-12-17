@@ -12,7 +12,7 @@ const milestones = [
     year: "2020",
     title: "Les débuts",
     description:
-      "Première récolte dans les montagnes de Kabylie. Une passion familiale devient un projet.",
+      "Première récolte dans les montagnes d'Algérie. Une passion familiale devient un projet.",
   },
   {
     year: "2022",
@@ -65,7 +65,7 @@ export default function NotreHistoirePage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-honey-100 via-white to-forest-50 py-20 md:py-32">
+      <section className="relative bg-linear-to-br from-warm-50 to-warm-100 py-20 md:py-32">
         <div className="container mx-auto px-4 text-center">
           <span className="text-5xl mb-6 block">🐝</span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-warm-900 mb-6">
@@ -87,7 +87,7 @@ export default function NotreHistoirePage() {
             </h2>
             <div className="prose prose-lg text-warm-600 mx-auto">
               <p>
-                Tout a commencé dans les montagnes de Kabylie, où notre famille 
+                Tout a commencé dans les montagnes d'Algérie, où notre famille 
                 pratique l&apos;apiculture depuis trois générations. Le miel faisait 
                 partie de notre quotidien, un trésor que nous partagions avec 
                 nos proches.
@@ -165,7 +165,7 @@ export default function NotreHistoirePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-honey-500 to-honey-600">
+      <section className="py-16 md:py-24 bg-linear-to-br from-honey-500 to-honey-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-warm-900 mb-6">
             Prêt à goûter la différence ?

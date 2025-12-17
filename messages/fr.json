@@ -43,13 +43,13 @@
       "title": "Miel Bio",
       "titleHighlight": "d'Algérie",
       "tagline": "Du rucher à votre table",
-      "description": "Découvrez notre sélection de miels purs, récoltés dans les montagnes de Kabylie. 100% naturel, 100% authentique.",
+      "description": "Découvrez notre sélection de miels purs, récoltés dans les montagnes d'Algérie. 100% naturel, 100% authentique.",
       "cta": "Découvrir nos miels",
       "ctaSecondary": "Notre histoire",
       "badge": "100% Naturel",
       "trustBadges": {
         "bio": "100% Bio",
-        "origin": "Origine Kabylie",
+        "origin": "Origine Algérie",
         "delivery": "Livraison 58 Wilayas",
         "payment": "Paiement à la livraison"
       }
@@ -62,7 +62,7 @@
         "description": "Miel pur sans additifs, récolté naturellement"
       },
       "origin": {
-        "title": "Origine Kabylie",
+        "title": "Origine Algérie",
         "description": "Des montagnes algériennes à votre table"
       },
       "delivery": {
@@ -147,6 +147,9 @@
       }
     },
     "products": "{count} produit(s)",
+    "noProducts": "Aucun produit trouvé",
+    "tryDifferentFilters": "Essayez de modifier vos filtres",
+    "allCategories": "Toutes les catégories",
     "addToCart": "Ajouter au panier",
     "addedToCart": "Ajouté au panier",
     "outOfStock": "Rupture de stock",
@@ -306,7 +309,7 @@
     "subtitle": "سُقيا - Nourrir votre santé avec les dons de la nature",
     "story": {
       "title": "Une passion familiale",
-      "content": "Depuis trois générations, notre famille perpétue l'art de l'apiculture dans les montagnes de Kabylie."
+      "content": "Depuis trois générations, notre famille perpétue l'art de l'apiculture dans les montagnes d'Algérie."
     },
     "values": {
       "title": "Nos Valeurs",
@@ -365,7 +368,7 @@
       "questions": {
         "q1": {
           "question": "D'où vient votre miel ?",
-          "answer": "Notre miel provient directement des ruchers situés dans les montagnes de Kabylie, en Algérie. Nous travaillons avec des apiculteurs locaux qui partagent nos valeurs de qualité et de tradition."
+          "answer": "Notre miel provient directement des ruchers situés dans les montagnes d'Algérie. Nous travaillons avec des apiculteurs locaux qui partagent nos valeurs de qualité et de tradition."
         },
         "q2": {
           "question": "Votre miel est-il vraiment bio ?",
@@ -506,7 +509,7 @@
         "title": "Article 2: Produits",
         "content": "Tous nos produits sont des miels biologiques et produits de la ruche, récoltés et conditionnés en Algérie. Les caractéristiques principales des produits sont présentées sur le site.",
         "point1": "Miel 100% naturel et biologique",
-        "point2": "Récolté dans les montagnes de Kabylie",
+        "point2": "Récolté dans les montagnes d'Algérie",
         "point3": "Sans additifs ni conservateurs",
         "point4": "Certifié par les autorités algériennes compétentes"
       },
@@ -662,7 +665,7 @@
       },
       "story": {
         "title": "Du rucher à votre table",
-        "paragraph1": "Tout a commencé dans les montagnes de Kabylie, où notre famille pratique l'apiculture depuis trois générations. Le miel faisait partie de notre quotidien, un trésor que nous partagions avec nos proches.",
+        "paragraph1": "Tout a commencé dans les montagnes d'Algérie, où notre famille pratique l'apiculture depuis trois générations. Le miel faisait partie de notre quotidien, un trésor que nous partagions avec nos proches.",
         "paragraph2": "Face à la difficulté de trouver du miel authentique sur le marché, nous avons décidé de créer Suqya (سُقيا) - un mot arabe qui signifie 'nourrir' ou 'abreuver'. Notre mission : apporter le meilleur du miel algérien directement chez vous.",
         "paragraph3": "Aujourd'hui, nous travaillons avec plus de 10 apiculteurs partenaires dans différentes régions d'Algérie, chacun apportant son savoir-faire unique et ses variétés de miel exceptionnelles."
       },
@@ -672,7 +675,7 @@
       "milestones": {
         "2020": {
           "title": "Les débuts",
-          "description": "Première récolte dans les montagnes de Kabylie. Une passion familiale devient un projet."
+          "description": "Première récolte dans les montagnes d'Algérie. Une passion familiale devient un projet."
         },
         "2022": {
           "title": "Expansion",
@@ -721,16 +724,103 @@
         "produits_ruche": "Produits de la Ruche"
       },
       "descriptions": {
-        "miels_purs": "Nos miels purs, récoltés dans les montagnes de Kabylie, 100% naturels et biologiques.",
+        "miels_purs": "Nos miels purs, récoltés dans les montagnes d'Algérie, 100% naturels et biologiques.",
         "miels_infuses": "Des miels délicatement infusés avec des épices et plantes naturelles pour des saveurs uniques.",
         "produits_ruche": "Tous les trésors de la ruche : pollen, propolis, gelée royale et cire d'abeille."
       },
       "product_count": "{count} produit(s) dans la catégorie {category}",
       "no_products": "Aucun produit disponible dans la catégorie {category} pour le moment."
+    },
+    "compte": {
+      "title": "Mon Compte",
+      "description": "Suivez vos commandes et consultez l'historique de vos achats",
+      "subtitle": "Retrouvez vos commandes en entrant votre numéro de téléphone ou email",
+      "welcome": {
+        "title": "Vos Commandes",
+        "subtitle": "Voici l'historique de vos commandes récentes",
+        "notYou": "Ce n'est pas vous ? Changer de compte"
+      },
+      "search": {
+        "title": "Rechercher mes commandes",
+        "byPhone": "Par téléphone",
+        "byEmail": "Par email",
+        "phoneLabel": "Numéro de téléphone",
+        "emailLabel": "Adresse email",
+        "phonePlaceholder": "0555 123 456",
+        "emailPlaceholder": "votre@email.com",
+        "button": "Rechercher",
+        "searching": "Recherche..."
+      },
+      "noOrders": {
+        "title": "Aucune commande trouvée",
+        "message": "Nous n'avons trouvé aucune commande associée à ces informations.",
+        "tryAgain": "Réessayer"
+      },
+      "ordersList": {
+        "title": "{count} commande(s) trouvée(s)"
+      },
+      "status": {
+        "pending": "En attente",
+        "processing": "En préparation",
+        "shipped": "Expédiée",
+        "in_transit": "En transit",
+        "delivered": "Livrée",
+        "returned": "Retournée"
+      },
+      "details": {
+        "back": "Retour aux commandes",
+        "orderNumber": "Commande #{number}",
+        "trackingNumber": "Numéro de suivi",
+        "statusTimeline": "Suivi de la commande",
+        "items": "Articles commandés",
+        "quantity": "Quantité",
+        "subtotal": "Sous-total",
+        "shipping": "Livraison",
+        "total": "Total",
+        "shippingInfo": "Adresse de livraison",
+        "paymentInfo": "Informations de paiement",
+        "paymentMethod": "Mode de paiement",
+        "paymentStatus": "Statut du paiement",
+        "shippingMethod": "Mode de livraison"
+      },
+      "paymentMethods": {
+        "cod": "Paiement à la livraison",
+        "cib": "Carte CIB",
+        "edahabia": "Carte Edahabia",
+        "transfer": "Virement bancaire"
+      },
+      "paymentStatus": {
+        "pending": "En attente",
+        "paid": "Payé",
+        "failed": "Échoué",
+        "refunded": "Remboursé"
+      },
+      "shippingMethods": {
+        "yalidine": "Yalidine Express",
+        "pickup": "Point Relais",
+        "ems": "EMS Algérie"
+      },
+      "errors": {
+        "fetchFailed": "Impossible de récupérer vos commandes. Veuillez réessayer."
+      },
+      "loyalty": {
+        "title": "Rejoignez le Programme Fidélité 🍯",
+        "description": "Connectez-vous pour gagner des points à chaque achat et profiter d'avantages exclusifs !",
+        "benefits": {
+          "points": "1 DZD = 1 Point",
+          "exclusive": "Offres Exclusives",
+          "rewards": "Récompenses"
+        },
+        "signInWithGoogle": "Continuer avec Google",
+        "comingSoon": "Programme fidélité bientôt disponible",
+        "loggedInMessage": "Vous êtes connecté ! Vos points seront bientôt disponibles.",
+        "signOut": "Se déconnecter",
+        "signInError": "Erreur de connexion. Veuillez réessayer."
+      }
     }
   },
   "footer": {
-    "description": "Miel bio et naturel, directement des apiculteurs de Kabylie à votre table.",
+    "description": "Miel bio et naturel, directement des apiculteurs d'Algérie à votre table.",
     "shop": {
       "title": "Boutique",
       "allProducts": "Tous les produits",

@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/footer";
 import { BottomNavBar } from "@/components/layout/bottom-nav-bar";
 import { CartDrawer } from "@/components/cart/cart-drawer";
 import { ToastProvider } from "@/components/ui/toast";
+import { ScrollToTop } from "@/components/scroll-to-top";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -62,6 +63,7 @@ export default async function LocaleLayout({
     <div lang={locale} dir={isRtl ? "rtl" : "ltr"} className={isRtl ? "font-arabic" : ""}>
       <NextIntlClientProvider messages={messages}>
         <ToastProvider>
+          <ScrollToTop />
           <Header />
           <main className="min-h-screen pb-20 lg:pb-0">{children}</main>
           <Footer />

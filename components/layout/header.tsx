@@ -7,7 +7,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCartStore } from "@/store/cart-store";
 import { Button } from "@/components/ui/button";
-import { LanguageSwitcher } from "@/components/ui/language-switcher";
+import { LanguageSwitcher, LanguageSwitcherCompact } from "@/components/ui/language-switcher";
 
 interface NavLink {
   href: string;
@@ -66,19 +66,25 @@ export function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
-            <div className="hidden sm:block">
+            {/* Mobile: Language switcher only */}
+            <div className="lg:hidden">
+              <LanguageSwitcherCompact />
+            </div>
+            {/* Desktop: Full actions */}
+            <div className="hidden lg:block">
               <LanguageSwitcher />
             </div>
-            <Button variant="ghost" size="icon" className="hidden sm:flex">
+            <Button variant="ghost" size="icon" className="hidden lg:flex">
               <Search size={20} />
             </Button>
-            <Button variant="ghost" size="icon" className="hidden sm:flex">
+            <Button variant="ghost" size="icon" className="hidden lg:flex">
               <User size={20} />
             </Button>
+            {/* Cart: Desktop only - mobile uses bottom nav */}
             <Button
               variant="ghost"
               size="icon"
-              className="relative"
+              className="relative hidden lg:flex"
               onClick={openCart}
             >
               <ShoppingCart size={20} />
@@ -112,9 +118,6 @@ export function Header() {
                   {t(link.labelKey)}
                 </Link>
               ))}
-              <div className="pt-2 border-t border-warm-200 mt-2">
-                <LanguageSwitcher />
-              </div>
             </nav>
           </motion.div>
         )}
