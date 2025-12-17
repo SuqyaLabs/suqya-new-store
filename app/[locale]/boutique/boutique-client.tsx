@@ -109,20 +109,6 @@ const [products, setProducts] = useState<TranslatedProduct[]>(initialProducts);
         </div>
       </section>
 
-<<<<<<< HEAD
-      {/* Filters */}
-      <section className="bg-white border-b border-warm-200 sticky top-16 z-40">
-        <div className="container mx-auto px-4 py-4">
-          <ShopFilters
-            onSortChange={setCurrentSort}
-            onPriceRangeChange={handlePriceRangeChange}
-            onCategoryChange={setSelectedCategory}
-            currentSort={currentSort}
-            priceRange={priceRange}
-            selectedCategory={selectedCategory}
-            maxPrice={maxPrice}
-          />
-=======
       {/* Categories Filter - Horizontal */}
       <section className="bg-white border-b border-warm-200 sticky top-16 z-30">
         <div className="container mx-auto px-4">
