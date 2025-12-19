@@ -210,7 +210,7 @@
   },
   "cart": {
     "title": "Votre Panier",
-    "itemCount": "{count} article(s)",
+    "itemCount": "{count, plural, =0 {aucun article} =1 {article} other {articles}}",
     "empty": "Votre panier est vide",
     "emptyMessage": "Ajoutez des produits pour commencer vos achats. Nos miels bio n'attendent que vous !",
     "continueShopping": "Continuer mes achats",

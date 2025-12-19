@@ -171,39 +171,39 @@ export function CompteClient() {
   const shouldShowSearchForm = !isAutoLoaded || showManualSearch;
 
   return (
-    <div className="min-h-screen bg-warm-50">
+    <div className="min-h-screen bg-background">
       {/* Hero - Personalized when auto-loaded */}
-      <section className="bg-linear-to-br from-honey-100 via-white to-forest-50 py-12 md:py-16">
+      <section className="bg-gradient-to-br from-primary/10 via-background to-accent/20 py-12 md:py-16">
         <div className="container mx-auto px-4 text-center">
           {isAutoLoaded && !showManualSearch ? (
             <>
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm text-warm-600 mb-4"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 backdrop-blur-sm rounded-full text-sm text-muted-foreground mb-4 border border-border/50"
               >
                 {searchType === "phone" ? <Phone size={16} /> : <Mail size={16} />}
                 <span>{searchValue}</span>
               </motion.div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-warm-900 mb-4">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
                 {t("welcome.title")}
               </h1>
-              <p className="text-warm-600 max-w-2xl mx-auto mb-4">
+              <p className="text-muted-foreground max-w-2xl mx-auto mb-4">
                 {t("welcome.subtitle")}
               </p>
               <button
                 onClick={handleSwitchAccount}
-                className="text-sm text-honey-700 hover:text-honey-800 underline underline-offset-2"
+                className="text-sm text-primary hover:text-primary/80 underline underline-offset-2"
               >
                 {t("welcome.notYou")}
               </button>
             </>
           ) : (
             <>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-warm-900 mb-4">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
                 {t("title")}
               </h1>
-              <p className="text-warm-600 max-w-2xl mx-auto">
+              <p className="text-muted-foreground max-w-2xl mx-auto">
                 {t("subtitle")}
               </p>
             </>
@@ -219,9 +219,9 @@ export function CompteClient() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white rounded-2xl shadow-sm border border-warm-200 p-6 md:p-8"
+                className="bg-card rounded-2xl shadow-sm border border-border p-6 md:p-8"
               >
-                <h2 className="text-xl font-semibold text-warm-900 mb-6 text-center">
+                <h2 className="text-xl font-semibold text-foreground mb-6 text-center">
                   {t("search.title")}
                 </h2>
 
@@ -232,8 +232,8 @@ export function CompteClient() {
                     onClick={() => setSearchType("phone")}
                     className={`flex-1 py-3 px-4 rounded-xl font-medium text-sm transition-colors flex items-center justify-center gap-2 ${
                       searchType === "phone"
-                        ? "bg-honey-600 text-warm-900"
-                        : "bg-warm-100 text-warm-600 hover:bg-warm-200"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground hover:bg-muted/80"
                     }`}
                   >
                     <Phone size={18} />
@@ -244,8 +244,8 @@ export function CompteClient() {
                     onClick={() => setSearchType("email")}
                     className={`flex-1 py-3 px-4 rounded-xl font-medium text-sm transition-colors flex items-center justify-center gap-2 ${
                       searchType === "email"
-                        ? "bg-honey-600 text-warm-900"
-                        : "bg-warm-100 text-warm-600 hover:bg-warm-200"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground hover:bg-muted/80"
                     }`}
                   >
                     <Mail size={18} />
@@ -276,7 +276,7 @@ export function CompteClient() {
 
                 <Button
                   type="submit"
-                  className="w-full bg-honey-600 hover:bg-honey-700 text-warm-900"
+                  className="w-full"
                   size="lg"
                   disabled={isLoading}
                 >
@@ -295,7 +295,7 @@ export function CompteClient() {
               </form>
 
               {error && (
-                <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+                <div className="mt-4 p-4 bg-destructive/10 border border-destructive/20 rounded-xl text-destructive text-sm">
                   {error}
                 </div>
               )}
@@ -318,12 +318,12 @@ export function CompteClient() {
               <div className="max-w-4xl mx-auto">
                 {orders.length === 0 ? (
                   /* No Orders Found */
-                  <div className="bg-white rounded-2xl shadow-sm border border-warm-200 p-8 text-center">
-                    <Package className="mx-auto h-16 w-16 text-warm-300 mb-4" />
-                    <h3 className="text-xl font-semibold text-warm-700 mb-2">
+                  <div className="bg-card rounded-2xl shadow-sm border border-border p-8 text-center">
+                    <Package className="mx-auto h-16 w-16 text-muted-foreground/30 mb-4" />
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
                       {t("noOrders.title")}
                     </h3>
-                    <p className="text-warm-500 mb-6">
+                    <p className="text-muted-foreground mb-6">
                       {t("noOrders.message")}
                     </p>
                     <Button
@@ -349,7 +349,7 @@ export function CompteClient() {
                 ) : (
                   /* Orders List */
                   <div className="space-y-4">
-                    <h3 className="text-lg font-semibold text-warm-900">
+                    <h3 className="text-lg font-semibold text-foreground">
                       {t("ordersList.title", { count: orders.length })}
                     </h3>
                     {orders.map((order) => (
@@ -378,7 +378,7 @@ export function CompteClient() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="relative overflow-hidden bg-linear-to-br from-honey-500 via-honey-600 to-amber-600 rounded-2xl p-6 md:p-8 text-center"
+              className="relative overflow-hidden bg-gradient-to-br from-primary via-primary/90 to-secondary rounded-2xl p-6 md:p-8 text-center"
             >
               {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
@@ -450,7 +450,7 @@ export function CompteClient() {
                   <>
                     <Button
                       size="lg"
-                      className="bg-white text-warm-900 hover:bg-warm-100 font-semibold shadow-lg"
+                      className="bg-card text-foreground hover:bg-card/90 font-semibold shadow-lg"
                       disabled={authLoading}
                       onClick={async () => {
                         setAuthError(null);
@@ -523,12 +523,12 @@ function OrderCard({ order, onClick, t, formatDate, getStatusInfo }: OrderCardPr
       whileHover={{ scale: 1.01 }}
       whileTap={{ scale: 0.99 }}
       onClick={onClick}
-      className="w-full bg-white rounded-xl shadow-sm border border-warm-200 p-4 md:p-6 text-left hover:border-honey-300 transition-colors"
+      className="w-full bg-card rounded-xl shadow-sm border border-border p-4 md:p-6 text-left hover:border-primary/50 transition-colors"
     >
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-3 mb-2">
-            <span className="font-semibold text-warm-900">
+            <span className="font-semibold text-foreground">
               #{order.order_number}
             </span>
             <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${statusInfo.bgColor} ${statusInfo.color}`}>
@@ -536,14 +536,14 @@ function OrderCard({ order, onClick, t, formatDate, getStatusInfo }: OrderCardPr
               {t(`status.${order.shipping_status}`)}
             </span>
           </div>
-          <p className="text-sm text-warm-500 mb-1">
+          <p className="text-sm text-muted-foreground mb-1">
             {formatDate(order.created_at)}
           </p>
-          <p className="text-warm-700 font-medium">
+          <p className="text-foreground font-medium">
             {formatPrice(order.total)}
           </p>
         </div>
-        <ChevronRight className="text-warm-400 shrink-0 rtl:rotate-180" size={20} />
+        <ChevronRight className="text-muted-foreground shrink-0 rtl:rotate-180" size={20} />
       </div>
     </motion.button>
   );
@@ -571,20 +571,20 @@ function OrderDetails({ order, onBack, t, formatDate, getStatusInfo }: OrderDeta
       {/* Back Button */}
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-warm-600 hover:text-warm-900 transition-colors"
+        className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
       >
         <ChevronRight className="rotate-180 rtl:rotate-0" size={20} />
         {t("details.back")}
       </button>
 
       {/* Order Header */}
-      <div className="bg-white rounded-2xl shadow-sm border border-warm-200 p-6">
+      <div className="bg-card rounded-2xl shadow-sm border border-border p-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
           <div>
-            <h2 className="text-2xl font-bold text-warm-900">
+            <h2 className="text-2xl font-bold text-foreground">
               {t("details.orderNumber", { number: order.order_number })}
             </h2>
-            <p className="text-warm-500 mt-1">
+            <p className="text-muted-foreground mt-1">
               {formatDate(order.created_at)}
             </p>
           </div>
@@ -596,50 +596,50 @@ function OrderDetails({ order, onBack, t, formatDate, getStatusInfo }: OrderDeta
 
         {/* Tracking Number */}
         {order.tracking_number && (
-          <div className="bg-warm-50 rounded-xl p-4 mb-6">
-            <p className="text-sm text-warm-500 mb-1">{t("details.trackingNumber")}</p>
-            <p className="font-mono font-semibold text-warm-900">{order.tracking_number}</p>
+          <div className="bg-muted rounded-xl p-4 mb-6">
+            <p className="text-sm text-muted-foreground mb-1">{t("details.trackingNumber")}</p>
+            <p className="font-mono font-semibold text-foreground">{order.tracking_number}</p>
           </div>
         )}
 
         {/* Status Timeline */}
-        <div className="border-t border-warm-200 pt-6">
-          <h3 className="font-semibold text-warm-900 mb-4">{t("details.statusTimeline")}</h3>
+        <div className="border-t border-border pt-6">
+          <h3 className="font-semibold text-foreground mb-4">{t("details.statusTimeline")}</h3>
           <StatusTimeline currentStatus={order.shipping_status} t={t} />
         </div>
       </div>
 
       {/* Order Items */}
-      <div className="bg-white rounded-2xl shadow-sm border border-warm-200 p-6">
-        <h3 className="font-semibold text-warm-900 mb-4">{t("details.items")}</h3>
+      <div className="bg-card rounded-2xl shadow-sm border border-border p-6">
+        <h3 className="font-semibold text-foreground mb-4">{t("details.items")}</h3>
         <div className="space-y-4">
           {order.items?.map((item) => (
-            <div key={item.id} className="flex justify-between items-start py-3 border-b border-warm-100 last:border-0">
+            <div key={item.id} className="flex justify-between items-start py-3 border-b border-border/50 last:border-0">
               <div>
-                <p className="font-medium text-warm-900">{item.product_name}</p>
+                <p className="font-medium text-foreground">{item.product_name}</p>
                 {item.variant_name && (
-                  <p className="text-sm text-warm-500">{item.variant_name}</p>
+                  <p className="text-sm text-muted-foreground">{item.variant_name}</p>
                 )}
-                <p className="text-sm text-warm-500">
+                <p className="text-sm text-muted-foreground">
                   {t("details.quantity")}: {item.quantity}
                 </p>
               </div>
-              <p className="font-medium text-warm-900">{formatPrice(item.total_price)}</p>
+              <p className="font-medium text-foreground">{formatPrice(item.total_price)}</p>
             </div>
           ))}
         </div>
 
         {/* Order Summary */}
-        <div className="border-t border-warm-200 mt-4 pt-4 space-y-2">
-          <div className="flex justify-between text-warm-600">
+        <div className="border-t border-border mt-4 pt-4 space-y-2">
+          <div className="flex justify-between text-muted-foreground">
             <span>{t("details.subtotal")}</span>
             <span>{formatPrice(order.subtotal)}</span>
           </div>
-          <div className="flex justify-between text-warm-600">
+          <div className="flex justify-between text-muted-foreground">
             <span>{t("details.shipping")}</span>
             <span>{formatPrice(order.shipping_cost)}</span>
           </div>
-          <div className="flex justify-between text-lg font-bold text-warm-900 pt-2 border-t border-warm-200">
+          <div className="flex justify-between text-lg font-bold text-foreground pt-2 border-t border-border">
             <span>{t("details.total")}</span>
             <span>{formatPrice(order.total)}</span>
           </div>
@@ -649,13 +649,13 @@ function OrderDetails({ order, onBack, t, formatDate, getStatusInfo }: OrderDeta
       {/* Shipping & Payment Info */}
       <div className="grid md:grid-cols-2 gap-6">
         {/* Shipping Info */}
-        <div className="bg-white rounded-2xl shadow-sm border border-warm-200 p-6">
-          <h3 className="font-semibold text-warm-900 mb-4 flex items-center gap-2">
-            <MapPin size={20} className="text-honey-600" />
+        <div className="bg-card rounded-2xl shadow-sm border border-border p-6">
+          <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
+            <MapPin size={20} className="text-primary" />
             {t("details.shippingInfo")}
           </h3>
-          <div className="space-y-2 text-warm-600">
-            <p className="font-medium text-warm-900">{order.customer_name}</p>
+          <div className="space-y-2 text-muted-foreground">
+            <p className="font-medium text-foreground">{order.customer_name}</p>
             <p>{order.shipping_address}</p>
             <p>{order.shipping_commune}, {order.shipping_wilaya}</p>
             <p className="flex items-center gap-2 mt-3">
@@ -670,25 +670,25 @@ function OrderDetails({ order, onBack, t, formatDate, getStatusInfo }: OrderDeta
         </div>
 
         {/* Payment Info */}
-        <div className="bg-white rounded-2xl shadow-sm border border-warm-200 p-6">
-          <h3 className="font-semibold text-warm-900 mb-4 flex items-center gap-2">
-            <CreditCard size={20} className="text-honey-600" />
+        <div className="bg-card rounded-2xl shadow-sm border border-border p-6">
+          <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
+            <CreditCard size={20} className="text-primary" />
             {t("details.paymentInfo")}
           </h3>
           <div className="space-y-3">
             <div>
-              <p className="text-sm text-warm-500">{t("details.paymentMethod")}</p>
-              <p className="font-medium text-warm-900">{t(`paymentMethods.${order.payment_method}`)}</p>
+              <p className="text-sm text-muted-foreground">{t("details.paymentMethod")}</p>
+              <p className="font-medium text-foreground">{t(`paymentMethods.${order.payment_method}`)}</p>
             </div>
             <div>
-              <p className="text-sm text-warm-500">{t("details.paymentStatus")}</p>
+              <p className="text-sm text-muted-foreground">{t("details.paymentStatus")}</p>
               <p className={`font-medium ${order.payment_status === 'paid' ? 'text-green-600' : 'text-amber-600'}`}>
                 {t(`paymentStatus.${order.payment_status}`)}
               </p>
             </div>
             <div>
-              <p className="text-sm text-warm-500">{t("details.shippingMethod")}</p>
-              <p className="font-medium text-warm-900">{t(`shippingMethods.${order.shipping_method}`)}</p>
+              <p className="text-sm text-muted-foreground">{t("details.shippingMethod")}</p>
+              <p className="font-medium text-foreground">{t(`shippingMethods.${order.shipping_method}`)}</p>
             </div>
           </div>
         </div>
@@ -721,24 +721,24 @@ function StatusTimeline({ currentStatus, t }: StatusTimelineProps) {
               {index > 0 && (
                 <div
                   className={`absolute left-0 right-1/2 h-1 -translate-y-1/2 top-1/2 ${
-                    isCompleted ? "bg-honey-500" : "bg-warm-200"
+                    isCompleted ? "bg-primary" : "bg-muted"
                   }`}
                 />
               )}
               {index < statuses.length - 1 && (
                 <div
                   className={`absolute left-1/2 right-0 h-1 -translate-y-1/2 top-1/2 ${
-                    index < currentIndex ? "bg-honey-500" : "bg-warm-200"
+                    index < currentIndex ? "bg-primary" : "bg-muted"
                   }`}
                 />
               )}
               <div
                 className={`relative z-10 mx-auto w-10 h-10 rounded-full flex items-center justify-center ${
                   isCurrent
-                    ? "bg-honey-600 text-white ring-4 ring-honey-200"
+                    ? "bg-primary text-primary-foreground ring-4 ring-primary/20"
                     : isCompleted
-                    ? "bg-honey-500 text-white"
-                    : "bg-warm-200 text-warm-400"
+                    ? "bg-primary/80 text-primary-foreground"
+                    : "bg-muted text-muted-foreground"
                 }`}
               >
                 <StatusIcon size={18} />
@@ -746,7 +746,7 @@ function StatusTimeline({ currentStatus, t }: StatusTimelineProps) {
             </div>
             <span
               className={`mt-2 text-xs text-center ${
-                isCurrent ? "font-semibold text-warm-900" : "text-warm-500"
+                isCurrent ? "font-semibold text-foreground" : "text-muted-foreground"
               }`}
             >
               {t(`status.${status}`)}

@@ -43,7 +43,7 @@ export default function CartPage() {
       {/* Header */}
       <div className="bg-white border-b border-warm-200">
         <div className="container mx-auto px-4 py-6">
-          <h1 className="text-2xl md:text-3xl font-bold text-warm-900">
+          <h1 className="text-2xl md:text-3xl font-bold text-foreground">
             {t("title")} ({getTotalItems()} {t("itemCount", { count: getTotalItems() })})
           </h1>
         </div>

@@ -207,7 +207,7 @@
   },
   "cart": {
     "title": "Your Cart",
-    "itemCount": "{count} item(s)",
+    "itemCount": "{count, plural, =0 {no items} =1 {item} other {items}}",
     "empty": "Your cart is empty",
     "emptyMessage": "Add products to start shopping. Our organic honeys are waiting for you!",
     "continueShopping": "Continue shopping",

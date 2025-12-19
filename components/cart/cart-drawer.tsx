@@ -35,16 +35,16 @@ export function CartDrawer() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed right-0 top-0 z-50 h-full w-full max-w-md bg-white shadow-xl flex flex-col"
+            className="fixed right-0 top-0 z-50 h-full w-full max-w-md bg-card shadow-xl flex flex-col"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-warm-200 px-4 py-4">
-              <h2 className="text-lg font-semibold text-warm-900">
+            <div className="flex items-center justify-between border-b border-border px-4 py-4">
+              <h2 className="text-lg font-semibold text-foreground">
                 {t("title")} ({items.length} {t("itemCount", { count: items.length })})
               </h2>
               <button
                 onClick={closeCart}
-                className="p-2 text-warm-500 hover:text-warm-700 rounded-lg hover:bg-warm-100 transition-colors"
+                className="p-2 text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors"
               >
                 <X size={20} />
               </button>
@@ -54,11 +54,11 @@ export function CartDrawer() {
             <div className="flex-1 overflow-y-auto p-4">
               {items.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center">
-                  <ShoppingBag size={64} className="text-warm-300 mb-4" />
-                  <h3 className="text-lg font-medium text-warm-700 mb-2">
+                  <ShoppingBag size={64} className="text-muted-foreground/30 mb-4" />
+                  <h3 className="text-lg font-medium text-foreground mb-2">
                     {t("empty")}
                   </h3>
-                  <p className="text-warm-500 text-sm mb-6">
+                  <p className="text-muted-foreground text-sm mb-6">
                     {t("emptyMessage")}
                   </p>
                   <Button onClick={closeCart} asChild>
@@ -74,10 +74,10 @@ export function CartDrawer() {
                     return (
                       <li
                         key={itemKey}
-                        className="flex gap-4 bg-warm-50 rounded-xl p-3"
+                        className="flex gap-4 bg-muted/50 rounded-xl p-3"
                       >
                         {/* Image */}
-                        <div className="relative h-20 w-20 rounded-lg bg-warm-200 overflow-hidden shrink-0">
+                        <div className="relative h-20 w-20 rounded-lg bg-muted overflow-hidden shrink-0">
                           {item.product.image ? (
                             <Image
                               src={item.product.image}
@@ -94,15 +94,15 @@ export function CartDrawer() {
 
                         {/* Details */}
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-warm-900 truncate">
+                          <h4 className="font-medium text-foreground truncate">
                             {item.product.name}
                           </h4>
                           {item.variant && (
-                            <p className="text-sm text-warm-500">
+                            <p className="text-sm text-muted-foreground">
                               {item.variant.name}
                             </p>
                           )}
-                          <p className="text-honey-700 font-semibold mt-1">
+                          <p className="text-primary font-semibold mt-1">
                             {formatPrice(itemPrice)}
                           </p>
 
@@ -117,11 +117,11 @@ export function CartDrawer() {
                                     item.quantity - 1
                                   )
                                 }
-                                className="h-7 w-7 rounded-md bg-white border border-warm-200 flex items-center justify-center text-warm-600 hover:bg-warm-100 transition-colors"
+                                className="h-7 w-7 rounded-md bg-card border border-border flex items-center justify-center text-muted-foreground hover:bg-muted transition-colors"
                               >
                                 <Minus size={14} />
                               </button>
-                              <span className="w-8 text-center font-medium">
+                              <span className="w-8 text-center font-medium text-foreground">
                                 {item.quantity}
                               </span>
                               <button
@@ -132,7 +132,7 @@ export function CartDrawer() {
                                     item.quantity + 1
                                   )
                                 }
-                                className="h-7 w-7 rounded-md bg-white border border-warm-200 flex items-center justify-center text-warm-600 hover:bg-warm-100 transition-colors"
+                                className="h-7 w-7 rounded-md bg-card border border-border flex items-center justify-center text-muted-foreground hover:bg-muted transition-colors"
                               >
                                 <Plus size={14} />
                               </button>
@@ -141,7 +141,7 @@ export function CartDrawer() {
                               onClick={() =>
                                 removeItem(item.product.id, item.variant?.id)
                               }
-                              className="p-1.5 text-red-500 hover:bg-red-50 rounded-md transition-colors"
+                              className="p-1.5 text-destructive hover:bg-destructive/10 rounded-md transition-colors"
                             >
                               <Trash2 size={16} />
                             </button>
@@ -156,14 +156,14 @@ export function CartDrawer() {
 
             {/* Footer */}
             {items.length > 0 && (
-              <div className="border-t border-warm-200 p-4 space-y-4">
-                <div className="flex justify-between text-warm-600">
+              <div className="border-t border-border p-4 space-y-4">
+                <div className="flex justify-between text-muted-foreground">
                   <span>{t("subtotal")}</span>
-                  <span className="font-semibold text-warm-900">
+                  <span className="font-semibold text-foreground">
                     {formatPrice(totalPrice)}
                   </span>
                 </div>
-                <p className="text-xs text-warm-500">
+                <p className="text-xs text-muted-foreground">
                   {t("shippingNote")}
                 </p>
                 <Button className="w-full" size="lg" asChild>
