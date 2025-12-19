@@ -85,7 +85,9 @@
     "categories": {
       "title": "فئاتنا",
       "subtitle": "استكشف مجموعتنا من منتجات الخلية",
-      "viewMore": "عرض المزيد"
+      "viewMore": "عرض المزيد",
+      "product": "منتج",
+      "products": "منتجات"
     },
     "bestsellers": {
       "title": "الأكثر مبيعاً",

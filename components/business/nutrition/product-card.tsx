@@ -60,7 +60,7 @@ export default function NutritionProductCard({
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
-            <div className="flex items-center justify-center h-full bg-gradient-to-br from-green-100 to-green-200">
+            <div className="flex items-center justify-center h-full bg-gradient-to-br from-primary/10 to-primary/20">
               <span className="text-6xl">🥗</span>
             </div>
           )}
@@ -80,7 +80,7 @@ export default function NutritionProductCard({
           {customData?.dietary_tags && customData.dietary_tags.length > 0 && (
             <div className="absolute top-3 right-3 flex flex-col gap-1">
               {customData.dietary_tags.slice(0, 2).map((tag) => (
-                <Badge key={tag} variant="outline" className="text-xs bg-white/90">
+                <Badge key={tag} variant="outline" className="text-xs bg-background/90">
                   {tag}
                 </Badge>
               ))}
@@ -105,7 +105,7 @@ export default function NutritionProductCard({
           {customData?.calories && (
             <div className="flex items-center gap-3 mt-2 text-xs text-muted-foreground">
               <span className="flex items-center gap-1">
-                <Flame size={12} className="text-orange-500" />
+                <Flame size={12} className="text-primary" />
                 {customData.calories} kcal
               </span>
               {customData.protein && (

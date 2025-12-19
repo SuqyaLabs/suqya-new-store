@@ -54,11 +54,11 @@ export function ProductCard({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
+      className="group relative bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border/50"
     >
       <Link href={productUrl} className="block">
         {/* Image Container */}
-        <div className="relative aspect-square bg-warm-100 overflow-hidden">
+        <div className="relative aspect-square bg-muted overflow-hidden">
           {image ? (
             <Image
               src={image}
@@ -67,7 +67,7 @@ export function ProductCard({
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
-            <div className="flex items-center justify-center h-full bg-gradient-to-br from-honey-100 to-honey-200">
+            <div className="flex items-center justify-center h-full bg-gradient-to-br from-primary/10 to-primary/20">
               <span className="text-6xl">🍯</span>
             </div>
           )}
@@ -116,8 +116,8 @@ export function ProductCard({
 
           {/* Out of Stock Overlay */}
           {!isAvailable && (
-            <div className="absolute inset-0 bg-warm-900/60 flex items-center justify-center">
-              <span className="text-white font-semibold px-4 py-2 bg-warm-900/80 rounded-lg">
+            <div className="absolute inset-0 bg-foreground/60 flex items-center justify-center">
+              <span className="text-background font-semibold px-4 py-2 bg-foreground/80 rounded-lg">
                 {t("outOfStock")}
               </span>
             </div>
@@ -128,28 +128,28 @@ export function ProductCard({
         <div className="p-4">
           {/* Category */}
           {category && (
-            <p className="text-xs text-warm-500 uppercase tracking-wide mb-1">
+            <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">
               {category}
             </p>
           )}
 
           {/* Title */}
-          <h3 className="font-semibold text-warm-900 group-hover:text-honey-700 transition-colors line-clamp-2 min-h-[2.5rem]">
+          <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 min-h-[2.5rem]">
             {name}
           </h3>
 
           {/* Rating */}
           {reviewCount > 0 && (
             <div className="flex items-center gap-1 mt-2">
-              <Star size={14} className="text-honey-500 fill-honey-500" />
-              <span className="text-sm font-medium text-warm-700">{rating}</span>
-              <span className="text-sm text-warm-500">({reviewCount} avis)</span>
+              <Star size={14} className="text-primary fill-primary" />
+              <span className="text-sm font-medium text-foreground">{rating}</span>
+              <span className="text-sm text-muted-foreground">({reviewCount} avis)</span>
             </div>
           )}
 
           {/* Price */}
           <div className="mt-3">
-            <p className="text-lg font-bold text-honey-700">
+            <p className="text-lg font-bold text-primary">
               {formatPrice(price)}
             </p>
           </div>

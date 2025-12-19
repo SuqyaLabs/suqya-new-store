@@ -87,7 +87,9 @@
     "categories": {
       "title": "Nos Catégories",
       "subtitle": "Explorez notre sélection de produits de la ruche",
-      "viewMore": "Voir plus"
+      "viewMore": "Voir plus",
+      "product": "produit",
+      "products": "produits"
     },
     "bestsellers": {
       "title": "Nos Best-sellers",

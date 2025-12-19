@@ -90,7 +90,9 @@
     "categories": {
       "title": "Our Categories",
       "subtitle": "Explore our selection of hive products",
-      "viewMore": "View more"
+      "viewMore": "View more",
+      "product": "product",
+      "products": "products"
     },
     "bestsellers": {
       "title": "Bestsellers",

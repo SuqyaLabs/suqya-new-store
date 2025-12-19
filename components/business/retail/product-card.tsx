@@ -53,7 +53,7 @@ export default function RetailProductCard({
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
-            <div className="flex items-center justify-center h-full bg-gradient-to-br from-blue-100 to-blue-200">
+            <div className="flex items-center justify-center h-full bg-gradient-to-br from-primary/10 to-primary/20">
               <span className="text-6xl">📦</span>
             </div>
           )}

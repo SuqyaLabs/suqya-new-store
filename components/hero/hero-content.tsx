@@ -92,8 +92,15 @@ export function HeroContent({ content, typography, textColor, locale, className 
   const subheadline = getLocalizedText(content.subheadline, locale)
   const badge = getLocalizedText(content.badge, locale)
 
-  const textColorClass = textColor === 'light' ? 'text-white' : 'text-foreground'
-  const subTextColorClass = textColor === 'light' ? 'text-white/90' : 'text-muted-foreground'
+  // Use high-contrast text colors for better visibility
+  // Dark mode: use foreground color which should contrast with background
+  // Light mode: use white with drop shadow for visibility on any gradient
+  const textColorClass = textColor === 'light' 
+    ? 'text-white drop-shadow-md' 
+    : 'text-foreground'
+  const subTextColorClass = textColor === 'light' 
+    ? 'text-white/90 drop-shadow-sm' 
+    : 'text-foreground/80'
 
   return (
     <div

@@ -31,11 +31,11 @@ export const nutritionHeroPreset: HeroPreset = {
       style: 'radial',
       direction: 'radial-center',
       stops: [
-        { color: '#FBBF24', position: 0, opacity: 0.2 },   // Amber 400 (Center Glow)
-        { color: '#D97706', position: 45, opacity: 0.15 }, // Amber 600 (Rich Honey)
-        { color: '#FFFBEB', position: 100, opacity: 1 }    // Warm background
+        { color: 'var(--primary)', position: 0, opacity: 0.15 },   // Theme primary (subtle glow)
+        { color: 'var(--secondary)', position: 45, opacity: 0.1 }, // Theme secondary
+        { color: 'var(--background)', position: 100, opacity: 1 }  // Theme background
       ],
-      overlay: 'linear-gradient(to bottom, rgba(255, 251, 235, 0) 0%, #FFFBEB 100%)'
+      overlay: 'linear-gradient(to bottom, transparent 0%, var(--background) 100%)'
     },
     content: {
       badge: {

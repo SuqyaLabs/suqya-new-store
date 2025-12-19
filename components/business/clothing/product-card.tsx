@@ -53,7 +53,7 @@ export default function ClothingProductCard({
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
-            <div className="flex items-center justify-center h-full bg-gradient-to-br from-gray-100 to-gray-200">
+            <div className="flex items-center justify-center h-full bg-gradient-to-br from-muted to-muted/80">
               <span className="text-6xl">👕</span>
             </div>
           )}
@@ -92,7 +92,7 @@ export default function ClothingProductCard({
           {customData?.available_sizes && customData.available_sizes.length > 0 && (
             <div className="flex gap-1 mt-2 flex-wrap">
               {customData.available_sizes.map((size) => (
-                <span key={size} className="text-xs px-1.5 py-0.5 border rounded">
+                <span key={size} className="text-xs px-1.5 py-0.5 border border-border rounded text-foreground">
                   {size}
                 </span>
               ))}
@@ -105,7 +105,7 @@ export default function ClothingProductCard({
               {customData.available_colors.slice(0, 4).map((color) => (
                 <div
                   key={color}
-                  className="w-4 h-4 rounded-full border border-gray-300"
+                  className="w-4 h-4 rounded-full border border-border"
                   style={{ backgroundColor: color }}
                   title={color}
                 />

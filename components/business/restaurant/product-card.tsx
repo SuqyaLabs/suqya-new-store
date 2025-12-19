@@ -58,7 +58,7 @@ export default function RestaurantProductCard({
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
-            <div className="flex items-center justify-center h-full bg-gradient-to-br from-orange-100 to-orange-200">
+            <div className="flex items-center justify-center h-full bg-gradient-to-br from-primary/10 to-primary/20">
               <span className="text-6xl">🍽️</span>
             </div>
           )}
@@ -100,7 +100,7 @@ export default function RestaurantProductCard({
           {customData?.allergens && customData.allergens.length > 0 && (
             <div className="flex gap-1 mt-2 flex-wrap">
               {customData.allergens.slice(0, 3).map((allergen) => (
-                <span key={allergen} className="text-xs px-1.5 py-0.5 bg-yellow-100 text-yellow-800 rounded">
+                <span key={allergen} className="text-xs px-1.5 py-0.5 bg-accent text-accent-foreground rounded">
                   {allergen}
                 </span>
               ))}
