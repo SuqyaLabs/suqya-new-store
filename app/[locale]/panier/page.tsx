@@ -17,10 +17,10 @@ export default function CartPage() {
       <div className="min-h-[70vh] flex items-center justify-center px-4">
         <div className="text-center">
           <span className="text-8xl mb-6 block">🛒</span>
-          <h1 className="text-3xl font-bold text-warm-900 mb-4">
+          <h1 className="text-3xl font-bold text-foreground mb-4">
             {t("empty")}
           </h1>
-          <p className="text-warm-500 mb-8 max-w-md mx-auto">
+          <p className="text-muted-foreground mb-8 max-w-md mx-auto">
             {t("emptyMessage")}
           </p>
           <Button asChild size="lg">
@@ -39,9 +39,9 @@ export default function CartPage() {
   const total = subtotal + shippingEstimate;
 
   return (
-    <div className="min-h-screen bg-warm-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-white border-b border-warm-200">
+      <div className="bg-card border-b border-border">
         <div className="container mx-auto px-4 py-6">
           <h1 className="text-2xl md:text-3xl font-bold text-foreground">
             {t("title")} ({getTotalItems()} {t("itemCount", { count: getTotalItems() })})
@@ -65,11 +65,11 @@ export default function CartPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, x: -100 }}
-                    className="bg-white rounded-2xl p-4 md:p-6 shadow-sm"
+                    className="bg-card rounded-2xl p-4 md:p-6 shadow-sm border border-border/50"
                   >
                     <div className="flex gap-4">
                       {/* Product Image */}
-                      <div className="w-24 h-24 md:w-32 md:h-32 rounded-xl bg-linear-to-br from-honey-100 to-honey-200 flex items-center justify-center shrink-0">
+                      <div className="w-24 h-24 md:w-32 md:h-32 rounded-xl bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center shrink-0">
                         <span className="text-4xl md:text-5xl">🍯</span>
                       </div>
 
@@ -77,18 +77,18 @@ export default function CartPage() {
                       <div className="flex-1 min-w-0">
                         <div className="flex justify-between items-start">
                           <div>
-                            <h3 className="font-semibold text-warm-900 text-lg">
+                            <h3 className="font-semibold text-foreground text-lg">
                               {item.product.name}
                             </h3>
                             {item.variant && (
-                              <p className="text-sm text-warm-500">
+                              <p className="text-sm text-foreground/70">
                                 {t("size")}: {item.variant.name}
                               </p>
                             )}
                           </div>
                           <button
                             onClick={() => removeItem(item.product.id, item.variant?.id)}
-                            className="p-2 text-warm-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                            className="p-2 text-foreground/50 hover:text-destructive hover:bg-destructive/10 rounded-lg transition-colors"
                             title={t("remove")}
                           >
                             <Trash2 size={18} />
@@ -97,7 +97,7 @@ export default function CartPage() {
 
                         <div className="mt-4 flex items-center justify-between">
                           {/* Quantity Controls */}
-                          <div className="flex items-center gap-3 border border-warm-200 rounded-xl p-1">
+                          <div className="flex items-center gap-3 border border-border rounded-xl p-1">
                             <button
                               onClick={() =>
                                 updateQuantity(
@@ -106,11 +106,11 @@ export default function CartPage() {
                                   Math.max(1, item.quantity - 1)
                                 )
                               }
-                              className="h-8 w-8 rounded-lg bg-warm-100 flex items-center justify-center text-warm-600 hover:bg-warm-200 transition-colors"
+                              className="h-8 w-8 rounded-lg bg-muted flex items-center justify-center text-foreground/70 hover:text-foreground hover:bg-muted/80 transition-colors"
                             >
                               <Minus size={16} />
                             </button>
-                            <span className="w-8 text-center font-medium">
+                            <span className="w-8 text-center font-semibold text-foreground">
                               {item.quantity}
                             </span>
                             <button
@@ -121,7 +121,7 @@ export default function CartPage() {
                                   item.quantity + 1
                                 )
                               }
-                              className="h-8 w-8 rounded-lg bg-warm-100 flex items-center justify-center text-warm-600 hover:bg-warm-200 transition-colors"
+                              className="h-8 w-8 rounded-lg bg-muted flex items-center justify-center text-foreground/70 hover:text-foreground hover:bg-muted/80 transition-colors"
                             >
                               <Plus size={16} />
                             </button>
@@ -129,10 +129,10 @@ export default function CartPage() {
 
                           {/* Price */}
                           <div className="text-right">
-                            <p className="font-bold text-lg text-honey-700">
+                            <p className="font-bold text-lg text-foreground">
                               {formatPrice(itemTotal)}
                             </p>
-                            <p className="text-xs text-warm-500">
+                            <p className="text-xs text-foreground/60">
                               {formatPrice(price)} {t("perUnit")}
                             </p>
                           </div>
@@ -148,7 +148,7 @@ export default function CartPage() {
             <div className="pt-4">
               <Link
                 href="/boutique"
-                className="inline-flex items-center gap-2 text-honey-700 hover:text-honey-800 font-medium"
+                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
               >
                 <ShoppingBag size={18} />
                 {t("continueShopping")}
@@ -158,26 +158,26 @@ export default function CartPage() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-2xl p-6 shadow-sm sticky top-24">
-              <h2 className="text-lg font-bold text-warm-900 mb-4">
+            <div className="bg-card rounded-2xl p-6 shadow-sm sticky top-24 border border-border/50">
+              <h2 className="text-lg font-bold text-foreground mb-4">
                 {t("checkout")}
               </h2>
 
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between text-sm">
-                  <span className="text-warm-500">{t("subtotal")}</span>
-                  <span className="text-warm-900">{formatPrice(subtotal)}</span>
+                  <span className="text-foreground/70">{t("subtotal")}</span>
+                  <span className="font-medium text-foreground">{formatPrice(subtotal)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-warm-500">{t("shippingEstimate")}</span>
-                  <span className="text-warm-900">{formatPrice(shippingEstimate)}</span>
+                  <span className="text-foreground/70">{t("shippingEstimate")}</span>
+                  <span className="font-medium text-foreground">{formatPrice(shippingEstimate)}</span>
                 </div>
-                <div className="border-t border-warm-200 pt-3">
+                <div className="border-t border-border pt-3">
                   <div className="flex justify-between font-bold text-lg">
-                    <span className="text-warm-900">{t("total")}</span>
-                    <span className="text-honey-700">{formatPrice(total)}</span>
+                    <span className="text-foreground">{t("total")}</span>
+                    <span className="text-foreground">{formatPrice(total)}</span>
                   </div>
-                  <p className="text-xs text-warm-500 mt-1">
+                  <p className="text-xs text-foreground/60 mt-1">
                     {t("shippingNote")}
                   </p>
                 </div>
@@ -191,14 +191,14 @@ export default function CartPage() {
               </Button>
 
               {/* Trust Badges */}
-              <div className="mt-6 pt-6 border-t border-warm-200">
-                <div className="flex items-center gap-3 text-sm text-warm-600">
-                  <Package size={18} className="text-forest-600" />
+              <div className="mt-6 pt-6 border-t border-border">
+                <div className="flex items-center gap-3 text-sm text-foreground/70">
+                  <Package size={18} className="text-primary" />
                   <span>{t("deliveryInfo")}</span>
                 </div>
               </div>
 
-              <p className="text-xs text-warm-500 mt-4 text-center">
+              <p className="text-xs text-foreground/60 mt-4 text-center">
                 {t("securePayment")}
               </p>
             </div>
