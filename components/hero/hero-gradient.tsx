@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react'
 import { cn } from '@/lib/utils'
+import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import type { HeroGradientConfig, GeneratedGradient } from '@/types/hero'
 
 interface HeroGradientProps {
@@ -12,7 +13,11 @@ interface HeroGradientProps {
 }
 
 export function HeroGradient({ gradient, config, className, children }: HeroGradientProps) {
+  const reduceMotion = useReducedMotion()
+  
   const animationStyle = useMemo(() => {
+    // Skip animations on mobile or when user prefers reduced motion
+    if (reduceMotion) return {}
     if (config.style !== 'animated' || !config.animation) return {}
     
     const { type, duration } = config.animation
@@ -35,7 +40,7 @@ export function HeroGradient({ gradient, config, className, children }: HeroGrad
       default:
         return {}
     }
-  }, [config.style, config.animation])
+  }, [config.style, config.animation, reduceMotion])
 
   return (
     <div

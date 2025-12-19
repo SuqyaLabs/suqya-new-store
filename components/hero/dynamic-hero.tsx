@@ -4,6 +4,7 @@ import { useLocale } from 'next-intl'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { useHeroConfig } from '@/hooks/use-hero-config'
+import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { HeroGradient } from './hero-gradient'
 import { HeroContent } from './hero-content'
 import { HoneyDecorations } from './honey-decorations'
@@ -136,15 +137,24 @@ function DecorativePattern({ pattern, className }: { pattern: string; className?
   )
 }
 
-// Animated decorative blob
-function DecorativeBlob({ className, delay = 0 }: { className: string; delay?: number }) {
+// Decorative blob - simplified for mobile
+function DecorativeBlob({ 
+  className, 
+  delay = 0, 
+  reduced = false 
+}: { 
+  className: string
+  delay?: number
+  reduced?: boolean 
+}) {
   return (
     <div
       className={cn(
-        'absolute rounded-full blur-3xl pointer-events-none',
+        'absolute rounded-full pointer-events-none',
+        reduced ? 'blur-2xl' : 'blur-3xl', // Less blur on mobile
         className
       )}
-      style={{
+      style={reduced ? undefined : {
         animation: `hero-blob 8s ease-in-out infinite, hero-scale-pulse 6s ease-in-out infinite`,
         animationDelay: `${delay}s`
       }}
@@ -165,6 +175,7 @@ export function DynamicHero({
 }: DynamicHeroProps) {
   const locale = useLocale() as 'fr' | 'ar' | 'en'
   const isRTL = locale === 'ar'
+  const reduceAnimations = useReducedMotion()
   
   // Get hero config with overrides
   const { config, gradient, isLoading, businessType } = useHeroConfig({
@@ -243,16 +254,20 @@ export function DynamicHero({
         {/* Decorative Elements */}
         {showDecorations && (
           <>
-            {/* Animated Blobs */}
-            <DecorativeBlob className={decorations.blob1} delay={0} />
-            <DecorativeBlob className={decorations.blob2} delay={2} />
-            <DecorativeBlob className={decorations.blob3} delay={4} />
+            {/* Animated Blobs - reduced on mobile */}
+            <DecorativeBlob className={decorations.blob1} delay={0} reduced={reduceAnimations} />
+            {!reduceAnimations && (
+              <>
+                <DecorativeBlob className={decorations.blob2} delay={2} reduced={false} />
+                <DecorativeBlob className={decorations.blob3} delay={4} reduced={false} />
+              </>
+            )}
             
-            {/* Special Honey Decorations for Nutrition */}
-            {businessType === 'nutrition' && <HoneyDecorations />}
+            {/* Special Honey Decorations for Nutrition - skip on mobile */}
+            {businessType === 'nutrition' && !reduceAnimations && <HoneyDecorations />}
             
             {/* Pattern Overlay (skip for nutrition as HoneyDecorations handles it) */}
-            {businessType !== 'nutrition' && decorations.pattern && decorations.pattern !== 'none' && (
+            {businessType !== 'nutrition' && decorations.pattern && decorations.pattern !== 'none' && !reduceAnimations && (
               <DecorativePattern pattern={decorations.pattern} />
             )}
           </>

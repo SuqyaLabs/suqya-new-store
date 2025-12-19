@@ -29,24 +29,24 @@ const defaultColors: ThemeColors = {
   info: '#3B82F6'
 }
 
-// Theme presets - complete harmonious palettes for good UI/UX
+// Theme presets - complete harmonious  
 const themePresets: Record<string, Partial<ThemeColors>> = {
   honey_gold: {
     // Royal Honey theme - Premium & Organic
-    primary: '#D97706',         // Amber 600
+      primary: '#EA580C',
     primary_foreground: '#FFFFFF',
-    secondary: '#92400E',       // Amber 800
+    secondary: '#9A3412',
     secondary_foreground: '#FFFFFF',
-    accent: '#FEF3C7',          // Amber 100
-    accent_foreground: '#92400E',
-    background: '#FFFBEB',      // Amber 50
-    foreground: '#451A03',      // Amber 950
+    accent: '#FED7AA',
+    accent_foreground: '#7C2D12',
+    background: '#FFFBF7',
+    foreground: '#431407',
     card: '#FFFFFF',
-    card_foreground: '#451A03',
-    muted: '#FFF7ED',           // Orange 50
-    muted_foreground: '#B45309', // Amber 700
-    border: '#FDE68A',          // Amber 200
-    input: '#FDE68A'
+    card_foreground: '#431407',
+    muted: '#FFF7ED',
+    muted_foreground: '#9A7B6A',
+    border: '#FED7AA',
+    input: '#FFEDD5'
   },
   nutrition_green: {
     // Fresh green theme - health/nutrition businesses

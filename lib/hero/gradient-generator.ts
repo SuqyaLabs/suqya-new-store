@@ -365,7 +365,17 @@ export function getRecommendedGradientConfig(businessType: BusinessTypeId): {
 }
 
 // CSS keyframes for animated gradients (to be injected)
+// Includes prefers-reduced-motion support for accessibility and mobile performance
 export const gradientKeyframes = `
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 @keyframes hero-gradient-shift {
   0% {
     background-position: 0% 50%;
