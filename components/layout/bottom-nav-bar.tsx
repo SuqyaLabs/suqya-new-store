@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { Home, Store, ShoppingCart, User, BookOpen, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/store/cart-store";
@@ -30,7 +30,7 @@ export function BottomNavBar() {
   };
 
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-warm-200 safe-area-pb">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-card border-t border-border safe-area-pb">
       <div className="flex items-center justify-around h-16">
         {navItems.map((item) => {
           const active = isActive(item.href);
@@ -42,8 +42,8 @@ export function BottomNavBar() {
               className={cn(
                 "flex flex-col items-center justify-center gap-1 w-full h-full transition-colors relative",
                 active
-                  ? "text-honey-600"
-                  : "text-warm-500 hover:text-warm-700"
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
               )}
             >
               <item.icon 
@@ -57,7 +57,7 @@ export function BottomNavBar() {
               </span>
               {/* Cart item count badge */}
               {item.key === "cart" && itemCount > 0 && (
-                <span className="absolute -top-1 right-1/4 translate-x-1/2 h-4 w-4 rounded-full bg-honey-600 text-[10px] font-bold text-warm-900 flex items-center justify-center">
+                <span className="absolute -top-1 right-1/4 translate-x-1/2 h-4 w-4 rounded-full bg-primary text-[10px] font-bold text-primary-foreground flex items-center justify-center">
                   {itemCount > 9 ? "9+" : itemCount}
                 </span>
               )}
