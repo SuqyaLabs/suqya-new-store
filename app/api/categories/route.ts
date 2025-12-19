@@ -1,6 +1,8 @@
 import { supabase } from "@/lib/supabase";
 import { NextResponse } from "next/server";
 
+const TENANT_ID = process.env.NEXT_PUBLIC_TENANT_ID;
+
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -16,7 +18,8 @@ export async function GET(request: Request) {
           name,
           language_code
         )
-      `);
+      `)
+      .eq('tenant_id', TENANT_ID);
 
     if (catError) {
       console.error('Error fetching categories:', catError);
@@ -27,6 +30,7 @@ export async function GET(request: Request) {
     const { data: productsData, error: prodError } = await supabase
       .from('products')
       .select('category_id')
+      .eq('tenant_id', TENANT_ID)
       .eq('is_available', true)
       .eq('is_online', true);
 

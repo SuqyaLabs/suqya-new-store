@@ -7,6 +7,8 @@ import {
   TranslatedVariant,
 } from "./types";
 
+const TENANT_ID = process.env.NEXT_PUBLIC_TENANT_ID;
+
 interface ProductRow {
   id: string;
   name: string;
@@ -166,7 +168,7 @@ export async function getTranslatedProducts(
     )
     .eq("product_translations.language_code", locale)
     .eq("categories.category_translations.language_code", locale)
-    .or("short_description.not.is.null,long_description.not.is.null")
+    .eq("tenant_id", TENANT_ID)
     .eq("is_available", true)
     .eq("is_online", true)
     .order("created_at", { ascending: false });
@@ -259,6 +261,7 @@ x
     )
     .eq("product_translations.language_code", locale)
     .eq("categories.category_translations.language_code", locale)
+    .eq("tenant_id", TENANT_ID)
     .eq("is_available", true)
     .eq("is_online", true)
     .order("price", { ascending: true });
@@ -324,6 +327,7 @@ export async function getTranslatedProductById(
     )
     .eq("product_translations.language_code", locale)
     .eq("categories.category_translations.language_code", locale)
+    .eq("tenant_id", TENANT_ID)
     .eq("id", id)
     .single();
 
@@ -408,6 +412,7 @@ export async function getTranslatedProductBySlug(
     )
     .eq("product_translations.language_code", locale)
     .eq("categories.category_translations.language_code", locale)
+    .eq("tenant_id", TENANT_ID)
     .eq("slug", slug)
     .single();
 
@@ -469,6 +474,7 @@ export async function getTranslatedCategories(
     `
     )
     .eq("category_translations.language_code", locale)
+    .eq("tenant_id", TENANT_ID)
     .eq("type", "retail")
     .order("name");
 
@@ -506,6 +512,7 @@ export async function getTranslatedVariants(
     `
     )
     .eq("variant_translations.language_code", locale)
+    .eq("tenant_id", TENANT_ID)
     .eq("product_id", productId)
     .order("price_mod", { ascending: true });
 
@@ -547,6 +554,7 @@ export async function searchTranslatedProducts(
     .from("products")
     .select("id")
     .or(`name.ilike.%${query}%,short_description.ilike.%${query}%`)
+    .eq("tenant_id", TENANT_ID)
     .eq("is_available", true)
     .eq("is_online", true);
 
@@ -597,6 +605,7 @@ export async function searchTranslatedProducts(
     )
     .eq("product_translations.language_code", locale)
     .eq("categories.category_translations.language_code", locale)
+    .eq("tenant_id", TENANT_ID)
     .in("id", allIds)
     .eq("is_available", true)
     .eq("is_online", true);

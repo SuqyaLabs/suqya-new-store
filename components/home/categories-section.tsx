@@ -4,6 +4,7 @@ import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { SectionGradient } from "@/components/theme/section-gradient";
 
 interface CategoryConfig {
   id: string;
@@ -69,14 +70,15 @@ export function CategoriesSection() {
   const tCat = useTranslations("categories");
 
   return (
-    <section className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4">
+    <section className="py-16 md:py-24 relative overflow-hidden">
+      <SectionGradient variant="secondary" intensity="light" />
+      <div className="container relative z-10 mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-warm-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             {t("title")}
           </h2>
-          <p className="text-warm-500 max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             {t("subtitle")}
           </p>
         </div>
@@ -93,7 +95,7 @@ export function CategoriesSection() {
             <motion.div key={category.id} variants={item}>
               <Link href={category.href} className="group block">
                 <div
-                  className={`relative rounded-2xl p-6 md:p-8 bg-linear-to-br ${category.color} overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1`}
+                  className={`relative rounded-2xl p-6 md:p-8 bg-linear-to-br ${category.color} overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-border/30`}
                 >
                   {/* Icon */}
                   <div className="text-5xl md:text-6xl mb-4">
@@ -101,15 +103,15 @@ export function CategoriesSection() {
                   </div>
 
                   {/* Content */}
-                  <h3 className="font-semibold text-warm-900 text-lg mb-1">
+                  <h3 className="font-semibold text-foreground text-lg mb-1">
                     {tCat(category.nameKey)}
                   </h3>
-                  <p className="text-sm text-warm-600 mb-3">
+                  <p className="text-sm text-muted-foreground mb-3">
                     {tCat(category.descKey)}
                   </p>
 
                   {/* Arrow */}
-                  <div className="flex items-center text-honey-700 font-medium text-sm group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                  <div className="flex items-center text-primary font-medium text-sm group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
                     {t("viewMore")}
                     <ArrowRight size={16} className="ms-1 rtl:rotate-180" />
                   </div>

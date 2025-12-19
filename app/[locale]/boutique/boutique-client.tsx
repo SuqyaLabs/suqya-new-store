@@ -7,6 +7,7 @@ import { ShopFilters } from "@/components/shop/shop-filters";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import type { TranslatedProduct } from "@/lib/i18n/types";
+import { SectionGradient } from "@/components/theme/section-gradient";
 
 interface Category {
   id: string;
@@ -96,36 +97,37 @@ const [products, setProducts] = useState<TranslatedProduct[]>(initialProducts);
   const maxPrice = Math.max(...products.map(p => p.price), 20000);
 
   return (
-    <div className="min-h-screen bg-warm-50">
+    <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-linear-to-br from-honey-100 to-forest-50 py-12 md:py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-warm-900 mb-4">
+      <section className="relative py-12 md:py-16 overflow-hidden">
+        <SectionGradient variant="primary" intensity="medium" />
+        <div className="container relative z-10 mx-auto px-4 text-center">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             {t("title")}
           </h1>
-          <p className="text-warm-600 max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             {t("subtitle")}
           </p>
         </div>
       </section>
 
       {/* Categories Filter - Horizontal */}
-      <section className="bg-white border-b border-warm-200 sticky top-16 z-30">
+      <section className="bg-background/80 backdrop-blur-sm border-b border-border sticky top-16 z-30">
         <div className="container mx-auto px-4">
           <div className="flex gap-2 py-4 overflow-x-auto hide-scrollbar">
             <button
               onClick={() => handleCategorySelect(null)}
               className={`px-4 py-2 rounded-full font-medium text-sm whitespace-nowrap transition-colors ${
                 !selectedCategory
-                  ? "bg-honey-600 text-warm-900"
-                  : "bg-warm-100 text-warm-700 hover:bg-warm-200"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted text-muted-foreground hover:bg-muted/80"
               }`}
             >
               {t("filters.all")}
             </button>
             {categoriesLoading ? (
               <div className="flex items-center px-4">
-                <Loader2 className="animate-spin h-4 w-4 text-warm-400" />
+                <Loader2 className="animate-spin h-4 w-4 text-muted-foreground" />
               </div>
             ) : (
               categories.map((category) => (
@@ -134,8 +136,8 @@ const [products, setProducts] = useState<TranslatedProduct[]>(initialProducts);
                   onClick={() => handleCategorySelect(category.id)}
                   className={`px-4 py-2 rounded-full font-medium text-sm whitespace-nowrap transition-colors ${
                     selectedCategory === category.id
-                      ? "bg-honey-600 text-warm-900"
-                      : "bg-warm-100 text-warm-700 hover:bg-warm-200"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted text-muted-foreground hover:bg-muted/80"
                   }`}
                 >
                   {category.name}
@@ -147,7 +149,7 @@ const [products, setProducts] = useState<TranslatedProduct[]>(initialProducts);
       </section>
 
       {/* Filters Bar */}
-      <section className="bg-warm-50 border-b border-warm-200">
+      <section className="bg-muted/30 border-b border-border">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-3 gap-4">
             <ShopFilters
@@ -159,7 +161,7 @@ const [products, setProducts] = useState<TranslatedProduct[]>(initialProducts);
               maxPrice={maxPrice}
               selectedCategory={selectedCategory}
             />
-            <p className="text-warm-500 text-sm whitespace-nowrap">
+            <p className="text-muted-foreground text-sm whitespace-nowrap">
               {t("products", { count: filteredProducts.length })}
             </p>
           </div>
@@ -167,11 +169,12 @@ const [products, setProducts] = useState<TranslatedProduct[]>(initialProducts);
       </section>
 
       {/* Products Grid */}
-      <section className="py-8 md:py-12">
-        <div className="container mx-auto px-4">
+      <section className="py-8 md:py-12 relative">
+        <SectionGradient variant="secondary" intensity="light" />
+        <div className="container relative z-10 mx-auto px-4">
           {isLoading ? (
             <div className="flex items-center justify-center py-20">
-              <Loader2 className="animate-spin h-8 w-8 text-honey-600" />
+              <Loader2 className="animate-spin h-8 w-8 text-primary" />
             </div>
           ) : filteredProducts.length > 0 ? (
             <motion.div
@@ -204,10 +207,10 @@ const [products, setProducts] = useState<TranslatedProduct[]>(initialProducts);
           ) : (
             <div className="text-center py-16">
               <span className="text-6xl mb-4 block">🍯</span>
-              <h3 className="text-xl font-semibold text-warm-700 mb-2">
+              <h3 className="text-xl font-semibold text-foreground mb-2">
                 {t("noProducts")}
               </h3>
-              <p className="text-warm-500">
+              <p className="text-muted-foreground">
                 {t("tryDifferentFilters")}
               </p>
             </div>

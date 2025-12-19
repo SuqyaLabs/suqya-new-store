@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
+import { SectionGradient } from "@/components/theme/section-gradient";
 
 interface Review {
   name: string;
@@ -43,14 +44,15 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-linear-to-br from-honey-50 to-forest-50">
-      <div className="container mx-auto px-4">
+    <section className="py-16 md:py-24 relative overflow-hidden">
+      <SectionGradient variant="secondary" intensity="medium" />
+      <div className="container relative z-10 mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-warm-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             {t("title")}
           </h2>
-          <p className="text-warm-500">
+          <p className="text-muted-foreground">
             {t("subtitle")}
           </p>
         </div>
@@ -64,10 +66,10 @@ export function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-card rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-border/50"
             >
               {/* Quote Icon */}
-              <Quote size={32} className="text-honey-200 mb-4 rtl:scale-x-[-1]" />
+              <Quote size={32} className="text-primary/20 mb-4 rtl:scale-x-[-1]" />
 
               {/* Rating */}
               <div className="flex gap-1 mb-4">
@@ -75,25 +77,25 @@ export function TestimonialsSection() {
                   <Star
                     key={i}
                     size={16}
-                    className="text-honey-500 fill-honey-500"
+                    className="text-primary fill-primary"
                   />
                 ))}
               </div>
 
               {/* Text */}
-              <p className="text-warm-700 mb-4 leading-relaxed">
+              <p className="text-foreground/80 mb-4 leading-relaxed">
                 &ldquo;{review.text}&rdquo;
               </p>
 
               {/* Author */}
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-semibold text-warm-900">
+                  <p className="font-semibold text-foreground">
                     {review.name}
                   </p>
-                  <p className="text-sm text-warm-500">{review.location}</p>
+                  <p className="text-sm text-muted-foreground">{review.location}</p>
                 </div>
-                <span className="text-xs text-honey-700 bg-honey-100 px-3 py-1 rounded-full">
+                <span className="text-xs text-primary bg-primary/10 px-3 py-1 rounded-full">
                   {review.product}
                 </span>
               </div>

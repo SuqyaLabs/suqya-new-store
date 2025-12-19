@@ -25,6 +25,7 @@ import { useToast } from "@/components/ui/toast";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice } from "@/lib/utils";
 import type { ProductData } from "@/lib/data/products";
+import { SectionGradient } from "@/components/theme/section-gradient";
 
 interface Variant {
   id: string;
@@ -38,12 +39,8 @@ interface ProductDetailClientProps {
   relatedProducts: ProductData[];
 }
 
-// Default variants if API fails
-const defaultVariants: Variant[] = [
-  { id: "250g", name: "250g", price_mod: -2000 },
-  { id: "500g", name: "500g", price_mod: 0 },
-  { id: "1kg", name: "1kg", price_mod: 4000 },
-];
+// Default variant if API fails or product has no variants
+const defaultVariant: Variant = { id: "default", name: "Standard", price_mod: 0 };
 
 export function ProductDetailClient({
   product,
@@ -53,8 +50,8 @@ export function ProductDetailClient({
   const tp = useTranslations("product");
   const locale = useLocale();
   const benefits = tp.raw("benefitsList");
-  const [variants, setVariants] = useState<Variant[]>(defaultVariants);
-  const [selectedVariant, setSelectedVariant] = useState<Variant>(defaultVariants[1]);
+  const [variants, setVariants] = useState<Variant[]>([defaultVariant]);
+  const [selectedVariant, setSelectedVariant] = useState<Variant>(defaultVariant);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
@@ -114,14 +111,14 @@ export function ProductDetailClient({
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       {/* Back Button */}
       <div className="container mx-auto px-4 py-4">
         <Link
           href="/boutique"
-          className="inline-flex items-center gap-2 text-warm-600 hover:text-warm-900 transition-colors"
+          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
         >
-          <ChevronLeft size={20} />
+          <ChevronLeft size={20} className="rtl:rotate-180" />
           <span>{t("backToShop")}</span>
         </Link>
       </div>
@@ -135,7 +132,7 @@ export function ProductDetailClient({
             animate={{ opacity: 1, x: 0 }}
             className="relative"
           >
-            <div className="aspect-square rounded-2xl bg-linear-to-br from-honey-100 to-honey-200 flex items-center justify-center overflow-hidden relative">
+            <div className="aspect-square rounded-2xl bg-linear-to-br from-primary/10 to-primary/20 flex items-center justify-center overflow-hidden relative">
               {selectedImage ? (
                 <Image
                   src={selectedImage}
@@ -160,10 +157,10 @@ export function ProductDetailClient({
                       type="button"
                       onClick={() => setSelectedImageIndex(idx)}
                       aria-label={tp("viewImage", { index: idx + 1, name: product.name })}
-                      className={`relative aspect-square overflow-hidden rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-honey-500 focus-visible:ring-offset-2 ${
+                      className={`relative aspect-square overflow-hidden rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
                         isSelected
-                          ? "border-honey-500"
-                          : "border-warm-200 hover:border-warm-300"
+                          ? "border-primary"
+                          : "border-border hover:border-primary/50"
                       }`}
                     >
                       <Image
@@ -204,13 +201,13 @@ export function ProductDetailClient({
           >
             {/* Category */}
             {product.category_name && (
-              <p className="text-sm text-warm-500 uppercase tracking-wide mb-2">
+              <p className="text-sm text-muted-foreground uppercase tracking-wide mb-2">
                 {product.category_name}
               </p>
             )}
 
             {/* Title */}
-            <h1 className="text-3xl md:text-4xl font-bold text-warm-900 mb-2">
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
               {product.name}
             </h1>
 
@@ -222,86 +219,91 @@ export function ProductDetailClient({
                     key={i}
                     size={18}
                     className={
-                      i < 4 ? "text-honey-500 fill-honey-500" : "text-warm-300"
+                      i < 4 ? "text-primary fill-primary" : "text-muted"
                     }
                   />
                 ))}
               </div>
-              <span className="text-sm font-medium text-warm-700">{tp("rating")}</span>
-              <span className="text-sm text-warm-500">({tp("reviewCount")})</span>
+              <span className="text-sm font-medium text-foreground">{tp("rating")}</span>
+              <span className="text-sm text-muted-foreground">({tp("reviewCount")})</span>
             </div>
 
             {/* Price */}
             <div className="mb-6">
-              <p className="text-3xl font-bold text-honey-700">
+              <p className="text-3xl font-bold text-primary">
                 {formatPrice(currentPrice)}
               </p>
-              <p className="text-sm text-warm-500">
-                ({(currentPrice / parseInt(selectedVariant.name)).toFixed(2)} DA/g)
-              </p>
+              {/* Price per unit - only show for weight-based variants */}
+              {selectedVariant.name.match(/\d+/) && (
+                <p className="text-sm text-muted-foreground">
+                  ({(currentPrice / parseInt(selectedVariant.name)).toFixed(2)} DA/g)
+                </p>
+              )}
             </div>
 
             {/* Description */}
             {product.short_description && (
-              <p className="text-warm-600 mb-6 leading-relaxed">
+              <p className="text-muted-foreground mb-6 leading-relaxed">
                 {product.short_description}
               </p>
             )}
 
-            {/* Size Selector */}
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-warm-700 mb-3">
-                {t("chooseSize")}
-              </label>
-              <div className="flex gap-3">
-                {variants.map((variant) => {
-                  const variantPrice = Number(product.price) + variant.price_mod;
-                  const isSelected = selectedVariant.id === variant.id;
+            {/* Variant Selector - only show if product has real variants */}
+            {variants.length > 1 || (variants.length === 1 && variants[0].id !== "default") ? (
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-foreground mb-3">
+                  {t("chooseVariant")}
+                </label>
+                <div className="flex flex-wrap gap-3">
+                  {variants.map((variant) => {
+                    const variantPrice = Number(product.price) + variant.price_mod;
+                    const isSelected = selectedVariant.id === variant.id;
 
-                  return (
-                    <button
-                      key={variant.id}
-                      onClick={() => setSelectedVariant(variant)}
-                      className={`flex-1 p-4 rounded-xl border-2 transition-all ${
-                        isSelected
-                          ? "border-honey-500 bg-honey-50"
-                          : "border-warm-200 hover:border-warm-300"
-                      }`}
-                    >
-                      <p className="font-semibold text-warm-900">
-                        {variant.name}
-                      </p>
-                      <p
-                        className={`text-sm ${
-                          isSelected ? "text-honey-700" : "text-warm-500"
+                    return (
+                      <button
+                        key={variant.id}
+                        onClick={() => setSelectedVariant(variant)}
+                        className={`flex-1 min-w-[120px] p-4 rounded-xl border-2 transition-all ${
+                          isSelected
+                            ? "border-primary bg-primary/5"
+                            : "border-border hover:border-primary/50"
                         }`}
                       >
-                        {formatPrice(variantPrice)}
-                      </p>
-                    </button>
-                  );
-                })}
+                        <p className="font-semibold text-foreground">
+                          {variant.name}
+                        </p>
+                        <p
+                          className={`text-sm ${
+                            isSelected ? "text-primary" : "text-muted-foreground"
+                          }`}
+                        >
+                          {formatPrice(variantPrice)}
+                        </p>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            ) : null}
 
             {/* Quantity */}
             <div className="mb-6">
-              <label className="block text-sm font-medium text-warm-700 mb-3">
+              <label className="block text-sm font-medium text-foreground mb-3">
                 {t("quantity")}
               </label>
-              <div className="inline-flex items-center gap-4 border border-warm-200 rounded-xl p-2">
+              <div className="inline-flex items-center gap-4 border border-border rounded-xl p-2">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="h-10 w-10 rounded-lg bg-warm-100 flex items-center justify-center text-warm-600 hover:bg-warm-200 transition-colors"
+                  className="h-10 w-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:bg-muted/80 transition-colors"
                 >
                   <Minus size={18} />
                 </button>
-                <span className="w-12 text-center font-semibold text-lg">
+                <span className="w-12 text-center font-semibold text-lg text-foreground">
                   {quantity}
                 </span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="h-10 w-10 rounded-lg bg-warm-100 flex items-center justify-center text-warm-600 hover:bg-warm-200 transition-colors"
+                  className="h-10 w-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:bg-muted/80 transition-colors"
                 >
                   <Plus size={18} />
                 </button>
@@ -317,23 +319,23 @@ export function ProductDetailClient({
             </div>
 
             {/* Trust Badges */}
-            <div className="grid grid-cols-2 gap-4 p-4 bg-warm-50 rounded-xl">
+            <div className="grid grid-cols-2 gap-4 p-4 bg-muted/50 rounded-xl border border-border/50">
               <div className="flex items-center gap-3">
-                <Truck size={20} className="text-forest-600" />
+                <Truck size={20} className="text-secondary" />
                 <div>
-                  <p className="text-sm font-medium text-warm-900">
+                  <p className="text-sm font-medium text-foreground">
                     {t("fastDelivery")}
                   </p>
-                  <p className="text-xs text-warm-500">{t("deliveryTime")}</p>
+                  <p className="text-xs text-muted-foreground">{t("deliveryTime")}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <Shield size={20} className="text-forest-600" />
+                <Shield size={20} className="text-secondary" />
                 <div>
-                  <p className="text-sm font-medium text-warm-900">
+                  <p className="text-sm font-medium text-foreground">
                     {t("qualityGuarantee")}
                   </p>
-                  <p className="text-xs text-warm-500">{t("satisfaction")}</p>
+                  <p className="text-xs text-muted-foreground">{t("satisfaction")}</p>
                 </div>
               </div>
             </div>
@@ -342,26 +344,27 @@ export function ProductDetailClient({
       </section>
 
       {/* Product Details */}
-      <section className="bg-warm-50 py-12 md:py-16">
-        <div className="container mx-auto px-4">
+      <section className="relative py-12 md:py-16 overflow-hidden">
+        <SectionGradient variant="secondary" intensity="medium" />
+        <div className="container relative z-10 mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Description */}
             <div>
-              <h2 className="text-2xl font-bold text-warm-900 mb-4">
+              <h2 className="text-2xl font-bold text-foreground mb-4">
                 {tp("description")}
               </h2>
-              <p className="text-warm-600 leading-relaxed mb-6">
+              <p className="text-muted-foreground leading-relaxed mb-6">
                 {product.long_description || product.short_description}
               </p>
 
-              <h3 className="text-lg font-semibold text-warm-900 mb-3">
+              <h3 className="text-lg font-semibold text-foreground mb-3">
                 {tp("benefits")}
               </h3>
               <ul className="space-y-2">
                 {benefits.map((benefit: string) => (
                   <li key={benefit} className="flex items-center gap-2">
-                    <Leaf size={16} className="text-forest-600" />
-                    <span className="text-warm-700">{benefit}</span>
+                    <Leaf size={16} className="text-secondary" />
+                    <span className="text-foreground/80">{benefit}</span>
                   </li>
                 ))}
               </ul>
@@ -369,36 +372,36 @@ export function ProductDetailClient({
 
             {/* Origin & Traceability */}
             <div>
-              <h2 className="text-2xl font-bold text-warm-900 mb-4">
+              <h2 className="text-2xl font-bold text-foreground mb-4">
                 {tp("origin")}
               </h2>
-              <div className="bg-white rounded-xl p-6 space-y-4">
+              <div className="bg-card rounded-xl p-6 space-y-4 border border-border/50">
                 <div className="flex items-start gap-3">
-                  <MapPin size={20} className="text-honey-600 mt-1" />
+                  <MapPin size={20} className="text-primary mt-1" />
                   <div>
-                    <p className="font-medium text-warm-900">{tp("region")}</p>
-                    <p className="text-warm-600">Algérie, Tizi Ouzou</p>
+                    <p className="font-medium text-foreground">{tp("region")}</p>
+                    <p className="text-muted-foreground">Algérie, Tizi Ouzou</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-xl">📅</span>
                   <div>
-                    <p className="font-medium text-warm-900">{tp("harvest")}</p>
-                    <p className="text-warm-600">Été 2024</p>
+                    <p className="font-medium text-foreground">{tp("harvest")}</p>
+                    <p className="text-muted-foreground">Été 2024</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-xl">🔢</span>
                   <div>
-                    <p className="font-medium text-warm-900">{tp("batch")}</p>
-                    <p className="text-warm-600">SQ-{product.id.slice(0, 8).toUpperCase()}</p>
+                    <p className="font-medium text-foreground">{tp("batch")}</p>
+                    <p className="text-muted-foreground">SQ-{product.id.slice(0, 8).toUpperCase()}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-xl">🌡️</span>
                   <div>
-                    <p className="font-medium text-warm-900">{tp("storage")}</p>
-                    <p className="text-warm-600">18-25°C, à l&apos;abri de la lumière</p>
+                    <p className="font-medium text-foreground">{tp("storage")}</p>
+                    <p className="text-muted-foreground">18-25°C, à l&apos;abri de la lumière</p>
                   </div>
                 </div>
               </div>
@@ -409,9 +412,10 @@ export function ProductDetailClient({
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (
-        <section className="py-12 md:py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold text-warm-900 mb-8">
+        <section className="py-12 md:py-16 relative overflow-hidden">
+          <SectionGradient variant="primary" intensity="light" />
+          <div className="container relative z-10 mx-auto px-4">
+            <h2 className="text-2xl font-bold text-foreground mb-8">
               {t("relatedProducts")}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

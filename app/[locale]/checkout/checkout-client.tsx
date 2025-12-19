@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice } from "@/lib/utils";
+import { SectionGradient } from "@/components/theme/section-gradient";
 
 export function CheckoutClient() {
   const t = useTranslations("checkout");
@@ -172,13 +173,14 @@ export function CheckoutClient() {
 
   if (items.length === 0 && !isComplete) {
     return (
-      <div className="min-h-[70vh] flex items-center justify-center px-4">
-        <div className="text-center">
+      <div className="min-h-[70vh] flex items-center justify-center px-4 relative">
+        <SectionGradient variant="secondary" intensity="light" />
+        <div className="text-center relative z-10">
           <span className="text-8xl mb-6 block">🛒</span>
-          <h1 className="text-3xl font-bold text-warm-900 mb-4">
+          <h1 className="text-3xl font-bold text-foreground mb-4">
             {t("emptyCart")}
           </h1>
-          <p className="text-warm-500 mb-8">
+          <p className="text-muted-foreground mb-8">
             {t("addProductsFirst")}
           </p>
           <Button asChild>
@@ -191,24 +193,25 @@ export function CheckoutClient() {
 
   if (isComplete) {
     return (
-      <div className="min-h-[70vh] flex items-center justify-center px-4">
+      <div className="min-h-[70vh] flex items-center justify-center px-4 relative">
+        <SectionGradient variant="primary" intensity="light" />
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="text-center max-w-md"
+          className="text-center max-w-md relative z-10"
         >
-          <div className="w-20 h-20 bg-forest-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Check size={40} className="text-forest-600" />
+          <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Check size={40} className="text-primary" />
           </div>
-          <h1 className="text-3xl font-bold text-warm-900 mb-2">
+          <h1 className="text-3xl font-bold text-foreground mb-2">
             {t("success.title")}
           </h1>
           {orderNumber && (
-            <p className="text-lg font-mono text-honey-700 mb-4 bg-honey-50 px-4 py-2 rounded-lg inline-block">
+            <p className="text-lg font-mono text-primary mb-4 bg-primary/5 px-4 py-2 rounded-lg inline-block">
               {orderNumber}
             </p>
           )}
-          <p className="text-warm-500 mb-8">
+          <p className="text-muted-foreground mb-8">
             {t("success.message")}
           </p>
           <Button asChild>
@@ -220,13 +223,13 @@ export function CheckoutClient() {
   }
 
   return (
-    <div className="min-h-screen bg-warm-50">
+    <div className="min-h-screen">
       {/* Header */}
-      <div className="bg-white border-b border-warm-200">
+      <div className="bg-background/80 backdrop-blur-sm border-b border-border sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <Link
             href="/boutique"
-            className="inline-flex items-center gap-2 text-warm-600 hover:text-warm-900"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           >
             <ChevronLeft size={20} className="rtl:rotate-180" />
             <span>{t("backToShop")}</span>
@@ -234,7 +237,8 @@ export function CheckoutClient() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 relative">
+        <SectionGradient variant="secondary" intensity="light" className="fixed inset-0 -z-10" />
         <div className="max-w-4xl mx-auto">
           {/* Progress Steps */}
           <div className="flex items-center justify-center mb-8">
@@ -243,15 +247,15 @@ export function CheckoutClient() {
                 <div
                   className={`flex items-center gap-2 ${
                     currentStep >= step.id
-                      ? "text-honey-700"
-                      : "text-warm-400"
+                      ? "text-primary"
+                      : "text-muted-foreground"
                   }`}
                 >
                   <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${
                       currentStep >= step.id
-                        ? "bg-honey-600 text-warm-900"
-                        : "bg-warm-200 text-warm-500"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground"
                     }`}
                   >
                     {currentStep > step.id ? (
@@ -266,8 +270,8 @@ export function CheckoutClient() {
                 </div>
                 {index < steps.length - 1 && (
                   <div
-                    className={`w-12 sm:w-24 h-1 mx-2 rounded ${
-                      currentStep > step.id ? "bg-honey-600" : "bg-warm-200"
+                    className={`w-12 sm:w-24 h-1 mx-2 rounded transition-colors ${
+                      currentStep > step.id ? "bg-primary" : "bg-muted"
                     }`}
                   />
                 )}
@@ -278,55 +282,55 @@ export function CheckoutClient() {
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Form */}
             <div className="lg:col-span-2">
-              <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <div className="bg-card rounded-2xl p-6 shadow-sm border border-border">
                 {/* Step 1: Contact Info */}
                 {currentStep === 1 && (
                   <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                   >
-                    <h2 className="text-xl font-bold text-warm-900 mb-6">
+                    <h2 className="text-xl font-bold text-foreground mb-6">
                       {t("customer.title")}
                     </h2>
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-medium text-warm-700 mb-2">
+                        <label className="block text-sm font-medium text-foreground mb-2">
                           {t("customer.email")}
                         </label>
                         <div className="relative">
                           <Mail
                             size={18}
-                            className="absolute left-3 top-1/2 -translate-y-1/2 text-warm-400"
+                            className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                           />
                           <input
                             type="email"
                             value={formData.email}
                             onChange={(e) => updateField("email", e.target.value)}
                             placeholder={t("fields.emailPlaceholder")}
-                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-warm-200 focus:border-honey-500 focus:ring-2 focus:ring-honey-500/20 outline-none"
+                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-input bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors"
                           />
                         </div>
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-warm-700 mb-2">
+                        <label className="block text-sm font-medium text-foreground mb-2">
                           {t("customer.phone")}
                         </label>
                         <div className="relative">
                           <Phone
                             size={18}
-                            className="absolute left-3 top-1/2 -translate-y-1/2 text-warm-400"
+                            className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                           />
                           <input
                             type="tel"
                             value={formData.phone}
                             onChange={(e) => updateField("phone", e.target.value)}
                             placeholder={t("fields.phonePlaceholder")}
-                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-warm-200 focus:border-honey-500 focus:ring-2 focus:ring-honey-500/20 outline-none"
+                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-input bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors"
                           />
                         </div>
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-warm-700 mb-2">
+                        <label className="block text-sm font-medium text-foreground mb-2">
                           {t("customer.name")}
                         </label>
                         <input
@@ -334,7 +338,7 @@ export function CheckoutClient() {
                           value={formData.fullName}
                           onChange={(e) => updateField("fullName", e.target.value)}
                           placeholder={t("fields.namePlaceholder")}
-                          className="w-full px-4 py-3 rounded-xl border border-warm-200 focus:border-honey-500 focus:ring-2 focus:ring-honey-500/20 outline-none"
+                          className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors"
                         />
                       </div>
                     </div>
@@ -347,37 +351,37 @@ export function CheckoutClient() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                   >
-                    <h2 className="text-xl font-bold text-warm-900 mb-6">
+                    <h2 className="text-xl font-bold text-foreground mb-6">
                       {t("shipping.title")}
                     </h2>
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-medium text-warm-700 mb-2">
+                        <label className="block text-sm font-medium text-foreground mb-2">
                           {t("shipping.address")}
                         </label>
                         <div className="relative">
                           <MapPin
                             size={18}
-                            className="absolute left-3 top-3 text-warm-400"
+                            className="absolute left-3 top-3 text-muted-foreground"
                           />
                           <textarea
                             value={formData.address}
                             onChange={(e) => updateField("address", e.target.value)}
                             placeholder={t("fields.addressPlaceholder")}
                             rows={2}
-                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-warm-200 focus:border-honey-500 focus:ring-2 focus:ring-honey-500/20 outline-none resize-none"
+                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-input bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none transition-colors"
                           />
                         </div>
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium text-warm-700 mb-2">
+                          <label className="block text-sm font-medium text-foreground mb-2">
                             {t("shipping.wilaya")}
                           </label>
                           <select
                             value={formData.wilaya}
                             onChange={(e) => updateField("wilaya", e.target.value)}
-                            className="w-full px-4 py-3 rounded-xl border border-warm-200 focus:border-honey-500 focus:ring-2 focus:ring-honey-500/20 outline-none"
+                            className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors"
                           >
                             <option value="">{t("fields.selectWilaya")}</option>
                             {wilayas.map((w: string) => (
@@ -388,7 +392,7 @@ export function CheckoutClient() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-warm-700 mb-2">
+                          <label className="block text-sm font-medium text-foreground mb-2">
                             {t("shipping.commune")}
                           </label>
                           <input
@@ -396,13 +400,13 @@ export function CheckoutClient() {
                             value={formData.commune}
                             onChange={(e) => updateField("commune", e.target.value)}
                             placeholder={t("fields.communePlaceholder")}
-                            className="w-full px-4 py-3 rounded-xl border border-warm-200 focus:border-honey-500 focus:ring-2 focus:ring-honey-500/20 outline-none"
+                            className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors"
                           />
                         </div>
                       </div>
 
                       <div className="pt-4">
-                        <label className="block text-sm font-medium text-warm-700 mb-3">
+                        <label className="block text-sm font-medium text-foreground mb-3">
                           {t("shipping.method")}
                         </label>
                         <div className="space-y-3">
@@ -411,8 +415,8 @@ export function CheckoutClient() {
                               key={method.id}
                               className={`flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all ${
                                 formData.shippingMethod === method.id
-                                  ? "border-honey-500 bg-honey-50"
-                                  : "border-warm-200 hover:border-warm-300"
+                                  ? "border-primary bg-primary/5"
+                                  : "border-border hover:border-primary/50"
                               }`}
                             >
                               <div className="flex items-center gap-3">
@@ -429,24 +433,24 @@ export function CheckoutClient() {
                                 <div
                                   className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
                                     formData.shippingMethod === method.id
-                                      ? "border-honey-600"
-                                      : "border-warm-300"
+                                      ? "border-primary"
+                                      : "border-muted-foreground"
                                   }`}
                                 >
                                   {formData.shippingMethod === method.id && (
-                                    <div className="w-2.5 h-2.5 rounded-full bg-honey-600" />
+                                    <div className="w-2.5 h-2.5 rounded-full bg-primary" />
                                   )}
                                 </div>
                                 <div>
-                                  <p className="font-medium text-warm-900">
+                                  <p className="font-medium text-foreground">
                                     {method.name}
                                   </p>
-                                  <p className="text-sm text-warm-500">
+                                  <p className="text-sm text-muted-foreground">
                                     {method.description}
                                   </p>
                                 </div>
                               </div>
-                              <span className="font-semibold text-warm-900">
+                              <span className="font-semibold text-foreground">
                                 {formatPrice(method.price)}
                               </span>
                             </label>
@@ -463,7 +467,7 @@ export function CheckoutClient() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                   >
-                    <h2 className="text-xl font-bold text-warm-900 mb-6">
+                    <h2 className="text-xl font-bold text-foreground mb-6">
                       {t("payment.title")}
                     </h2>
                     <div className="space-y-3">
@@ -472,8 +476,8 @@ export function CheckoutClient() {
                           key={method.id}
                           className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${
                             formData.paymentMethod === method.id
-                              ? "border-honey-500 bg-honey-50"
-                              : "border-warm-200 hover:border-warm-300"
+                              ? "border-primary bg-primary/5"
+                              : "border-border hover:border-primary/50"
                           }`}
                         >
                           <input
@@ -488,22 +492,22 @@ export function CheckoutClient() {
                           />
                           <span className="text-2xl">{method.icon}</span>
                           <div className="flex-1">
-                            <p className="font-medium text-warm-900">
+                            <p className="font-medium text-foreground">
                               {method.name}
                             </p>
-                            <p className="text-sm text-warm-500">
+                            <p className="text-sm text-muted-foreground">
                               {method.description}
                             </p>
                           </div>
                           <div
                             className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
                               formData.paymentMethod === method.id
-                                ? "border-honey-600"
-                                : "border-warm-300"
+                                ? "border-primary"
+                                : "border-muted-foreground"
                             }`}
                           >
                             {formData.paymentMethod === method.id && (
-                              <div className="w-2.5 h-2.5 rounded-full bg-honey-600" />
+                              <div className="w-2.5 h-2.5 rounded-full bg-primary" />
                             )}
                           </div>
                         </label>
@@ -540,8 +544,8 @@ export function CheckoutClient() {
 
             {/* Order Summary */}
             <div className="lg:col-span-1">
-              <div className="bg-white rounded-2xl p-6 shadow-sm sticky top-24">
-                <h3 className="font-bold text-warm-900 mb-4">
+              <div className="bg-card rounded-2xl p-6 shadow-sm border border-border sticky top-24">
+                <h3 className="font-bold text-foreground mb-4">
                   {t("summary.title")}
                 </h3>
                 <div className="space-y-3 mb-4">
@@ -553,39 +557,39 @@ export function CheckoutClient() {
                         key={`${item.product.id}-${item.variant?.id}`}
                         className="flex gap-3"
                       >
-                        <div className="w-12 h-12 rounded-lg bg-honey-100 flex items-center justify-center shrink-0">
+                        <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center shrink-0 border border-border">
                           🍯
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-warm-900 truncate">
+                          <p className="text-sm font-medium text-foreground truncate">
                             {item.product.name}
                           </p>
-                          <p className="text-xs text-warm-500">
+                          <p className="text-xs text-muted-foreground">
                             {item.variant?.name} × {item.quantity}
                           </p>
                         </div>
-                        <p className="text-sm font-medium text-warm-900">
+                        <p className="text-sm font-medium text-foreground">
                           {formatPrice(price * item.quantity)}
                         </p>
                       </div>
                     );
                   })}
                 </div>
-                <div className="border-t border-warm-200 pt-4 space-y-2">
+                <div className="border-t border-border pt-4 space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="text-warm-500">{t("summary.subtotal")}</span>
-                    <span className="text-warm-900">{formatPrice(subtotal)}</span>
+                    <span className="text-muted-foreground">{t("summary.subtotal")}</span>
+                    <span className="text-foreground">{formatPrice(subtotal)}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-warm-500">{t("summary.shipping")}</span>
-                    <span className="text-warm-900">{formatPrice(shipping)}</span>
+                    <span className="text-muted-foreground">{t("summary.shipping")}</span>
+                    <span className="text-foreground">{formatPrice(shipping)}</span>
                   </div>
-                  <div className="flex justify-between font-bold text-lg pt-2 border-t border-warm-200">
-                    <span className="text-warm-900">{t("summary.total")}</span>
-                    <span className="text-honey-700">{formatPrice(total)}</span>
+                  <div className="flex justify-between font-bold text-lg pt-2 border-t border-border">
+                    <span className="text-foreground">{t("summary.total")}</span>
+                    <span className="text-primary">{formatPrice(total)}</span>
                   </div>
                 </div>
-                <p className="text-xs text-warm-500 mt-4 text-center">
+                <p className="text-xs text-muted-foreground mt-4 text-center">
                   {t("securePayment")}
                 </p>
               </div>

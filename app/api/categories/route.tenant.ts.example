@@ -1,0 +1,118 @@
+/**
+ * Example: Tenant-Aware Categories API
+ * 
+ * This shows how to convert an existing API route to be tenant-aware.
+ * Copy this pattern to update other API routes.
+ */
+
+import { NextResponse } from "next/server";
+import { 
+  withTenant, 
+  createTenantClient,
+  createTenantResponse,
+  type TenantRequest 
+} from "@/lib/tenant";
+
+/**
+ * GET /api/categories
+ * 
+ * Fetches categories for the current tenant with product counts.
+ * Tenant is resolved from:
+ * - x-tenant-id header
+ * - tenant_id query parameter
+ * - NEXT_PUBLIC_TENANT_ID environment variable
+ */
+export const GET = withTenant(async (request: TenantRequest) => {
+  const { tenant } = request;
+  const { searchParams } = request.nextUrl;
+  const locale = searchParams.get('locale') || 'fr';
+
+  // Create tenant-scoped Supabase client (RLS will filter by tenant_id)
+  const supabase = await createTenantClient(tenant.id);
+
+  // Get categories - RLS automatically filters by tenant_id
+  const { data: categoriesData, error: catError } = await supabase
+    .from('categories')
+    .select(`
+      id,
+      name,
+      category_translations(
+        name,
+        language_code
+      )
+    `);
+
+  if (catError) {
+    console.error('Error fetching categories:', catError);
+    return NextResponse.json({ error: 'Failed to fetch categories' }, { status: 500 });
+  }
+
+  // Get product counts - RLS automatically filters by tenant_id
+  const { data: productsData, error: prodError } = await supabase
+    .from('products')
+    .select('category_id')
+    .eq('is_available', true)
+    .eq('is_online', true);
+
+  if (prodError) {
+    console.error('Error fetching products:', prodError);
+    return NextResponse.json({ error: 'Failed to fetch products' }, { status: 500 });
+  }
+
+  // Count products per category
+  const productCounts = new Map<string, number>();
+  productsData?.forEach(product => {
+    if (product.category_id) {
+      productCounts.set(
+        product.category_id, 
+        (productCounts.get(product.category_id) || 0) + 1
+      );
+    }
+  });
+
+  // Build result with translated names and product counts
+  const categories = categoriesData?.map(category => {
+    const translation = category.category_translations?.find(
+      (t: { language_code: string; name: string }) => t.language_code === locale
+    );
+    
+    return {
+      id: category.id,
+      name: translation?.name || category.name,
+      product_count: productCounts.get(category.id) || 0
+    };
+  }).filter(cat => cat.product_count > 0) || [];
+
+  // Return with tenant metadata
+  return createTenantResponse({ categories }, tenant);
+});
+
+/**
+ * POST /api/categories
+ * 
+ * Create a new category for the current tenant.
+ */
+export const POST = withTenant(async (request: TenantRequest) => {
+  const { tenant } = request;
+  const body = await request.json();
+
+  const supabase = await createTenantClient(tenant.id);
+
+  // Insert with tenant_id automatically set via RLS context
+  const { data, error } = await supabase
+    .from('categories')
+    .insert({
+      tenant_id: tenant.id, // Explicit for clarity, but RLS would enforce this
+      name: body.name,
+      type: body.type || 'retail'
+    })
+    .select()
+    .single();
+
+  if (error) {
+    console.error('Error creating category:', error);
+    return NextResponse.json({ error: 'Failed to create category' }, { status: 500 });
+  }
+
+  return createTenantResponse(data, tenant, 201);
+});

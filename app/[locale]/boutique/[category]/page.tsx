@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ProductCard } from "@/components/product/product-card";
 import { getTranslatedProducts, getTranslatedProductBySlug } from "@/lib/i18n/translations";
 import type { LanguageCode } from "@/lib/i18n/types";
+import { CategoryPageClient } from "./category-page-client";
 
 interface CategoryPageProps {
   params: Promise<{ 
@@ -97,60 +98,15 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const categoryDescription = categoryDescriptions[category as keyof typeof categoryDescriptions];
   
   return (
-    <div className="min-h-screen">
-      {/* Hero */}
-      <section className="relative bg-linear-to-br from-honey-100 via-white to-forest-50 py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-warm-900 mb-6">
-              {categoryName}
-            </h1>
-            <p className="text-xl text-warm-600 max-w-2xl mx-auto">
-              {categoryDescription}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Products Grid */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-4">
-          {categoryProducts.length > 0 ? (
-            <>
-              <div className="flex items-center justify-between mb-8">
-                <p className="text-warm-600">
-                  {t('product_count', { 
-                    count: categoryProducts.length,
-                    category: categoryName 
-                  })}
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {categoryProducts.map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    id={product.id}
-                    name={product.name}
-                    slug={product.slug || undefined}
-                    price={product.price}
-                    image={product.images?.[0]}
-                    short_description={product.short_description || undefined}
-                    category={product.category_name || undefined}
-                    isAvailable={product.is_available}
-                  />
-                ))}
-              </div>
-            </>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-warm-600 text-lg">
-                {t('no_products', { category: categoryName })}
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
-    </div>
+    <CategoryPageClient
+      categoryName={categoryName}
+      categoryDescription={categoryDescription}
+      products={categoryProducts}
+      productCountLabel={t('product_count', { 
+        count: categoryProducts.length,
+        category: categoryName 
+      })}
+      noProductsLabel={t('no_products', { category: categoryName })}
+    />
   );
 }

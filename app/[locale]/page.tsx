@@ -1,10 +1,11 @@
 import { setRequestLocale } from "next-intl/server";
-import { HeroSection } from "@/components/home/hero-section";
+import { DynamicHero } from "@/components/hero";
 import { CategoriesSection } from "@/components/home/categories-section";
 import { BestsellersSection } from "@/components/home/bestsellers-section";
 import { FeaturesSection } from "@/components/home/features-section";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { NewsletterSection } from "@/components/home/newsletter-section";
+import { TenantDebugFloating } from "@/components/debug/tenant-debug-floating";
 import { getTranslatedProducts } from "@/lib/i18n/translations";
 import type { LanguageCode } from "@/lib/i18n/types";
 
@@ -22,12 +23,13 @@ export default async function Home({ params }: HomePageProps) {
 
   return (
     <>
-      <HeroSection />
+      <DynamicHero />
       <CategoriesSection />
       <BestsellersSection products={products} />
       <FeaturesSection />
       <TestimonialsSection />
       <NewsletterSection />
+      <TenantDebugFloating />
     </>
   );
 }

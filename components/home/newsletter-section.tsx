@@ -25,7 +25,7 @@ export function NewsletterSection() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-warm-900">
+    <section className="py-16 md:py-24 bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center">
           <motion.div
@@ -37,10 +37,10 @@ export function NewsletterSection() {
             <span className="text-5xl mb-6 block">🐝</span>
 
             {/* Heading */}
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground mb-4">
               {t("title")}
             </h2>
-            <p className="text-warm-400 mb-8">
+            <p className="text-secondary-foreground/70 mb-8">
               {t("subtitle")}
             </p>
 
@@ -49,7 +49,7 @@ export function NewsletterSection() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex items-center justify-center gap-3 text-forest-400"
+                className="flex items-center justify-center gap-3 text-primary"
               >
                 <CheckCircle size={24} />
                 <span className="text-lg">{t("success")}</span>
@@ -62,7 +62,7 @@ export function NewsletterSection() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t("placeholder")}
                   required
-                  className="flex-1 px-4 py-3 rounded-xl bg-warm-800 text-white placeholder:text-warm-500 border border-warm-700 focus:border-honey-500 focus:outline-none focus:ring-2 focus:ring-honey-500/20"
+                  className="flex-1 px-4 py-3 rounded-xl bg-secondary-foreground/10 text-secondary-foreground placeholder:text-secondary-foreground/50 border border-secondary-foreground/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                 />
                 <Button 
                   type="submit" 
@@ -83,7 +83,7 @@ export function NewsletterSection() {
             )}
 
             {/* Privacy Note */}
-            <p className="text-xs text-warm-500 mt-4">
+            <p className="text-xs text-secondary-foreground/50 mt-4">
               {t("privacy")}
             </p>
           </motion.div>

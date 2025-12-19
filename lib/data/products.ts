@@ -1,6 +1,7 @@
 import { supabase } from "@/lib/supabase";
 
 const SUPABASE_PUBLIC_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const TENANT_ID = process.env.NEXT_PUBLIC_TENANT_ID;
 
 interface ProductMediaData {
   storage_bucket: string;
@@ -121,7 +122,7 @@ export async function getHoneyProducts(): Promise<ProductData[]> {
         type
       )
     `)
-    .or("short_description.not.is.null,long_description.not.is.null")
+    .eq("tenant_id", TENANT_ID)
     .eq("is_available", true)
     .eq("is_online", true)
     .order("is_primary", { referencedTable: "product_media", ascending: false })
@@ -165,6 +166,7 @@ export async function getProductsByCategory(categoryName: string): Promise<Produ
         type
       )
     `)
+    .eq("tenant_id", TENANT_ID)
     .eq("is_available", true)
     .eq("is_online", true)
     .order("is_primary", { referencedTable: "product_media", ascending: false })
@@ -215,6 +217,7 @@ export async function getProductById(id: string): Promise<ProductData | null> {
     `)
     .order("is_primary", { referencedTable: "product_media", ascending: false })
     .order("position", { referencedTable: "product_media", ascending: true })
+    .eq("tenant_id", TENANT_ID)
     .eq("id", id)
     .eq("is_online", true)
     .single();
@@ -232,6 +235,7 @@ export async function getCategories(): Promise<CategoryData[]> {
   const { data, error } = await supabase
     .from("categories")
     .select("id, name, type")
+    .eq("tenant_id", TENANT_ID)
     .eq("type", "retail")
     .order("name");
 
