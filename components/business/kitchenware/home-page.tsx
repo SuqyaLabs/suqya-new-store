@@ -1,179 +1,94 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
 import { Link } from '@/i18n/routing'
-import { 
-  ChefHat, 
-  UtensilsCrossed, 
-  CookingPot, 
-  Refrigerator, 
-  Flame, 
-  Shield, 
-  Truck, 
-  Headphones,
-  ArrowRight,
-  Sparkles,
-  CheckCircle,
-  Star,
-  Package
-} from 'lucide-react'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import { ArrowRight, ChefHat, Shield, Truck, Award, Package } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { createClient } from '@/lib/supabase/client'
 import type { HomePageProps } from '@/components/registry'
+import KitchenwareProductCard from './product-card'
 
 interface Product {
   id: string
   name: string
   price: number
-  images: string[] | null
-  short_description: string | null
-  is_available: boolean
+  images?: string[]
+  is_available?: boolean
   custom_data?: Record<string, unknown>
+  compare_at_price?: number
 }
 
 interface Category {
   id: string
   name: string
-  slug: string
-  image_url: string | null
-  product_count?: number
+  product_count: number
 }
 
 const translations = {
   fr: {
     hero: {
-      badge: 'Équipement de Cuisine Professionnel',
-      title: 'Équipez Votre Cuisine',
-      subtitle: 'Découvrez notre gamme complète d\'équipements de cuisine professionnels : ustensiles, électroménager, accessoires de cuisson et matériel de restauration.',
-      cta: 'Voir les Produits',
-      ctaSecondary: 'Demander un Devis'
+      title: 'Ustensiles de Cuisine Premium',
+      subtitle: 'Découvrez notre collection d\'ustensiles de qualité pour sublimer votre cuisine',
+      cta: 'Découvrir la collection',
     },
     features: {
-      warranty: 'Garantie 2 Ans',
-      warrantyDesc: 'Sur tous nos produits',
-      support: 'Support Expert',
-      supportDesc: 'Conseils professionnels',
+      quality: 'Qualité Premium',
+      qualityDesc: 'Matériaux durables et design élégant',
+      warranty: 'Garantie Étendue',
+      warrantyDesc: 'Jusqu\'à 10 ans de garantie',
       delivery: 'Livraison Rapide',
       deliveryDesc: 'Partout en Algérie',
-      quality: 'Qualité Pro',
-      qualityDesc: 'Matériaux durables'
+      certified: 'Certifié',
+      certifiedDesc: 'Normes alimentaires respectées',
     },
-    categories: {
-      title: 'Nos Catégories',
-      subtitle: 'Tout l\'équipement de cuisine dont vous avez besoin',
-      viewAll: 'Voir Tout'
-    },
-    products: {
-      title: 'Produits Populaires',
-      subtitle: 'Les équipements les plus demandés',
-      viewAll: 'Voir Tous les Produits',
-      addToCart: 'Ajouter',
-      inStock: 'En Stock',
-      outOfStock: 'Rupture'
-    },
-    brands: {
-      title: 'Marques Partenaires',
-      subtitle: 'Nous travaillons avec les meilleures marques'
-    },
-    cta: {
-      title: 'Besoin d\'un Devis Personnalisé?',
-      subtitle: 'Notre équipe est là pour vous accompagner dans le choix de votre équipement de cuisine.',
-      button: 'Contactez-Nous'
-    }
+    categories: 'Nos Catégories',
+    featured: 'Produits Vedettes',
+    viewAll: 'Voir tout',
+    shopNow: 'Acheter maintenant',
   },
   ar: {
     hero: {
-      badge: 'معدات مطبخ احترافية',
-      title: 'جهّز مطبخك',
-      subtitle: 'اكتشف مجموعتنا الكاملة من معدات المطبخ الاحترافية: أدوات الطهي، الأجهزة الكهربائية، ملحقات الطبخ ومعدات المطاعم.',
-      cta: 'عرض المنتجات',
-      ctaSecondary: 'طلب عرض سعر'
+      title: 'أدوات مطبخ فاخرة',
+      subtitle: 'اكتشف مجموعتنا من أدوات المطبخ عالية الجودة',
+      cta: 'اكتشف المجموعة',
     },
     features: {
-      warranty: 'ضمان سنتين',
-      warrantyDesc: 'على جميع منتجاتنا',
-      support: 'دعم متخصص',
-      supportDesc: 'نصائح احترافية',
+      quality: 'جودة عالية',
+      qualityDesc: 'مواد متينة وتصميم أنيق',
+      warranty: 'ضمان ممتد',
+      warrantyDesc: 'حتى 10 سنوات ضمان',
       delivery: 'توصيل سريع',
       deliveryDesc: 'في جميع أنحاء الجزائر',
-      quality: 'جودة احترافية',
-      qualityDesc: 'مواد متينة'
+      certified: 'معتمد',
+      certifiedDesc: 'معايير غذائية محترمة',
     },
-    categories: {
-      title: 'فئاتنا',
-      subtitle: 'جميع معدات المطبخ التي تحتاجها',
-      viewAll: 'عرض الكل'
-    },
-    products: {
-      title: 'المنتجات الشائعة',
-      subtitle: 'المعدات الأكثر طلباً',
-      viewAll: 'عرض جميع المنتجات',
-      addToCart: 'إضافة',
-      inStock: 'متوفر',
-      outOfStock: 'نفذ'
-    },
-    brands: {
-      title: 'العلامات التجارية الشريكة',
-      subtitle: 'نعمل مع أفضل العلامات التجارية'
-    },
-    cta: {
-      title: 'تحتاج عرض سعر مخصص؟',
-      subtitle: 'فريقنا هنا لمساعدتك في اختيار معدات المطبخ الخاصة بك.',
-      button: 'اتصل بنا'
-    }
+    categories: 'فئاتنا',
+    featured: 'منتجات مميزة',
+    viewAll: 'عرض الكل',
+    shopNow: 'تسوق الآن',
   },
   en: {
     hero: {
-      badge: 'Professional Kitchen Equipment',
-      title: 'Equip Your Kitchen',
-      subtitle: 'Discover our complete range of professional kitchen equipment: cookware, appliances, cooking accessories and restaurant supplies.',
-      cta: 'View Products',
-      ctaSecondary: 'Request Quote'
+      title: 'Premium Kitchenware',
+      subtitle: 'Discover our collection of quality utensils to elevate your cooking',
+      cta: 'Discover the collection',
     },
     features: {
-      warranty: '2-Year Warranty',
-      warrantyDesc: 'On all products',
-      support: 'Expert Support',
-      supportDesc: 'Professional advice',
+      quality: 'Premium Quality',
+      qualityDesc: 'Durable materials and elegant design',
+      warranty: 'Extended Warranty',
+      warrantyDesc: 'Up to 10 years warranty',
       delivery: 'Fast Delivery',
       deliveryDesc: 'Across Algeria',
-      quality: 'Pro Quality',
-      qualityDesc: 'Durable materials'
+      certified: 'Certified',
+      certifiedDesc: 'Food safety standards met',
     },
-    categories: {
-      title: 'Our Categories',
-      subtitle: 'All the kitchen equipment you need',
-      viewAll: 'View All'
-    },
-    products: {
-      title: 'Popular Products',
-      subtitle: 'Most requested equipment',
-      viewAll: 'View All Products',
-      addToCart: 'Add',
-      inStock: 'In Stock',
-      outOfStock: 'Out of Stock'
-    },
-    brands: {
-      title: 'Partner Brands',
-      subtitle: 'We work with the best brands'
-    },
-    cta: {
-      title: 'Need a Custom Quote?',
-      subtitle: 'Our team is here to help you choose your kitchen equipment.',
-      button: 'Contact Us'
-    }
-  }
-}
-
-const categoryIcons: Record<string, typeof ChefHat> = {
-  'ustensiles': UtensilsCrossed,
-  'cuisson': Flame,
-  'electromenager': Refrigerator,
-  'casseroles': CookingPot,
-  'accessoires': Package,
-  'default': ChefHat
+    categories: 'Our Categories',
+    featured: 'Featured Products',
+    viewAll: 'View all',
+    shopNow: 'Shop now',
+  },
 }
 
 export default function KitchenwareHomePage({ locale, tenant }: HomePageProps) {
@@ -184,9 +99,10 @@ export default function KitchenwareHomePage({ locale, tenant }: HomePageProps) {
   const t = translations[locale as keyof typeof translations] || translations.fr
   const isRTL = locale === 'ar'
 
+  // Get brand info from tenant config
   const config = tenant.config as Record<string, unknown> | undefined
   const brandConfig = config?.brand as { name?: string; tagline?: string; tagline_ar?: string } | undefined
-  const heroTitle = brandConfig?.name || tenant.name || t.hero.title
+  const heroTitle = t.hero.title
   const heroSubtitle = locale === 'ar' 
     ? (brandConfig?.tagline_ar || t.hero.subtitle)
     : (brandConfig?.tagline || t.hero.subtitle)
@@ -195,30 +111,46 @@ export default function KitchenwareHomePage({ locale, tenant }: HomePageProps) {
     const fetchData = async () => {
       const supabase = createClient()
 
-      const { data: productsData } = await supabase
+      // Fetch featured products
+      const { data: products } = await supabase
         .from('products')
-        .select('id, name, price, images, short_description, is_available, custom_data')
+        .select('id, name, price, images, is_available, custom_data')
         .eq('tenant_id', tenant.id)
-        .eq('is_online', true)
         .eq('is_available', true)
+        .eq('is_online', true)
         .order('created_at', { ascending: false })
-        .limit(8) 
+        .limit(4)
 
-      if (productsData) {
-        setFeaturedProducts(productsData)
+      if (products) {
+        setFeaturedProducts(products)
       }
 
-      const { data: categoriesData, error: catError } = await supabase
+      // Fetch categories with product counts
+      const { data: cats } = await supabase
         .from('categories')
         .select('id, name')
         .eq('tenant_id', tenant.id)
-        .order('name')
-        .limit(6)
 
-      if (catError) {
-        console.error('Error fetching categories:', catError)
-      } else if (categoriesData) {
-        setCategories(categoriesData.map(c => ({ ...c, slug: '', image_url: null })))
+      if (cats) {
+        // Get product counts
+        const { data: productCounts } = await supabase
+          .from('products')
+          .select('category_id')
+          .eq('tenant_id', tenant.id)
+          .eq('is_available', true)
+          .eq('is_online', true)
+
+        const countMap = new Map<string, number>()
+        productCounts?.forEach(p => {
+          if (p.category_id) {
+            countMap.set(p.category_id, (countMap.get(p.category_id) || 0) + 1)
+          }
+        })
+
+        setCategories(cats.map(c => ({
+          ...c,
+          product_count: countMap.get(c.id) || 0
+        })).filter(c => c.product_count > 0))
       }
 
       setIsLoading(false)
@@ -227,106 +159,67 @@ export default function KitchenwareHomePage({ locale, tenant }: HomePageProps) {
     fetchData()
   }, [tenant.id])
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat(locale === 'ar' ? 'ar-DZ' : 'fr-DZ', {
-      style: 'decimal',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(price) + ' DA'
-  }
-
   return (
-    <div className="min-h-screen bg-background" dir={isRTL ? 'rtl' : 'ltr'}>
-      {/* Hero Section - Warm kitchen aesthetic */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-amber-50 text-slate-900">
-        {/* Subtle pattern background */}
-        <div className="absolute inset-0 opacity-40">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(rgba(251, 146, 60, 0.08) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(251, 146, 60, 0.08) 1px, transparent 1px)`,
-            backgroundSize: '40px 40px'
-          }} />
-        </div>
+    <div className="min-h-screen" dir={isRTL ? 'rtl' : 'ltr'}>
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-amber-50 via-white to-stone-50 py-20 lg:py-28 overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-amber-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
         
-        {/* Soft gradient orbs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-orange-400/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl" />
-        
-        <div className="container relative z-10 mx-auto px-4 py-20 lg:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="container relative z-10 mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-8">
-              <Badge className="bg-orange-500/10 text-orange-600 border-orange-500/30 hover:bg-orange-500/20 px-4 py-2">
-                <Sparkles size={16} className="mr-2" />
-                {t.hero.badge}
-              </Badge>
-              
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-slate-800 via-orange-700 to-orange-600 bg-clip-text text-transparent">
-                  {heroTitle}
-                </span>
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium border border-primary/20">
+                <ChefHat size={18} />
+                {tenant.name}
+              </div>
+              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-stone-800 leading-tight">
+                {heroTitle}
               </h1>
-              
-              <p className="text-lg text-slate-600 max-w-lg leading-relaxed">
+              <p className="text-lg text-stone-600 max-w-lg leading-relaxed">
                 {heroSubtitle}
               </p>
-              
-              <div className="flex flex-wrap gap-4">
-                <Button asChild size="lg" className="bg-orange-600 hover:bg-orange-700 text-white font-semibold gap-2 shadow-lg shadow-orange-600/25">
+              <div className="flex flex-wrap gap-4 pt-2">
+                <Button asChild size="lg" className="gap-2 shadow-lg shadow-primary/20 h-12 px-8">
                   <Link href="/boutique">
                     {t.hero.cta}
                     <ArrowRight size={18} className={isRTL ? 'rotate-180' : ''} />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-100 gap-2">
-                  <Link href="/contact">
-                    {t.hero.ctaSecondary}
-                  </Link>
-                </Button>
               </div>
-
+              
               {/* Trust indicators */}
-              <div className="flex flex-wrap gap-6 pt-4">
-                <div className="flex items-center gap-2 text-slate-500">
-                  <CheckCircle size={18} className="text-orange-600" />
-                  <span className="text-sm">Garantie 2 ans</span>
+              <div className="flex items-center gap-6 pt-4 text-sm text-stone-500">
+                <div className="flex items-center gap-2">
+                  <Shield size={16} className="text-primary" />
+                  <span>Garantie 10 ans</span>
                 </div>
-                <div className="flex items-center gap-2 text-slate-500">
-                  <CheckCircle size={18} className="text-orange-600" />
-                  <span className="text-sm">Qualité professionnelle</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-500">
-                  <CheckCircle size={18} className="text-orange-600" />
-                  <span className="text-sm">Livraison nationale</span>
+                <div className="flex items-center gap-2">
+                  <Truck size={16} className="text-primary" />
+                  <span>Livraison gratuite</span>
                 </div>
               </div>
             </div>
-
-            {/* Hero Image */}
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200/50">
+            <div className="relative w-full max-w-xl mx-auto lg:max-w-none">
+              <div className="absolute inset-4 bg-gradient-to-br from-primary/15 to-amber-200/30 rounded-3xl transform rotate-2" />
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-stone-200/50">
                 <Image
-                  src="/placeholder-kitchen.jpg"
-                  alt="Kitchen Equipment - Cookware and Appliances"
-                  width={800}
-                  height={800}
+                  src="/Gemini_Generated_Image_raiq.png"
+                  alt="Raiq Premium Kitchenware"
+                  width={1200}
+                  height={675}
                   className="object-cover w-full h-auto"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                   priority
                 />
-                
-                {/* Floating stats */}
-                <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-xl px-4 py-3 border border-slate-200 shadow-xl">
-                  <div className="flex items-center gap-2">
-                    <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
-                    <span className="font-bold text-slate-800">4.9</span>
-                    <span className="text-slate-500 text-sm">(500+ avis)</span>
-                  </div>
-                </div>
-                
-                <div className="absolute bottom-4 left-4 bg-orange-600 rounded-xl px-4 py-3 shadow-xl shadow-orange-600/30">
-                  <div className="flex items-center gap-2 text-white">
-                    <Truck className="w-5 h-5" />
-                    <span className="font-semibold text-sm">Livraison 24-48h</span>
-                  </div>
+              </div>
+              
+              {/* Floating badge */}
+              <div className="absolute -bottom-4 -left-4 bg-white rounded-xl px-4 py-3 shadow-xl border border-stone-100">
+                <div className="flex items-center gap-2">
+                  <Award className="w-5 h-5 text-amber-500" />
+                  <span className="font-semibold text-stone-800">Qualité Premium</span>
                 </div>
               </div>
             </div>
@@ -334,200 +227,124 @@ export default function KitchenwareHomePage({ locale, tenant }: HomePageProps) {
         </div>
       </section>
 
-      {/* Features Bar */}
-      <section className="bg-slate-50 border-y border-slate-200">
+      {/* Features */}
+      <section className="py-16 bg-stone-50 border-y border-stone-100">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-slate-200 rtl:divide-x-reverse">
-            <div className="flex items-center gap-4 py-6 px-4">
-              <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center">
-                <Shield className="w-6 h-6 text-orange-600" />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="flex flex-col items-center text-center p-6 bg-white rounded-xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-amber-100 flex items-center justify-center mb-4">
+                <Award className="w-7 h-7 text-primary" />
               </div>
-              <div>
-                <p className="font-semibold text-slate-800">{t.features.warranty}</p>
-                <p className="text-sm text-slate-500">{t.features.warrantyDesc}</p>
-              </div>
+              <h3 className="font-semibold text-stone-800">{t.features.quality}</h3>
+              <p className="text-sm text-stone-500 mt-1">{t.features.qualityDesc}</p>
             </div>
-            <div className="flex items-center gap-4 py-6 px-4">
-              <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center">
-                <Headphones className="w-6 h-6 text-orange-600" />
+            <div className="flex flex-col items-center text-center p-6 bg-white rounded-xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-amber-100 flex items-center justify-center mb-4">
+                <Shield className="w-7 h-7 text-primary" />
               </div>
-              <div>
-                <p className="font-semibold text-slate-800">{t.features.support}</p>
-                <p className="text-sm text-slate-500">{t.features.supportDesc}</p>
-              </div>
+              <h3 className="font-semibold text-stone-800">{t.features.warranty}</h3>
+              <p className="text-sm text-stone-500 mt-1">{t.features.warrantyDesc}</p>
             </div>
-            <div className="flex items-center gap-4 py-6 px-4">
-              <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center">
-                <Truck className="w-6 h-6 text-orange-600" />
+            <div className="flex flex-col items-center text-center p-6 bg-white rounded-xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-amber-100 flex items-center justify-center mb-4">
+                <Truck className="w-7 h-7 text-primary" />
               </div>
-              <div>
-                <p className="font-semibold text-slate-800">{t.features.delivery}</p>
-                <p className="text-sm text-slate-500">{t.features.deliveryDesc}</p>
-              </div>
+              <h3 className="font-semibold text-stone-800">{t.features.delivery}</h3>
+              <p className="text-sm text-stone-500 mt-1">{t.features.deliveryDesc}</p>
             </div>
-            <div className="flex items-center gap-4 py-6 px-4">
-              <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center">
-                <ChefHat className="w-6 h-6 text-orange-600" />
+            <div className="flex flex-col items-center text-center p-6 bg-white rounded-xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-amber-100 flex items-center justify-center mb-4">
+                <Package className="w-7 h-7 text-primary" />
               </div>
-              <div>
-                <p className="font-semibold text-slate-800">{t.features.quality}</p>
-                <p className="text-sm text-slate-500">{t.features.qualityDesc}</p>
-              </div>
+              <h3 className="font-semibold text-stone-800">{t.features.certified}</h3>
+              <p className="text-sm text-stone-500 mt-1">{t.features.certifiedDesc}</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Categories Section */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-800 mb-4">{t.categories.title}</h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">{t.categories.subtitle}</p>
-          </div>
-
-          {isLoading ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="bg-slate-100 rounded-xl h-40 animate-pulse" />
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {categories.map((category) => {
-                const IconComponent = categoryIcons[category.slug] || categoryIcons.default
-                return (
-                  <Link
-                    key={category.id}
-                    href={`/boutique/${category.slug}`}
-                    className="group relative bg-slate-50 hover:bg-white rounded-xl p-6 text-center transition-all duration-300 border border-slate-200 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10"
-                  >
-                    <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-orange-100 to-amber-100 flex items-center justify-center group-hover:from-orange-200 group-hover:to-amber-200 transition-all">
-                      <IconComponent className="w-7 h-7 text-orange-600" />
-                    </div>
-                    <h3 className="font-semibold text-slate-800 group-hover:text-orange-600 transition-colors">
-                      {category.name}
-                    </h3>
-                  </Link>
-                )
-              })}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Featured Products */}
-      <section className="py-16 lg:py-24 bg-gradient-to-b from-slate-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between mb-12">
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-slate-800 mb-2">{t.products.title}</h2>
-              <p className="text-slate-500">{t.products.subtitle}</p>
-            </div>
-            <Button asChild variant="outline" className="hidden md:flex border-slate-300 text-slate-700 hover:bg-slate-100 gap-2">
-              <Link href="/boutique">
-                {t.products.viewAll}
+      {/* Categories */}
+      {categories.length > 0 && (
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-10">
+              <div>
+                <h2 className="text-2xl lg:text-3xl font-bold text-stone-800">{t.categories}</h2>
+                <p className="text-stone-500 mt-1">Explorez notre collection par catégorie</p>
+              </div>
+              <Link href="/boutique" className="text-primary hover:text-primary/80 flex items-center gap-1 font-medium">
+                {t.viewAll}
                 <ArrowRight size={16} className={isRTL ? 'rotate-180' : ''} />
               </Link>
-            </Button>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+              {categories.map((category) => (
+                <Link
+                  key={category.id}
+                  href={`/boutique?category=${category.id}`}
+                  className="group relative bg-gradient-to-br from-stone-50 to-amber-50/50 rounded-2xl p-6 border border-stone-200 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-xl bg-white shadow-sm flex items-center justify-center group-hover:bg-primary/10 transition-colors border border-stone-100">
+                      <ChefHat className="w-7 h-7 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-stone-800 group-hover:text-primary transition-colors">
+                        {category.name}
+                      </h3>
+                      <p className="text-sm text-stone-500">
+                        {category.product_count} {locale === 'ar' ? 'منتج' : 'produits'}
+                      </p>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} className={`absolute top-1/2 -translate-y-1/2 right-6 rtl:right-auto rtl:left-6 text-stone-300 group-hover:text-primary group-hover:translate-x-1 transition-all ${isRTL ? 'rotate-180' : ''}`} />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Featured Products */}
+      <section className="py-20 bg-gradient-to-b from-stone-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between mb-10">
+            <div>
+              <h2 className="text-2xl lg:text-3xl font-bold text-stone-800">{t.featured}</h2>
+              <p className="text-stone-500 mt-1">Nos produits les plus appréciés</p>
+            </div>
+            <Link href="/boutique" className="text-primary hover:text-primary/80 flex items-center gap-1 font-medium">
+              {t.viewAll}
+              <ArrowRight size={16} className={isRTL ? 'rotate-180' : ''} />
+            </Link>
           </div>
 
           {isLoading ? (
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
               {[...Array(4)].map((_, i) => (
-                <div key={i} className="bg-slate-100 rounded-xl h-80 animate-pulse" />
+                <div key={i} className="bg-white rounded-2xl h-96 animate-pulse border border-stone-100" />
               ))}
             </div>
           ) : (
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {featuredProducts.slice(0, 8).map((product) => (
-                <Link
+              {featuredProducts.map((product) => (
+                <KitchenwareProductCard
                   key={product.id}
-                  href={`/boutique/produit/${product.id}`}
-                  className="group bg-white rounded-xl overflow-hidden border border-slate-200 hover:border-orange-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/10"
-                >
-                  {/* Product Image */}
-                  <div className="aspect-square relative bg-slate-100 overflow-hidden">
-                    {product.images?.[0] ? (
-                      <Image
-                        src={product.images[0]}
-                        alt={product.name}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <ChefHat className="w-16 h-16 text-slate-300" />
-                      </div>
-                    )}
-                    
-                    {/* Stock badge */}
-                    <div className="absolute top-3 left-3">
-                      <Badge className={product.is_available 
-                        ? "bg-emerald-500/90 text-white border-0" 
-                        : "bg-red-500/90 text-white border-0"
-                      }>
-                        {product.is_available ? t.products.inStock : t.products.outOfStock}
-                      </Badge>
-                    </div>
-                  </div>
-
-                  {/* Product Info */}
-                  <div className="p-4 space-y-3">
-                    <h3 className="font-semibold text-slate-800 group-hover:text-orange-600 transition-colors line-clamp-2">
-                      {product.name}
-                    </h3>
-                    
-                    {product.short_description && (
-                      <p className="text-sm text-slate-500 line-clamp-2">
-                        {product.short_description}
-                      </p>
-                    )}
-                    
-                    <div className="flex items-center justify-between pt-2">
-                      <span className="text-xl font-bold text-orange-600">
-                        {formatPrice(product.price)}
-                      </span>
-                      <Button size="sm" className="bg-orange-600 hover:bg-orange-700 text-white font-semibold">
-                        {t.products.addToCart}
-                      </Button>
-                    </div>
-                  </div>
-                </Link>
+                  product={product}
+                  locale={locale}
+                />
               ))}
             </div>
           )}
 
-          {/* Mobile view all button */}
-          <div className="mt-8 text-center md:hidden">
-            <Button asChild className="bg-orange-600 hover:bg-orange-700 text-white font-semibold gap-2">
+          <div className="text-center mt-12">
+            <Button asChild size="lg" variant="outline" className="gap-2 h-12 px-8 border-stone-300 hover:bg-stone-50">
               <Link href="/boutique">
-                {t.products.viewAll}
-                <ArrowRight size={16} className={isRTL ? 'rotate-180' : ''} />
+                {t.shopNow}
+                <ArrowRight size={18} className={isRTL ? 'rotate-180' : ''} />
               </Link>
             </Button>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-r from-orange-600 to-amber-600 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-            backgroundSize: '32px 32px'
-          }} />
-        </div>
-        
-        <div className="container relative z-10 mx-auto px-4 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">{t.cta.title}</h2>
-          <p className="text-orange-100 max-w-2xl mx-auto mb-8">{t.cta.subtitle}</p>
-          <Button asChild size="lg" className="bg-white text-orange-700 hover:bg-orange-50 font-semibold gap-2 shadow-lg">
-            <Link href="/contact">
-              <Headphones size={20} />
-              {t.cta.button}
-            </Link>
-          </Button>
         </div>
       </section>
     </div>
