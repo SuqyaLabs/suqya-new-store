@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { Link } from "@/i18n/routing";
@@ -18,8 +19,14 @@ const navItems = [
 export function BottomNavBar() {
   const t = useTranslations("nav");
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
   const { getTotalItems } = useCartStore();
-  const itemCount = getTotalItems();
+  const itemCount = mounted ? getTotalItems() : 0;
+
+  // Prevent hydration mismatch by only showing cart count after mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Check if current path matches nav item (considering locale)
   const isActive = (href: string) => {

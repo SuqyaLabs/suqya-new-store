@@ -9,6 +9,8 @@ export type BusinessTypeId =
   | 'clothing'
   | 'restaurant'
   | 'services'
+  | 'kitchenware'
+  | 'electronics'
   | 'custom';
 
 // Business configuration stored in default_config
@@ -48,6 +50,17 @@ export interface BusinessType {
 
 // Tenant Configuration
 export interface TenantConfig {
+  brand?: {
+    name?: string;
+    name_en?: string;
+    tagline?: string;
+    tagline_ar?: string;
+  };
+  contact?: {
+    email?: string;
+    phone?: string;
+    address?: string;
+  };
   business?: {
     type: BusinessTypeId;
     subtype?: string;

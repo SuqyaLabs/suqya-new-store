@@ -7,6 +7,8 @@ export const businessThemeMap: Record<BusinessTypeId, string> = {
   clothing: 'fashion_noir',      // Elegant black/white theme
   restaurant: 'warm_terracotta', // Appetizing warm theme
   services: 'ocean_blue',        // Professional blue theme
+  kitchenware: 'raiq_serene',    // Sage green premium kitchenware
+  electronics: 'pos_tech',       // Dark tech cyan theme
   custom: 'honey_gold'           // Default golden theme
 }
 

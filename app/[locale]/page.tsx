@@ -1,34 +1,42 @@
 import { setRequestLocale } from "next-intl/server";
-import { DynamicHero } from "@/components/hero";
-import { CategoriesSection } from "@/components/home/categories-section";
-import { BestsellersSection } from "@/components/home/bestsellers-section";
-import { FeaturesSection } from "@/components/home/features-section";
-import { TestimonialsSection } from "@/components/home/testimonials-section";
-import { NewsletterSection } from "@/components/home/newsletter-section";
 import { TenantDebugFloating } from "@/components/debug/tenant-debug-floating";
-import { getTranslatedProducts } from "@/lib/i18n/translations";
-import type { LanguageCode } from "@/lib/i18n/types";
+import { resolveComponent } from "@/components/registry";
+import { getServerTenantContext } from "@/lib/tenant/server";
+import type { BusinessTypeId } from "@/types/multi-business";
+import type { HomePageProps } from "@/components/registry";
 
 export const revalidate = 60;
 
-interface HomePageProps {
+const TENANT_ID = process.env.NEXT_PUBLIC_TENANT_ID || "c27fb19a-0121-4395-88ca-2cb8374dc52d";
+
+interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
-export default async function Home({ params }: HomePageProps) {
+export default async function Home({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const products = await getTranslatedProducts(locale as LanguageCode);
+  // Get tenant context
+  const tenantContext = await getServerTenantContext(TENANT_ID);
+  
+  // Determine business type
+  const businessType: BusinessTypeId = tenantContext?.tenant?.business_type || 'retail';
+  
+  // Resolve the HomePage component for this business type
+  const HomePage = await resolveComponent<HomePageProps>('HomePage', businessType);
+
+  // Build tenant prop for HomePage
+  const tenantProp = {
+    id: tenantContext?.tenant?.id || TENANT_ID,
+    name: tenantContext?.tenant?.name || 'Store',
+    business_type: businessType,
+    config: tenantContext?.tenant?.config || {},
+  };
 
   return (
     <>
-      <DynamicHero />
-      <CategoriesSection />
-      <BestsellersSection products={products} />
-      <FeaturesSection />
-      <TestimonialsSection />
-      <NewsletterSection />
+      <HomePage locale={locale} tenant={tenantProp} />
       <TenantDebugFloating />
     </>
   );

@@ -65,6 +65,24 @@ export const pageGradientPresets: Record<BusinessTypeId, PageGradientConfig> = {
     cardHighlight: 'radial-gradient(circle at top right, var(--accent), transparent 70%)',
     overlay: 'linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.02))',
     footer: 'linear-gradient(to bottom, var(--warm-900), black)'
+  },
+  kitchenware: {
+    hero: 'linear-gradient(to bottom right, #fff7ed, #ffedd5)',
+    sectionPrimary: 'linear-gradient(to bottom right, #fff7ed, var(--background))',
+    sectionSecondary: 'linear-gradient(to bottom, var(--background), #fff7ed)',
+    cardAccent: 'linear-gradient(135deg, #ffedd5, #fff7ed)',
+    cardHighlight: 'radial-gradient(circle at top right, #fed7aa, transparent 70%)',
+    overlay: 'linear-gradient(to bottom, transparent, rgba(234, 88, 12, 0.03))',
+    footer: 'linear-gradient(to bottom, #7c2d12, #431407)'
+  },
+  electronics: {
+    hero: 'linear-gradient(to right, #f8fafc, #ecfeff)',
+    sectionPrimary: 'linear-gradient(to bottom right, #f8fafc, var(--background))',
+    sectionSecondary: 'linear-gradient(to bottom, var(--background), #ecfeff)',
+    cardAccent: 'linear-gradient(135deg, #f1f5f9, #ecfeff)',
+    cardHighlight: 'radial-gradient(circle at top right, #cffafe, transparent 70%)',
+    overlay: 'linear-gradient(to bottom, transparent, rgba(6, 182, 212, 0.03))',
+    footer: 'linear-gradient(to bottom, #0e7490, #164e63)'
   }
 }
 

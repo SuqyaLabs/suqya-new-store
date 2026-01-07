@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice } from "@/lib/utils";
+import { useTenant } from "@/hooks/use-tenant";
 
 const steps = [
   { id: 1, name: "Information", icon: User },
@@ -91,6 +92,7 @@ export function CheckoutClient() {
 
   const { items, getTotalPrice, clearCart } = useCartStore();
   const toast = useToast();
+  const { tenant } = useTenant();
   const subtotal = getTotalPrice();
   const shipping =
     shippingMethods.find((m) => m.id === formData.shippingMethod)?.price || 0;
@@ -131,6 +133,7 @@ export function CheckoutClient() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          tenantId: tenant?.id,
           customer: {
             email: formData.email,
             phone: formData.phone,

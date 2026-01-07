@@ -23,6 +23,13 @@ export async function POST(request: NextRequest) {
     const body: CreateOrderRequest = await request.json();
 
     // Validate required fields
+    if (!body.tenantId) {
+      return NextResponse.json(
+        { error: "Missing tenant ID" },
+        { status: 400 }
+      );
+    }
+
     if (!body.customer?.email || !body.customer?.phone || !body.customer?.name) {
       return NextResponse.json(
         { error: "Missing customer information" },
@@ -58,6 +65,7 @@ export async function POST(request: NextRequest) {
     const { data: order, error: orderError } = await supabase
       .from("online_orders")
       .insert({
+        tenant_id: body.tenantId,
         order_number: orderNumber,
         customer_email: body.customer.email,
         customer_phone: body.customer.phone,

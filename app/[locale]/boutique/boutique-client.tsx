@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { ProductCard } from "@/components/product/product-card";
+import { DynamicProductCard } from "@/components/product/dynamic-product-card";
 import { ShopFilters } from "@/components/shop/shop-filters";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
@@ -30,7 +30,7 @@ const [products, setProducts] = useState<TranslatedProduct[]>(initialProducts);
   // Filter states
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentSort, setCurrentSort] = useState("newest");
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 20000]);
+  const [priceRange, setPriceRange] = useState<[number, number] | null>(null);
 
   // Fetch categories on mount
   useEffect(() => {
@@ -67,10 +67,12 @@ const [products, setProducts] = useState<TranslatedProduct[]>(initialProducts);
       filtered = filtered.filter(product => product.category_id === selectedCategory);
     }
 
-    // Price filter
-    filtered = filtered.filter(product => 
-      product.price >= priceRange[0] && product.price <= priceRange[1]
-    );
+    // Price filter (only apply if user has set a price range)
+    if (priceRange) {
+      filtered = filtered.filter(product => 
+        product.price >= priceRange[0] && product.price <= priceRange[1]
+      );
+    }
 
     // Sort
     switch (currentSort) {
@@ -95,6 +97,7 @@ const [products, setProducts] = useState<TranslatedProduct[]>(initialProducts);
   }, [products, selectedCategory, currentSort, priceRange]);
 
   const maxPrice = Math.max(...products.map(p => p.price), 20000);
+  const currentPriceRange = priceRange || [0, maxPrice] as [number, number];
 
   return (
     <div className="min-h-screen">
@@ -157,7 +160,7 @@ const [products, setProducts] = useState<TranslatedProduct[]>(initialProducts);
               onPriceRangeChange={handlePriceRangeChange}
               onCategoryChange={handleCategorySelect}
               currentSort={currentSort}
-              priceRange={priceRange}
+              priceRange={currentPriceRange}
               maxPrice={maxPrice}
               selectedCategory={selectedCategory}
             />
@@ -189,14 +192,18 @@ const [products, setProducts] = useState<TranslatedProduct[]>(initialProducts);
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <ProductCard
+                  <DynamicProductCard
                     id={product.id}
                     name={product.name}
                     slug={product.slug ?? undefined}
                     price={Number(product.price)}
                     image={product.images?.[0] ?? undefined}
+                    images={product.images ?? undefined}
                     short_description={product.short_description ?? undefined}
                     category={product.category_name ?? undefined}
+                    category_id={product.category_id ?? undefined}
+                    custom_data={(product as unknown as { custom_data?: Record<string, unknown> }).custom_data}
+                    isAvailable={(product as unknown as { is_available?: boolean }).is_available ?? true}
                     badges={["bio"]}
                     rating={4.8}
                     reviewCount={0}

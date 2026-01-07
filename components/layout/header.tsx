@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "@/i18n/routing";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { ShoppingCart, Search, User, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,6 +9,7 @@ import { useCartStore } from "@/store/cart-store";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher, LanguageSwitcherCompact } from "@/components/ui/language-switcher";
 import { ProductSearch, SearchModal } from "@/components/search/product-search";
+import { useTenant } from "@/hooks/use-tenant";
 
 interface NavLink {
   href: string;
@@ -23,10 +24,24 @@ const navLinks: NavLink[] = [
 
 export function Header() {
   const t = useTranslations("nav");
+  const locale = useLocale();
+  const { tenant } = useTenant();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { openCart, getTotalItems } = useCartStore();
-  const itemCount = getTotalItems();
+  const itemCount = mounted ? getTotalItems() : 0;
+
+  // Prevent hydration mismatch by only showing cart count after mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Get brand name from tenant config or fallback
+  const brandNameAr = tenant?.config?.brand?.name || tenant?.name || 'سُقيا';
+  const brandNameEn = tenant?.config?.brand?.name_en || tenant?.business_name || 'Suqya';
+  const displayNameAr = brandNameAr;
+  const displayNameLatin = brandNameEn;
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -62,12 +77,12 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <div className="relative">
-              <span className="text-2xl font-bold bg-gradient-to-r from-honey-600 to-honey-800 bg-clip-text text-transparent">
-                سُقيا
+              <span className="text-2xl font-bold bg-linear-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                {displayNameAr}
               </span>
             </div>
-            <span className="hidden sm:block text-xl font-semibold text-warm-800">
-              Suqya
+            <span className="hidden sm:block text-xl font-semibold text-foreground">
+              {displayNameLatin}
             </span>
           </Link>
 

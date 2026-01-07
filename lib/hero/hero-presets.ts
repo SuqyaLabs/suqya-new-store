@@ -438,6 +438,142 @@ export const customHeroPreset: HeroPreset = {
   }
 }
 
+// ============================================
+// 🍳 KITCHENWARE BUSINESS
+// ============================================
+// Design Philosophy: Warm, Professional, Culinary Excellence
+// Color Psychology: Orange/Amber for warmth and appetite, clean whites for hygiene
+// Layout: Split layout to showcase equipment
+// UX Focus: Quality, durability, professional grade
+
+export const kitchenwareHeroPreset: HeroPreset = {
+  business_type: 'kitchenware',
+  name: 'Culinary Excellence',
+  config: {
+    business_type: 'kitchenware',
+    layout: 'split-right',
+    height: 'lg',
+    gradient: {
+      style: 'duotone',
+      direction: 'to-br',
+      stops: [
+        { color: '#FFF7ED', position: 0, opacity: 1 },
+        { color: '#FFEDD5', position: 50, opacity: 0.9 },
+        { color: '#FED7AA', position: 100, opacity: 0.8 }
+      ]
+    },
+    content: {
+      badge: {
+        fr: '🍳 Équipement Professionnel',
+        ar: '🍳 معدات احترافية',
+        en: '🍳 Professional Equipment'
+      },
+      headline: {
+        fr: 'Équipez Votre\nCuisine Pro',
+        ar: 'جهّز\nمطبخك المحترف',
+        en: 'Equip Your\nPro Kitchen'
+      },
+      subheadline: {
+        fr: 'Découvrez notre gamme complète d\'équipements de cuisine professionnels. Qualité, durabilité et performance pour les chefs exigeants.',
+        ar: 'اكتشف مجموعتنا الكاملة من معدات المطبخ الاحترافية. الجودة والمتانة والأداء للطهاة المتميزين.',
+        en: 'Discover our complete range of professional kitchen equipment. Quality, durability and performance for demanding chefs.'
+      },
+      cta_primary: {
+        label: { fr: 'Voir les Produits', ar: 'عرض المنتجات', en: 'View Products' },
+        href: '/boutique',
+        variant: 'primary',
+        icon: 'ChefHat'
+      },
+      cta_secondary: {
+        label: { fr: 'Demander un Devis', ar: 'طلب عرض سعر', en: 'Request Quote' },
+        href: '/contact',
+        variant: 'outline'
+      },
+      trust_indicators: [
+        '🛡️ Garantie 2 Ans',
+        '🚚 Livraison Rapide',
+        '👨‍🍳 Qualité Pro',
+        '🔧 SAV Expert'
+      ]
+    },
+    typography: {
+      headline_size: 'xl',
+      headline_weight: 'bold',
+      text_align: 'left',
+      text_color: 'dark'
+    },
+    mobile_height: 'md'
+  }
+}
+
+// ============================================
+// 💻 ELECTRONICS / POS BUSINESS
+// ============================================
+// Design Philosophy: Modern, Technical, Trustworthy
+// Color Psychology: Cyan/Blue for technology and trust, clean grays for professionalism
+// Layout: Split layout to showcase hardware
+// UX Focus: Reliability, support, technical expertise
+
+export const electronicsHeroPreset: HeroPreset = {
+  business_type: 'electronics',
+  name: 'Tech Solutions',
+  config: {
+    business_type: 'electronics',
+    layout: 'split-right',
+    height: 'lg',
+    gradient: {
+      style: 'linear',
+      direction: 'to-right',
+      stops: [
+        { color: '#F8FAFC', position: 0, opacity: 1 },
+        { color: '#F1F5F9', position: 50, opacity: 0.95 },
+        { color: '#ECFEFF', position: 100, opacity: 0.9 }
+      ]
+    },
+    content: {
+      badge: {
+        fr: '⚡ Solutions POS Professionnelles',
+        ar: '⚡ حلول نقاط البيع الاحترافية',
+        en: '⚡ Professional POS Solutions'
+      },
+      headline: {
+        fr: 'Équipez Votre\nCommerce',
+        ar: 'جهّز\nمتجرك',
+        en: 'Equip Your\nBusiness'
+      },
+      subheadline: {
+        fr: 'Découvrez notre gamme complète de matériel de point de vente : caisses, imprimantes, lecteurs et accessoires professionnels.',
+        ar: 'اكتشف مجموعتنا الكاملة من معدات نقاط البيع: صناديق النقد، الطابعات، القارئات والملحقات المهنية.',
+        en: 'Discover our complete range of POS equipment: registers, printers, scanners and professional accessories.'
+      },
+      cta_primary: {
+        label: { fr: 'Voir les Produits', ar: 'عرض المنتجات', en: 'View Products' },
+        href: '/boutique',
+        variant: 'primary',
+        icon: 'Monitor'
+      },
+      cta_secondary: {
+        label: { fr: 'Demander un Devis', ar: 'طلب عرض سعر', en: 'Request Quote' },
+        href: '/contact',
+        variant: 'outline'
+      },
+      trust_indicators: [
+        '🛡️ Garantie 2 Ans',
+        '📞 Support 24/7',
+        '🚚 Livraison Nationale',
+        '🔧 Installation'
+      ]
+    },
+    typography: {
+      headline_size: 'xl',
+      headline_weight: 'bold',
+      text_align: 'left',
+      text_color: 'dark'
+    },
+    mobile_height: 'md'
+  }
+}
+
 // Preset registry
 export const heroPresets: Record<BusinessTypeId, HeroPreset> = {
   nutrition: nutritionHeroPreset,
@@ -445,7 +581,9 @@ export const heroPresets: Record<BusinessTypeId, HeroPreset> = {
   clothing: clothingHeroPreset,
   restaurant: restaurantHeroPreset,
   services: servicesHeroPreset,
-  custom: customHeroPreset
+  custom: customHeroPreset,
+  kitchenware: kitchenwareHeroPreset,
+  electronics: electronicsHeroPreset
 }
 
 // Get preset by business type

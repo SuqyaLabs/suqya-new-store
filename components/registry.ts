@@ -3,6 +3,7 @@ import type { BusinessTypeId } from '@/types/multi-business'
 
 // Component keys that can be overridden per business type
 export type ComponentKey = 
+  | 'HomePage'
   | 'ProductCard'
   | 'ProductDetails'
   | 'CartItem'
@@ -11,6 +12,17 @@ export type ComponentKey =
   | 'ProductFilters'
 
 // Props types for each component
+// Home page props
+export interface HomePageProps {
+  locale: string
+  tenant: {
+    id: string
+    name: string
+    business_type: string
+    config?: unknown
+  }
+}
+
 export interface ProductCardProps {
   product: {
     id: string
@@ -58,9 +70,20 @@ const componentRegistry: Record<BusinessTypeId | 'default', BusinessComponentReg
   retail: {
     ProductCard: () => import('./business/retail/product-card'),
   },
+  kitchenware: {
+    HomePage: () => import('./business/kitchenware/home-page'),
+    ProductCard: () => import('./business/kitchenware/product-card'),
+    ProductDetails: () => import('./business/kitchenware/product-details'),
+  },
+  electronics: {
+    HomePage: () => import('./business/electronics/home-page'),
+    ProductCard: () => import('./business/electronics/product-card'),
+    ProductDetails: () => import('./business/electronics/product-details'),
+  },
   services: {},
   custom: {},
   default: {
+    HomePage: () => import('./core/home-page'),
     ProductCard: () => import('./core/product-card'),
   },
 }
@@ -108,5 +131,5 @@ export function hasCustomComponent(
  * Get all available component keys
  */
 export function getComponentKeys(): ComponentKey[] {
-  return ['ProductCard', 'ProductDetails', 'CartItem', 'CheckoutForm', 'CategoryCard', 'ProductFilters']
+  return ['HomePage', 'ProductCard', 'ProductDetails', 'CartItem', 'CheckoutForm', 'CategoryCard', 'ProductFilters']
 }

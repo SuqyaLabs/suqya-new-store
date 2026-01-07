@@ -19,6 +19,7 @@ import { useToast } from "@/components/ui/toast";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice } from "@/lib/utils";
 import { SectionGradient } from "@/components/theme/section-gradient";
+import { useTenant } from "@/hooks/use-tenant";
 
 export function CheckoutClient() {
   const t = useTranslations("checkout");
@@ -39,6 +40,7 @@ export function CheckoutClient() {
 
   const { items, getTotalPrice, clearCart } = useCartStore();
   const toast = useToast();
+  const { tenant } = useTenant();
   const subtotal = getTotalPrice();
   
   const shippingMethods = [
@@ -124,6 +126,7 @@ export function CheckoutClient() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          tenantId: tenant?.id,
           customer: {
             email: formData.email,
             phone: formData.phone,

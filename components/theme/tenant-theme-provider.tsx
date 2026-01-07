@@ -115,6 +115,40 @@ const themePresets: Record<string, Partial<ThemeColors>> = {
     muted_foreground: '#9A7B6A',
     border: '#FED7AA',
     input: '#FFEDD5'
+  },
+  raiq_serene: {
+    // Raiq - Premium Kitchenware (Sage Green, Warm Sand, Matte Gold)
+    primary: '#8A9A5B',
+    primary_foreground: '#FFFFFF',
+    secondary: '#E5D3B3',
+    secondary_foreground: '#2D2D2D',
+    accent: '#C5A059',
+    accent_foreground: '#FFFFFF',
+    background: '#F5F5F5',
+    foreground: '#2D2D2D',
+    card: '#FFFFFF',
+    card_foreground: '#2D2D2D',
+    muted: '#F0EDE8',
+    muted_foreground: '#6B6B6B',
+    border: '#E0DCD4',
+    input: '#E0DCD4'
+  },
+  pos_tech: {
+    // POS Hardware / Electronics - Light Professional with Cyan accents
+    primary: '#0891B2',
+    primary_foreground: '#FFFFFF',
+    secondary: '#06B6D4',
+    secondary_foreground: '#FFFFFF',
+    accent: '#CFFAFE',
+    accent_foreground: '#164E63',
+    background: '#F8FAFC',
+    foreground: '#0F172A',
+    card: '#FFFFFF',
+    card_foreground: '#0F172A',
+    muted: '#F1F5F9',
+    muted_foreground: '#64748B',
+    border: '#E2E8F0',
+    input: '#E2E8F0'
   }
 }
 
@@ -233,13 +267,25 @@ interface TenantThemeProviderProps {
 export function TenantThemeProvider({ children }: TenantThemeProviderProps) {
   const { context } = useTenant()
   
-  // Get initial preset from tenant config or default
-  const initialPreset = (context?.tenant?.config as Record<string, unknown>)?.theme 
-    ? ((context?.tenant?.config as Record<string, unknown>)?.theme as Record<string, unknown>)?.preset as string
-    : 'honey_gold'
+  // Get initial preset from tenant config, or fallback to business type theme map
+  const getInitialPreset = () => {
+    const configTheme = (context?.tenant?.config as Record<string, unknown>)?.theme
+    if (configTheme) {
+      const preset = (configTheme as Record<string, unknown>)?.preset as string
+      if (preset) return preset
+    }
+    // Fallback to business type theme
+    const businessType = context?.tenant?.business_type
+    if (businessType) {
+      return getThemeForBusiness(businessType)
+    }
+    return 'honey_gold'
+  }
+  
+  const initialPreset = getInitialPreset()
   
   // Local state for selected preset (allows runtime switching)
-  const [selectedPreset, setSelectedPreset] = useState<string>(initialPreset || 'honey_gold')
+  const [selectedPreset, setSelectedPreset] = useState<string>(initialPreset)
   
   // Update selected preset when tenant context changes
   useEffect(() => {

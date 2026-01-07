@@ -66,6 +66,18 @@ const decorationConfigs: Record<BusinessTypeId, {
     blob2: 'bg-secondary/15 bottom-20 right-10 w-80 h-80',
     blob3: 'bg-accent/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96',
     pattern: 'dots'
+  },
+  kitchenware: {
+    blob1: 'bg-orange-500/20 top-10 -left-10 w-80 h-80',
+    blob2: 'bg-amber-400/15 bottom-20 right-20 w-72 h-72',
+    blob3: 'bg-yellow-300/10 top-1/2 left-1/3 w-96 h-96',
+    pattern: 'waves'
+  },
+  electronics: {
+    blob1: 'bg-cyan-500/15 top-20 right-10 w-72 h-72',
+    blob2: 'bg-blue-400/15 bottom-10 -left-20 w-80 h-80',
+    blob3: 'bg-slate-300/10 top-1/3 right-1/4 w-[450px] h-[450px]',
+    pattern: 'grid'
   }
 }
 

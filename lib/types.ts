@@ -43,6 +43,7 @@ export interface CartItem {
 }
 
 export interface CreateOrderRequest {
+  tenantId: string;
   customer: {
     email: string;
     phone: string;
