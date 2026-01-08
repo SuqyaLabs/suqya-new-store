@@ -59,7 +59,8 @@ export default function ElectronicsProductCard({
   const { addItem } = useCartStore()
   const t = translations[locale as keyof typeof translations] || translations.fr
   
-  const name = locale === 'ar' && product.name_ar ? product.name_ar : product.name
+  // Product name is already localized from the parent component
+  const name = product.name
   const customData = product.custom_data as ElectronicsCustomData | undefined
 
   const handleAddToCart = (e: React.MouseEvent) => {
@@ -69,10 +70,10 @@ export default function ElectronicsProductCard({
     if (product.is_available !== false) {
       addItem({
         id: product.id,
-        name: product.name,
+        name,
         price: product.price,
         image: product.images?.[0],
-        short_description: product.description
+        short_description: product.short_description || undefined
       })
       onAddToCart?.()
     }

@@ -16,7 +16,8 @@ export default function RetailProductCard({
   onAddToCart
 }: ProductCardProps) {
   const { addItem } = useCartStore()
-  const name = locale === 'ar' && product.name_ar ? product.name_ar : product.name
+  // Product name is already localized from the parent component
+  const name = product.name
   const customData = product.custom_data as {
     brand?: string
     manufacturer?: string
@@ -34,7 +35,7 @@ export default function RetailProductCard({
       name,
       price: product.price,
       image: product.images?.[0],
-      short_description: product.description
+      short_description: product.short_description || undefined
     })
     onAddToCart?.()
   }

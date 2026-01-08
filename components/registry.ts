@@ -26,16 +26,17 @@ export interface HomePageProps {
 export interface ProductCardProps {
   product: {
     id: string
-    name: string
-    name_ar?: string
-    description?: string
-    description_ar?: string
+    name: string // Already localized name
+    short_description?: string | null // Already localized
+    long_description?: string | null // Already localized
     price: number
-    compare_at_price?: number
-    images?: string[]
-    category_id?: string
+    compare_at_price?: number | null
+    images?: string[] | null
+    category_id?: string | null
+    category_name?: string | null // Already localized
     custom_data?: Record<string, unknown>
     is_available?: boolean
+    is_online?: boolean
   }
   locale?: string
   className?: string

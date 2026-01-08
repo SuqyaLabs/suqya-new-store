@@ -72,7 +72,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
           name: product.name,
           price: Number(product.price),
           images: product.images || [],
-          description: product.long_description || product.short_description || '',
+          short_description: product.short_description || undefined,
+          long_description: product.long_description || undefined,
           custom_data: (product as unknown as { custom_data?: Record<string, unknown> }).custom_data,
           is_available: true,
         }}

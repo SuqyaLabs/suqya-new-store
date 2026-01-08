@@ -22,24 +22,16 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { createClient } from '@/lib/supabase/client'
 import type { HomePageProps } from '@/components/registry'
-
-interface Product {
-  id: string
-  name: string
-  price: number
-  images: string[] | null
-  short_description: string | null
-  is_available: boolean
-  custom_data?: Record<string, unknown>
-}
-
-interface Category {
-  id: string
-  name: string
-  slug: string
-  image_url: string | null
-  product_count?: number
-}
+import {
+  type ProductWithTranslations,
+  type CategoryWithTranslations,
+  type LocalizedProduct,
+  type LocalizedCategory,
+  localizeProducts,
+  localizeCategories,
+  PRODUCT_WITH_TRANSLATIONS_SELECT,
+  CATEGORY_WITH_TRANSLATIONS_SELECT,
+} from '@/lib/i18n/localize'
 
 const translations = {
   fr: {
@@ -178,8 +170,8 @@ const categoryIcons: Record<string, typeof Monitor> = {
 }
 
 export default function ElectronicsHomePage({ locale, tenant }: HomePageProps) {
-  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([])
-  const [categories, setCategories] = useState<Category[]>([])
+  const [featuredProducts, setFeaturedProducts] = useState<LocalizedProduct[]>([])
+  const [categories, setCategories] = useState<LocalizedCategory[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   const t = translations[locale as keyof typeof translations] || translations.fr
@@ -197,10 +189,10 @@ export default function ElectronicsHomePage({ locale, tenant }: HomePageProps) {
     const fetchData = async () => {
       const supabase = createClient()
 
-      // Fetch featured products (only available ones)
+      // Fetch featured products with translations
       const { data: productsData } = await supabase
         .from('products')
-        .select('id, name, price, images, short_description, is_available, custom_data')
+        .select(PRODUCT_WITH_TRANSLATIONS_SELECT)
         .eq('tenant_id', tenant.id)
         .eq('is_online', true)
         .eq('is_available', true)
@@ -208,13 +200,14 @@ export default function ElectronicsHomePage({ locale, tenant }: HomePageProps) {
         .limit(8) 
 
       if (productsData) {
-        setFeaturedProducts(productsData)
+        const localizedProducts = localizeProducts(productsData as ProductWithTranslations[], locale)
+        setFeaturedProducts(localizedProducts)
       }
 
-      // Fetch categories
+      // Fetch categories with translations
       const { data: categoriesData, error: catError } = await supabase
         .from('categories')
-        .select('id, name')
+        .select(CATEGORY_WITH_TRANSLATIONS_SELECT)
         .eq('tenant_id', tenant.id)
         .order('name')
         .limit(6)
@@ -222,14 +215,15 @@ export default function ElectronicsHomePage({ locale, tenant }: HomePageProps) {
       if (catError) {
         console.error('Error fetching categories:', catError)
       } else if (categoriesData) {
-        setCategories(categoriesData.map(c => ({ ...c, slug: '', image_url: null })))
+        const localizedCats = localizeCategories(categoriesData as CategoryWithTranslations[], locale)
+        setCategories(localizedCats)
       }
 
       setIsLoading(false)
     }
 
     fetchData()
-  }, [tenant.id])
+  }, [tenant.id, locale])
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat(locale === 'ar' ? 'ar-DZ' : 'fr-DZ', {
@@ -399,11 +393,13 @@ export default function ElectronicsHomePage({ locale, tenant }: HomePageProps) {
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {categories.map((category) => {
-                const IconComponent = categoryIcons[category.slug] || categoryIcons.default
+                // Match icon by category name (lowercase)
+                const categoryKey = category.name.toLowerCase()
+                const IconComponent = categoryIcons[categoryKey] || categoryIcons.default
                 return (
                   <Link
                     key={category.id}
-                    href={`/boutique/${category.slug}`}
+                    href={`/boutique?category=${category.id}`}
                     className="group relative bg-slate-50 hover:bg-white rounded-xl p-6 text-center transition-all duration-300 border border-slate-200 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10"
                   >
                     <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-cyan-100 to-blue-100 flex items-center justify-center group-hover:from-cyan-200 group-hover:to-blue-200 transition-all">

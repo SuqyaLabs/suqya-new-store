@@ -8,22 +8,16 @@ import { Button } from '@/components/ui/button'
 import { createClient } from '@/lib/supabase/client'
 import type { HomePageProps } from '@/components/registry'
 import KitchenwareProductCard from './product-card'
-
-interface Product {
-  id: string
-  name: string
-  price: number
-  images?: string[]
-  is_available?: boolean
-  custom_data?: Record<string, unknown>
-  compare_at_price?: number
-}
-
-interface Category {
-  id: string
-  name: string
-  product_count: number
-}
+import {
+  type ProductWithTranslations,
+  type CategoryWithTranslations,
+  type LocalizedProduct,
+  type LocalizedCategory,
+  localizeProducts,
+  localizeCategories,
+  PRODUCT_WITH_TRANSLATIONS_SELECT,
+  CATEGORY_WITH_TRANSLATIONS_SELECT,
+} from '@/lib/i18n/localize'
 
 const translations = {
   fr: {
@@ -92,8 +86,8 @@ const translations = {
 }
 
 export default function KitchenwareHomePage({ locale, tenant }: HomePageProps) {
-  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([])
-  const [categories, setCategories] = useState<Category[]>([])
+  const [featuredProducts, setFeaturedProducts] = useState<LocalizedProduct[]>([])
+  const [categories, setCategories] = useState<LocalizedCategory[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   const t = translations[locale as keyof typeof translations] || translations.fr
@@ -111,10 +105,10 @@ export default function KitchenwareHomePage({ locale, tenant }: HomePageProps) {
     const fetchData = async () => {
       const supabase = createClient()
 
-      // Fetch featured products
+      // Fetch featured products with translations
       const { data: products } = await supabase
         .from('products')
-        .select('id, name, price, images, is_available, custom_data')
+        .select(PRODUCT_WITH_TRANSLATIONS_SELECT)
         .eq('tenant_id', tenant.id)
         .eq('is_available', true)
         .eq('is_online', true)
@@ -122,13 +116,14 @@ export default function KitchenwareHomePage({ locale, tenant }: HomePageProps) {
         .limit(4)
 
       if (products) {
-        setFeaturedProducts(products)
+        const localizedProducts = localizeProducts(products as ProductWithTranslations[], locale)
+        setFeaturedProducts(localizedProducts)
       }
 
-      // Fetch categories with product counts
+      // Fetch categories with translations
       const { data: cats } = await supabase
         .from('categories')
-        .select('id, name')
+        .select(CATEGORY_WITH_TRANSLATIONS_SELECT)
         .eq('tenant_id', tenant.id)
 
       if (cats) {
@@ -147,17 +142,20 @@ export default function KitchenwareHomePage({ locale, tenant }: HomePageProps) {
           }
         })
 
-        setCategories(cats.map(c => ({
-          ...c,
-          product_count: countMap.get(c.id) || 0
-        })).filter(c => c.product_count > 0))
+        // Localize categories and add product counts
+        const localizedCats = localizeCategories(cats as CategoryWithTranslations[], locale)
+        setCategories(
+          localizedCats
+            .map(c => ({ ...c, product_count: countMap.get(c.id) || 0 }))
+            .filter(c => c.product_count > 0)
+        )
       }
 
       setIsLoading(false)
     }
 
     fetchData()
-  }, [tenant.id])
+  }, [tenant.id, locale])
 
   return (
     <div className="min-h-screen" dir={isRTL ? 'rtl' : 'ltr'}>

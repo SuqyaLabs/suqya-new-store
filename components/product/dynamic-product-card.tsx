@@ -77,13 +77,13 @@ export function DynamicProductCard(props: DynamicProductCardProps) {
   }
 
   // Use business-specific ProductCard
+  // Product name should already be localized when passed to this component
   return (
     <BusinessProductCard
       product={{
         id: props.id,
         name: props.name,
-        name_ar: props.name_ar,
-        description: props.description || props.short_description,
+        short_description: props.short_description || props.description,
         price: props.price,
         images: props.images || (props.image ? [props.image] : []),
         category_id: props.category_id,

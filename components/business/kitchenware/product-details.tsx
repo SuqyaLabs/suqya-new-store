@@ -107,8 +107,9 @@ export default function KitchenwareProductDetails({
   const [selectedImage, setSelectedImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
   
-  const name = locale === 'ar' && product.name_ar ? product.name_ar : product.name
-  const description = locale === 'ar' && product.description_ar ? product.description_ar : product.description
+  // Product fields are already localized from the parent component
+  const name = product.name
+  const description = product.long_description || product.short_description
   const customData = product.custom_data as KitchenwareCustomData | undefined
   const t = translations[locale as keyof typeof translations] || translations.fr
 
@@ -119,7 +120,7 @@ export default function KitchenwareProductDetails({
         name,
         price: product.price,
         image: product.images?.[0],
-        short_description: product.description
+        short_description: product.short_description || undefined
       })
     }
     onAddToCart?.()
