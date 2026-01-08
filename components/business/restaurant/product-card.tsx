@@ -52,12 +52,28 @@ export default function RestaurantProductCard({
       <Link href={productUrl} className="block">
         <div className="relative aspect-square bg-muted overflow-hidden">
           {product.images?.[0] ? (
-            <Image
-              src={product.images[0]}
-              alt={name}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-            />
+            <>
+              {/* Primary image */}
+              <Image
+                src={product.images[0]}
+                alt={name}
+                fill
+                className={`object-cover transition-all duration-500 ${
+                  product.images[1] 
+                    ? 'md:group-hover:opacity-0 md:group-hover:scale-105' 
+                    : 'group-hover:scale-105'
+                }`}
+              />
+              {/* Secondary image on hover (desktop only) */}
+              {product.images[1] && (
+                <Image
+                  src={product.images[1]}
+                  alt={`${name} - 2`}
+                  fill
+                  className="object-cover opacity-0 scale-105 transition-all duration-500 md:group-hover:opacity-100 md:group-hover:scale-100"
+                />
+              )}
+            </>
           ) : (
             <div className="flex items-center justify-center h-full bg-gradient-to-br from-primary/10 to-primary/20">
               <span className="text-6xl">🍽️</span>
