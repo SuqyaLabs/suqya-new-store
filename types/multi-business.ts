@@ -11,6 +11,7 @@ export type BusinessTypeId =
   | 'services'
   | 'kitchenware'
   | 'electronics'
+  | 'honey'
   | 'custom';
 
 // Business configuration stored in default_config

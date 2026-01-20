@@ -81,6 +81,11 @@ const componentRegistry: Record<BusinessTypeId | 'default', BusinessComponentReg
     ProductCard: () => import('./business/electronics/product-card'),
     ProductDetails: () => import('./business/electronics/product-details'),
   },
+  honey: {
+    HomePage: () => import('./business/honey/home-page'),
+    ProductCard: () => import('./business/honey/product-card'),
+    ProductDetails: () => import('./business/honey/product-details'),
+  },
   services: {},
   custom: {},
   default: {
