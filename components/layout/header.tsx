@@ -76,14 +76,26 @@ export function Header() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="relative">
-              <span className="text-2xl font-bold bg-linear-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                {displayNameAr}
-              </span>
-            </div>
-            <span className="hidden sm:block text-xl font-semibold text-foreground">
-              {displayNameLatin}
-            </span>
+            {tenant?.config?.brand?.logo ? (
+              <div className="relative h-10 w-auto">
+                <img 
+                  src={tenant.config.brand.logo} 
+                  alt={displayNameLatin}
+                  className="h-full w-auto object-contain"
+                />
+              </div>
+            ) : (
+              <>
+                <div className="relative">
+                  <span className="text-2xl font-bold bg-linear-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                    {displayNameAr}
+                  </span>
+                </div>
+                <span className="hidden sm:block text-xl font-semibold text-foreground">
+                  {displayNameLatin}
+                </span>
+              </>
+            )}
           </Link>
 
           {/* Desktop Navigation */}

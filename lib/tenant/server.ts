@@ -56,22 +56,11 @@ export async function getTenantBySlug(
 
 /**
  * Get tenant by ID
+ * Uses the RPC-based context fetcher to bypass RLS issues
  */
 export async function getTenantById(
   id: string
-): Promise<Tenant | null> {
-  const supabase = await createClient()
-  
-  const { data, error } = await supabase
-    .from('tenants')
-    .select('*')
-    .eq('id', id)
-    .single()
-  
-  if (error) {
-    console.error('Failed to get tenant by id:', error)
-    return null
-  }
-  
-  return data as Tenant
+): Promise<any | null> {
+  const context = await getServerTenantContext(id)
+  return context?.tenant || null
 }

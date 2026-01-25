@@ -13,39 +13,27 @@ import { TenantProvider } from "@/hooks/use-tenant";
 import { getServerTenantContext } from "@/lib/tenant/server";
 import { TenantThemeProvider } from "@/components/theme/tenant-theme-provider";
 import { PageGradientBackground } from "@/components/theme/page-gradient-background";
+import { generateTenantMetadata } from "@/lib/tenant/metadata";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export const metadata: Metadata = {
-  title: "Suqya - Miel Bio d'Algérie | سُقيا",
-  description:
-    "Découvrez notre sélection de miels bio authentiques d'Algérie. Miel de Jujubier, Eucalyptus, Montagne et produits de la ruche. Livraison partout en Algérie.",
-  keywords: [
-    "miel bio",
-    "miel algérie",
-    "miel jujubier",
-    "sidr",
-    "propolis",
-    "pollen",
-    "عسل",
-  ],
-  openGraph: {
-    title: "Suqya - Miel Bio d'Algérie",
-    description: "Du rucher à votre table, le meilleur du miel algérien",
-    locale: "fr_DZ",
-    type: "website",
-  },
-};
+const DEFAULT_TENANT_ID = process.env.NEXT_PUBLIC_TENANT_ID || "c27fb19a-0121-4395-88ca-2cb8374dc52d";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return generateTenantMetadata(locale, DEFAULT_TENANT_ID);
+}
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }
-
-// Default tenant ID - can be overridden via environment variable or subdomain
-const DEFAULT_TENANT_ID = process.env.NEXT_PUBLIC_TENANT_ID || "c27fb19a-0121-4395-88ca-2cb8374dc52d";
 
 export default async function LocaleLayout({
   children,

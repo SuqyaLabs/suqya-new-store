@@ -74,8 +74,20 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <span className="text-3xl font-bold text-primary">{brandNameAr}</span>
-              <span className="text-xl font-semibold text-foreground">{brandNameEn}</span>
+              {tenant?.config?.brand?.logo ? (
+                <div className="relative h-12 w-auto">
+                  <img 
+                    src={tenant.config.brand.logo} 
+                    alt={brandNameEn}
+                    className="h-full w-auto object-contain"
+                  />
+                </div>
+              ) : (
+                <>
+                  <span className="text-3xl font-bold text-primary">{brandNameAr}</span>
+                  <span className="text-xl font-semibold text-foreground">{brandNameEn}</span>
+                </>
+              )}
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               {tagline}

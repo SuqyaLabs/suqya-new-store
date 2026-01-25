@@ -54,8 +54,23 @@ export interface TenantConfig {
   brand?: {
     name?: string;
     name_en?: string;
+    name_ar?: string;
     tagline?: string;
     tagline_ar?: string;
+    tagline_en?: string;
+    logo?: string;
+    logo_dark?: string;
+    favicon?: string;
+    og_image?: string;
+  };
+  seo?: {
+    site_title?: string;
+    site_title_ar?: string;
+    site_title_en?: string;
+    description?: string;
+    description_ar?: string;
+    description_en?: string;
+    keywords?: string[];
   };
   contact?: {
     email?: string;
