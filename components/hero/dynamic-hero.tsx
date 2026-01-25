@@ -78,6 +78,12 @@ const decorationConfigs: Record<BusinessTypeId, {
     blob2: 'bg-blue-400/15 bottom-10 -left-20 w-80 h-80',
     blob3: 'bg-slate-300/10 top-1/3 right-1/4 w-[450px] h-[450px]',
     pattern: 'grid'
+  },
+  honey: {
+    blob1: 'bg-amber-600/20 top-20 -left-20 w-72 h-72',
+    blob2: 'bg-yellow-500/15 bottom-20 right-10 w-96 h-96',
+    blob3: 'bg-orange-400/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px]',
+    pattern: 'honeycomb'
   }
 }
 

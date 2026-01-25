@@ -583,7 +583,8 @@ export const heroPresets: Record<BusinessTypeId, HeroPreset> = {
   services: servicesHeroPreset,
   custom: customHeroPreset,
   kitchenware: kitchenwareHeroPreset,
-  electronics: electronicsHeroPreset
+  electronics: electronicsHeroPreset,
+  honey: nutritionHeroPreset
 }
 
 // Get preset by business type

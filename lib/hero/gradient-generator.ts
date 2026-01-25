@@ -360,7 +360,8 @@ export function getRecommendedGradientConfig(businessType: BusinessTypeId): {
     services: { style: 'radial', direction: 'radial-center' },
     custom: { style: 'linear', direction: 'to-br' },
     kitchenware: { style: 'duotone', direction: 'to-br' },
-    electronics: { style: 'linear', direction: 'to-right' }
+    electronics: { style: 'linear', direction: 'to-right' },
+    honey: { style: 'animated', direction: 'to-br' }
   }
   
   return configs[businessType] || configs.custom

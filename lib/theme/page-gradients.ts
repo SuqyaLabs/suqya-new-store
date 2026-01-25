@@ -83,6 +83,15 @@ export const pageGradientPresets: Record<BusinessTypeId, PageGradientConfig> = {
     cardHighlight: 'radial-gradient(circle at top right, #cffafe, transparent 70%)',
     overlay: 'linear-gradient(to bottom, transparent, rgba(6, 182, 212, 0.03))',
     footer: 'linear-gradient(to bottom, #0e7490, #164e63)'
+  },
+  honey: {
+    hero: 'radial-gradient(ellipse at top, rgba(34, 197, 94, 0.15) 0%, var(--background) 70%)',
+    sectionPrimary: 'linear-gradient(135deg, rgba(220, 252, 231, 0.6) 0%, var(--background) 100%)',
+    sectionSecondary: 'linear-gradient(to bottom, var(--background), rgba(240, 253, 244, 0.5))',
+    cardAccent: 'linear-gradient(135deg, rgba(187, 247, 208, 0.4), rgba(220, 252, 231, 0.3))',
+    cardHighlight: 'radial-gradient(circle at top right, rgba(134, 239, 172, 0.3), transparent 70%)',
+    overlay: 'linear-gradient(to bottom, transparent, rgba(34, 197, 94, 0.03))',
+    footer: 'linear-gradient(to bottom, #14532d, #052e16)'
   }
 }
 
