@@ -2,7 +2,7 @@ import type { ComponentType } from 'react'
 import type { BusinessTypeId } from '@/types/multi-business'
 
 // Component keys that can be overridden per business type
-export type ComponentKey = 
+export type ComponentKey =
   | 'HomePage'
   | 'ProductCard'
   | 'ProductDetails'
@@ -37,6 +37,7 @@ export interface ProductCardProps {
     custom_data?: Record<string, unknown>
     is_available?: boolean
     is_online?: boolean
+    brand?: string | null
   }
   locale?: string
   className?: string
@@ -112,14 +113,14 @@ export async function resolveComponent<P = unknown>(
       console.warn(`Failed to load ${businessType}/${componentKey}, falling back to default`)
     }
   }
-  
+
   // Fall back to default
   const defaultLoader = componentRegistry.default[componentKey]
   if (defaultLoader) {
     const module = await defaultLoader()
     return module.default as ComponentType<P>
   }
-  
+
   throw new Error(`Component ${componentKey} not found for ${businessType}`)
 }
 

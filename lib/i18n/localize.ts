@@ -39,6 +39,7 @@ export interface ProductWithTranslations {
   long_description?: string | null
   custom_data?: Record<string, unknown>
   compare_at_price?: number | null
+  brand?: string | null
   translations?: ProductTranslationRow[]
   // Supabase returns single relations as arrays, we handle both cases
   category?: CategoryWithTranslations | CategoryWithTranslations[] | null
@@ -49,6 +50,7 @@ export interface CategoryWithTranslations {
   id: string
   name: string // base name (fallback)
   description?: string | null
+  parent_id?: string | null
   translations?: CategoryTranslationRow[]
   product_count?: number
 }
@@ -76,6 +78,7 @@ export interface LocalizedProduct {
   custom_data?: Record<string, unknown>
   compare_at_price?: number | null
   category_name?: string | null
+  brand?: string | null
 }
 
 // Localized category
@@ -83,6 +86,7 @@ export interface LocalizedCategory {
   id: string
   name: string
   description?: string | null
+  parent_id?: string | null
   product_count?: number
 }
 
@@ -172,6 +176,7 @@ export function localizeProduct(
     custom_data: product.custom_data,
     compare_at_price: product.compare_at_price,
     category_name: categoryName,
+    brand: product.brand,
   }
 }
 
@@ -194,6 +199,7 @@ export function localizeCategory(
     id: category.id,
     name,
     description,
+    parent_id: category.parent_id,
     product_count: category.product_count,
   }
 }
@@ -247,6 +253,7 @@ export const PRODUCT_WITH_TRANSLATIONS_SELECT = `
   short_description,
   long_description,
   custom_data,
+  brand,
   translations:product_translations(language_code, name, short_description, long_description, seo_title, seo_description),
   category:categories(
     id,
@@ -258,6 +265,7 @@ export const PRODUCT_WITH_TRANSLATIONS_SELECT = `
 export const CATEGORY_WITH_TRANSLATIONS_SELECT = `
   id,
   name,
+  parent_id,
   translations:category_translations(language_code, name, description)
 `
 
